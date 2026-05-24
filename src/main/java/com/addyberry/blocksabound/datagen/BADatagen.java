@@ -1,6 +1,7 @@
 package com.addyberry.blocksabound.datagen;
 
 import com.addyberry.blocksabound.BlocksAbound;
+import com.addyberry.blocksabound.datagen.providers.BABlockstateProvider;
 import com.addyberry.blocksabound.datagen.providers.BALootTableProvider;
 import com.addyberry.blocksabound.datagen.providers.BABlockTagProvider;
 import net.minecraft.core.HolderLookup;
@@ -30,5 +31,6 @@ public class BADatagen {
                 List.of(new LootTableProvider.SubProviderEntry(BALootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
         BABlockTagProvider blockTags = new BABlockTagProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(true, blockTags);
+        generator.addProvider(event.includeClient(), new BABlockstateProvider(output, existingFileHelper));
     }
 }
