@@ -16,7 +16,6 @@ import java.util.function.Supplier;
 public class BlocksAboundBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BlocksAbound.MODID);
     public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(BlocksAbound.MODID);
-    //public static final DeferredBlock<Block>
 
     //Tawny Plate
     public static BlockBehaviour.Properties getTawnyProperties() {
@@ -39,5 +38,6 @@ public class BlocksAboundBlocks {
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
+        BLOCK_ITEMS.register(eventBus);
     }
 }
