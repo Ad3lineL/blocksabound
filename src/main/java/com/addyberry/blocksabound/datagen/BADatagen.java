@@ -1,7 +1,7 @@
 package com.addyberry.blocksabound.datagen;
 
 import com.addyberry.blocksabound.BlocksAbound;
-import com.addyberry.blocksabound.datagen.providers.BlocksAboundLootTableProvider;
+import com.addyberry.blocksabound.datagen.providers.BALootTableProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = BlocksAbound.MODID)
-public class BlocksAboundDatagen {
+public class BADatagen {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
@@ -26,6 +26,6 @@ public class BlocksAboundDatagen {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(BlocksAboundLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+                List.of(new LootTableProvider.SubProviderEntry(BALootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
     }
 }

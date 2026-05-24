@@ -27,7 +27,9 @@ sourceSets.main.resources {
 }
 
 repositories {
-    // Add here additional repositories if required by some of the dependencies below.
+    maven {
+        url 'https://maven.covers1624.net/'
+    }
 }
 
 base {
@@ -56,6 +58,13 @@ neoForge {
             client()
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        clientAuth {
+            client()
+            mainClass = 'net.covers1624.devlogin.DevLogin'
+            programArguments.addAll('--launch_target', 'cpw.mods.bootstraplauncher.BootstrapLauncher')
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
@@ -118,6 +127,7 @@ configurations {
 }
 
 dependencies {
+    runtimeOnly 'net.covers1624:DevLogin:0.1.0.5'
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"

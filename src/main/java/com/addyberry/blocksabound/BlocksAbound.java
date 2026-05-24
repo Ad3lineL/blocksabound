@@ -1,15 +1,11 @@
 package com.addyberry.blocksabound;
 
-import com.addyberry.blocksabound.common.registry.BlocksAboundBlocks;
-import com.addyberry.blocksabound.common.registry.BlocksAboundCreativeModeTabs;
-import com.addyberry.blocksabound.common.registry.BlocksAboundItems;
-import net.minecraft.world.item.CreativeModeTabs;
+import com.addyberry.blocksabound.common.registry.BABlocks;
+import com.addyberry.blocksabound.common.registry.BAItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,7 +16,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 @Mod(BlocksAbound.MODID)
@@ -39,8 +34,8 @@ public class BlocksAbound {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        BlocksAboundBlocks.register(modEventBus);
-        BlocksAboundItems.register(modEventBus);
+        BABlocks.register(modEventBus);
+        BAItems.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

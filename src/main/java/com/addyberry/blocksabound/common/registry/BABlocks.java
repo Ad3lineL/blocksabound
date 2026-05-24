@@ -1,8 +1,6 @@
 package com.addyberry.blocksabound.common.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -13,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class BlocksAboundBlocks {
+public class BABlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BlocksAbound.MODID);
     public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(BlocksAbound.MODID);
 
@@ -30,7 +28,7 @@ public class BlocksAboundBlocks {
 
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, final Supplier<T> supplier) {
         DeferredBlock<T> block = BLOCKS.register(name, supplier);
-        BlocksAboundBlocks.BLOCK_ITEMS.registerSimpleBlockItem(name, block);
+        BABlocks.BLOCK_ITEMS.registerSimpleBlockItem(name, block);
         return block;
     }
 

@@ -1,4 +1,4 @@
 package com.addyberry.blocksabound.datagen.providers;
 
-public class BlocksAboundRecipeProvider {
+public class BATagProvider {
 }
