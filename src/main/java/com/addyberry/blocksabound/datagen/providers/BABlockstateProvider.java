@@ -19,7 +19,10 @@ public class BABlockstateProvider extends BlockStateProvider {
 
         String tawnyPlateLoc = ModelProvider.BLOCK_FOLDER + "/tawny_plate/";
         this.simpleBlockWithItem(TAWNY_PLATE.get(), this.models().cubeAll("tawny_plate", this.modLoc(tawnyPlateLoc + "tawny_plate")));
+        this.simpleBlockWithItem(CHISELED_TAWNY_PLATE.get(), this.models().cubeAll("chiseled_tawny_plate", this.modLoc(tawnyPlateLoc + "chiseled_tawny_plate")));
+        this.simpleBlockWithItem(TAWNY_GRATE.get(), this.models().cubeAll("tawny_grate", this.modLoc(tawnyPlateLoc + "tawny_grate")).renderType("cutout"));
         this.simpleBlockWithItem(CUT_TAWNY_PLATE.get(), this.models().cubeAll("cut_tawny_plate", this.modLoc(tawnyPlateLoc + "cut_tawny_plate")));
+
 
     }
 }

@@ -1,6 +1,9 @@
 {
   "block.blocksabound.tawny_plate": "Tawny Plate",
+  "block.blocksabound.chiseled_tawny_plate": "Chiseled Tawny Plate",
+  "block.blocksabound.tawny_grate": "Tawny Grate",
   "block.blocksabound.cut_tawny_plate": "Cut Tawny Plate",
+
 
   "blocksabound.configuration.title": "Blocks Abound Configs",
   "blocksabound.configuration.section.blocksabound.common.toml": "Blocks Abound Configs",
