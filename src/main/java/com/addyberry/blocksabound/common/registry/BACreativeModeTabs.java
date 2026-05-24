@@ -12,6 +12,7 @@ public class BACreativeModeTabs {
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(BABlocks.TAWNY_PLATE);
+            event.accept(BABlocks.CUT_TAWNY_PLATE);
         }
     }
 }

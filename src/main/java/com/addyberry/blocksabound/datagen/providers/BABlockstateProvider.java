@@ -17,7 +17,9 @@ public class BABlockstateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-        ResourceLocation tawnyPlateLoc = this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_plate/tawny_plate");
-        this.simpleBlockWithItem(TAWNY_PLATE.get(), this.models().cubeAll("tawny_plate", tawnyPlateLoc));
+        String tawnyPlateLoc = ModelProvider.BLOCK_FOLDER + "/tawny_plate/";
+        this.simpleBlockWithItem(TAWNY_PLATE.get(), this.models().cubeAll("tawny_plate", this.modLoc(tawnyPlateLoc + "tawny_plate")));
+        this.simpleBlockWithItem(CUT_TAWNY_PLATE.get(), this.models().cubeAll("cut_tawny_plate", this.modLoc(tawnyPlateLoc + "cut_tawny_plate")));
+
     }
 }

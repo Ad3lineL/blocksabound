@@ -1,13 +1,8 @@
 {
-  "itemGroup.blocksabound": "Example Mod Tab",
-  "block.blocksabound.example_block": "Example Block",
-  "item.blocksabound.example_item": "Example Item",
+  "block.blocksabound.tawny_plate": "Tawny Plate",
+  "block.blocksabound.cut_tawny_plate": "Cut Tawny Plate",
 
   "blocksabound.configuration.title": "Blocks Abound Configs",
   "blocksabound.configuration.section.blocksabound.common.toml": "Blocks Abound Configs",
-  "blocksabound.configuration.section.blocksabound.common.toml.title": "Blocks Abound Configs",
-  "blocksabound.configuration.items": "Item List",
-  "blocksabound.configuration.logDirtBlock": "Log Dirt Block",
-  "blocksabound.configuration.magicNumberIntroduction": "Magic Number Text",
-  "blocksabound.configuration.magicNumber": "Magic Number"
+  "blocksabound.configuration.section.blocksabound.common.toml.title": "Blocks Abound Configs"
 }

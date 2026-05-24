@@ -20,10 +20,12 @@ public class BABlocks {
         return BlockBehaviour.Properties.of()
                 .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
                 .strength(1.5F, 3.0F)
-                .sound(SoundType.METAL);
+                .sound(SoundType.METAL)
+                .requiresCorrectToolForDrops();
     }
 
     public static final DeferredBlock<Block> TAWNY_PLATE = registerBlock("tawny_plate", () -> new Block(getTawnyProperties()));
+    public static final DeferredBlock<Block> CUT_TAWNY_PLATE = registerBlock("cut_tawny_plate", () -> new Block(getTawnyProperties()));
 
 
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, final Supplier<T> supplier) {
