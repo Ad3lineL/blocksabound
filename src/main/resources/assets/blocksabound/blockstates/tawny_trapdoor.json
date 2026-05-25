@@ -1,0 +1,74 @@
+{
+  "variants": {
+    "facing=east,half=bottom,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_bottom",
+      "y": 180
+    },
+    "facing=east,half=bottom,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180,
+      "y": 270
+    },
+    "facing=east,half=top,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_top",
+      "y": 180
+    },
+    "facing=east,half=top,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180,
+      "y": 270
+    },
+    "facing=north,half=bottom,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_bottom",
+      "y": 180
+    },
+    "facing=north,half=bottom,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180,
+      "y": 180
+    },
+    "facing=north,half=top,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_top",
+      "y": 180
+    },
+    "facing=north,half=top,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180,
+      "y": 180
+    },
+    "facing=south,half=bottom,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_bottom",
+      "y": 180
+    },
+    "facing=south,half=bottom,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180
+    },
+    "facing=south,half=top,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_top",
+      "y": 180
+    },
+    "facing=south,half=top,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180
+    },
+    "facing=west,half=bottom,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_bottom",
+      "y": 180
+    },
+    "facing=west,half=bottom,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180,
+      "y": 90
+    },
+    "facing=west,half=top,open=false": {
+      "model": "blocksabound:block/tawny_trapdoor_top",
+      "y": 180
+    },
+    "facing=west,half=top,open=true": {
+      "model": "blocksabound:block/tawny_trapdoor_open",
+      "x": 180,
+      "y": 90
+    }
+  }
+}

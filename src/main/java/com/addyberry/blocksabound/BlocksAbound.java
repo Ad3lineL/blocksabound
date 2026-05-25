@@ -1,7 +1,7 @@
 package com.addyberry.blocksabound;
 
-import com.addyberry.blocksabound.common.registry.BABlocks;
-import com.addyberry.blocksabound.common.registry.BAItems;
+import com.addyberry.blocksabound.core.registry.BABlocks;
+import com.addyberry.blocksabound.core.registry.BAItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;

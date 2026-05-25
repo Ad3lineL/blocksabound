@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "blocksabound:block/tawny_plate/cut_tawny_plate",
+    "side": "blocksabound:block/tawny_plate/cut_tawny_plate",
+    "top": "blocksabound:block/tawny_plate/cut_tawny_plate"
+  }
+}

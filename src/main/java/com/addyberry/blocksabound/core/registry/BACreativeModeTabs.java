@@ -1,4 +1,4 @@
-package com.addyberry.blocksabound.common.registry;
+package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -15,6 +15,10 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.CHISELED_TAWNY_PLATE);
             //event.accept(BABlocks.TAWNY_GRATE);
             event.accept(BABlocks.CUT_TAWNY_PLATE);
+            event.accept(BABlocks.CUT_TAWNY_PLATE_STAIRS);
+            event.accept(BABlocks.CUT_TAWNY_PLATE_SLAB);
+            event.accept(BABlocks.TAWNY_TRAPDOOR);
+            event.accept(BABlocks.TAWNY_HULL_PLATE);
         }
     }
 }

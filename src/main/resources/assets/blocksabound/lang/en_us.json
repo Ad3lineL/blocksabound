@@ -3,6 +3,11 @@
   "block.blocksabound.chiseled_tawny_plate": "Chiseled Tawny Plate",
   "block.blocksabound.tawny_grate": "Tawny Grate",
   "block.blocksabound.cut_tawny_plate": "Cut Tawny Plate",
+  "block.blocksabound.cut_tawny_plate_stairs": "Cut Tawny Plate Stairs",
+  "block.blocksabound.cut_tawny_plate_slab": "Cut Tawny Plate Slab",
+  "block.blocksabound.tawny_door": "Tawny Door",
+  "block.blocksabound.tawny_trapdoor": "Tawny Trapdoor",
+  "block.blocksabound.tawny_hull_plate": "Tawny Hull Plate",
 
 
   "blocksabound.configuration.title": "Blocks Abound Configs",

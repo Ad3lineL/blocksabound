@@ -1,6 +1,6 @@
 package com.addyberry.blocksabound.datagen.providers;
 
-import com.addyberry.blocksabound.common.registry.BABlocks;
+import com.addyberry.blocksabound.core.registry.BABlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -23,6 +23,7 @@ public class BALootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         for (Block block : this.getKnownBlocks()) {
             dropSelf(block);
+            //todo: figure out how to not make slabs be a fuck
         }
     }
 

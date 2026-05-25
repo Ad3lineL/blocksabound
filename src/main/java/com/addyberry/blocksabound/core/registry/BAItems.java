@@ -1,4 +1,4 @@
-package com.addyberry.blocksabound.common.registry;
+package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
 import net.neoforged.bus.api.IEventBus;

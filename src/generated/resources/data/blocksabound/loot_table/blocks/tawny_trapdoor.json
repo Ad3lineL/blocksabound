@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "blocksabound:tawny_grate"
+          "name": "blocksabound:tawny_trapdoor"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "blocksabound:blocks/tawny_grate"
+  "random_sequence": "blocksabound:blocks/tawny_trapdoor"
 }

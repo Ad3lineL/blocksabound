@@ -1,7 +1,7 @@
 package com.addyberry.blocksabound.datagen.providers;
 
 import com.addyberry.blocksabound.BlocksAbound;
-import com.addyberry.blocksabound.common.registry.BABlocks;
+import com.addyberry.blocksabound.core.registry.BABlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -34,5 +34,7 @@ public class BABlockTagProvider extends BlockTagsProvider {
                 pickaxeMinable.add(block.get());
             }
         }
+
+        //todo: slabs
     }
 }
