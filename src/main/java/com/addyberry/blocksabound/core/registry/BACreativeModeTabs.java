@@ -21,6 +21,9 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.TAWNY_HULL_PLATE);
 
             event.accept(BABlocks.LIGHT_BULB);
+            event.accept(BABlocks.SOUL_LIGHT_BULB);
+            event.accept(BABlocks.REDSTONE_LIGHT_BULB);
+
         }
     }
 }
