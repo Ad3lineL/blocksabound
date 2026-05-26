@@ -19,6 +19,8 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.CUT_TAWNY_PLATE_SLAB);
             event.accept(BABlocks.TAWNY_TRAPDOOR);
             event.accept(BABlocks.TAWNY_HULL_PLATE);
+
+            event.accept(BABlocks.LIGHT_BULB);
         }
     }
 }

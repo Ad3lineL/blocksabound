@@ -8,7 +8,9 @@
   "block.blocksabound.tawny_door": "Tawny Door",
   "block.blocksabound.tawny_trapdoor": "Tawny Trapdoor",
   "block.blocksabound.tawny_hull_plate": "Tawny Hull Plate",
-
+  "block.blocksabound.light_bulb": "Light Bulb",
+  "block.blocksabound.soul_light_bulb": "Soul Light Bulb",
+  "block.blocksabound.redstone_light_bulb": "Redstone Light Bulb",
 
   "blocksabound.configuration.title": "Blocks Abound Configs",
   "blocksabound.configuration.section.blocksabound.common.toml": "Blocks Abound Configs",

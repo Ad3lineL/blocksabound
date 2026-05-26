@@ -20,6 +20,10 @@ public class BABlockTagProvider extends BlockTagsProvider {
     
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        IntrinsicTagAppender<Block> stairs = this.tag(BlockTags.STAIRS).replace(false);
+        IntrinsicTagAppender<Block> slabs = this.tag(BlockTags.SLABS).replace(false);
+        IntrinsicTagAppender<Block> doors = this.tag(BlockTags.DOORS).replace(false);
+        IntrinsicTagAppender<Block> trapdoors = this.tag(BlockTags.TRAPDOORS).replace(false);
 
         IntrinsicTagAppender<Block> pickaxeMinable = this.tag(BlockTags.MINEABLE_WITH_PICKAXE).replace(false);
         /*IntrinsicTagAppender<Block> axeMinable = this.tag(BlockTags.MINEABLE_WITH_AXE).replace(false);
@@ -33,8 +37,19 @@ public class BABlockTagProvider extends BlockTagsProvider {
                 name.contains("pyrite")) {
                 pickaxeMinable.add(block.get());
             }
-        }
+            if (name.contains("stair")) {
+                stairs.add(block.get());
+            }
+            if (name.contains("slab")) {
+                slabs.add(block.get());
+            }
+            if (name.contains("door")) {
+                doors.add(block.get());
+            }
+            if (name.contains("trapdoor")) {
+                trapdoors.add(block.get());
+            }
 
-        //todo: slabs
+        }
     }
 }

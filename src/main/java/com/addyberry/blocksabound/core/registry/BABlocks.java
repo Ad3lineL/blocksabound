@@ -2,6 +2,7 @@ package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
 import com.addyberry.blocksabound.common.blocks.HullPlateBlock;
+import com.addyberry.blocksabound.common.blocks.LightBulbBlock;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -42,6 +43,9 @@ public class BABlocks {
     public static final DeferredBlock<Block> CUT_TAWNY_PLATE_SLAB = registerBlock("cut_tawny_plate_slab", () -> new SlabBlock(getTawnyProperties()));
     public static final DeferredBlock<Block> TAWNY_TRAPDOOR = registerBlock("tawny_trapdoor", () -> new TrapDoorBlock(TAWNY_BLOCK_SET_TYPE, getTawnyProperties().noOcclusion()));
     public static final DeferredBlock<Block> TAWNY_HULL_PLATE = registerBlock("tawny_hull_plate", () -> new HullPlateBlock(getTawnyProperties()));
+
+    //light bulbs
+    public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, final Supplier<T> supplier) {
         DeferredBlock<T> block = BLOCKS.register(name, supplier);
