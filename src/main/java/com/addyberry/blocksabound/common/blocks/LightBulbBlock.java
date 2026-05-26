@@ -3,15 +3,28 @@ package com.addyberry.blocksabound.common.blocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import javax.annotation.Nullable;
 
 
 public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
@@ -55,6 +68,41 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
         return NORTH_WALL_SHAPE;
     };
 
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            this.invert(state, level, pos, (Player)null);
+            return InteractionResult.CONSUME;
+        }
+    }
+
+    private void invert (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        BlockState blockstate = state.cycle(INVERTED);
+        this.setLit(blockstate, level, pos, (Player)null);
+        this.playSound(player, level, pos, blockstate.getValue(LIT));
+    }
+
+    private void setLit (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        BlockState blockstate = state.cycle(LIT);
+        level.setBlockAndUpdate(pos, blockstate);
+    }
+
+    protected void playSound(@Nullable Player player, LevelAccessor level, BlockPos pos, boolean isLit) {
+        float f = isLit ? 0.6F : 0.9F;
+        level.playSound(player, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, f);
+        level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+    }
+
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        if (!level.isClientSide) {
+            boolean flag = level.hasNeighborSignal(pos);
+            if (state.getValue(POWERED) != flag) {
+                BlockState blockstate = state.cycle(POWERED);
+                this.setLit(blockstate, level, pos, (Player)null);
+            }
+        }
+    }
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
