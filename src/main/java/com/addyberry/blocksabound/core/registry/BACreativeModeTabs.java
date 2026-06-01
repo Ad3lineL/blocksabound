@@ -24,6 +24,8 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.SOUL_LIGHT_BULB);
             event.accept(BABlocks.REDSTONE_LIGHT_BULB);
 
+            event.accept(BABlocks.ASPHALT);
+
         }
     }
 }

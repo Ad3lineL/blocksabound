@@ -49,6 +49,14 @@ public class BABlocks {
     public static final DeferredBlock<Block> SOUL_LIGHT_BULB = registerBlock("soul_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
     public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
 
+    //asphalt
+    public static BlockBehaviour.Properties getAsphaltProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF)
+                .mapColor(MapColor.COLOR_GRAY)
+                .sound(SoundType.NETHERRACK)
+                .requiresCorrectToolForDrops();
+    }
+    public static final DeferredBlock<Block> ASPHALT = registerBlock("asphalt", () -> new Block(getAsphaltProperties()));
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, final Supplier<T> supplier) {
         DeferredBlock<T> block = BLOCKS.register(name, supplier);
         BABlocks.BLOCK_ITEMS.registerSimpleBlockItem(name, block);

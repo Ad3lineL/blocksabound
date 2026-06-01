@@ -42,7 +42,11 @@ public class BABlockstateProvider extends BlockStateProvider {
 
         this.simpleBlockItem(TAWNY_HULL_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_hull_plate")));
 
-        //Misc blocks
+            //Asphalt
+        this.simpleBlockItem(ASPHALT.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt")));
+
+
+            //Misc
         this.flatBlockItem(LIGHT_BULB.get());
         this.flatBlockItem(SOUL_LIGHT_BULB.get());
         this.flatBlockItem(REDSTONE_LIGHT_BULB.get());

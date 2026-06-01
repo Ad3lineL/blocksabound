@@ -11,6 +11,10 @@
   "block.blocksabound.light_bulb": "Light Bulb",
   "block.blocksabound.soul_light_bulb": "Soul Light Bulb",
   "block.blocksabound.redstone_light_bulb": "Redstone Light Bulb",
+  "block.blocksabound.asphalt": "Asphalt",
+  "block.blocksabound.asphalt_stairs": "Asphalt Stairs",
+  "block.blocksabound.asphalt_slab": "Asphalt Slab",
+
 
   "blocksabound.configuration.title": "Blocks Abound Configs",
   "blocksabound.configuration.section.blocksabound.common.toml": "Blocks Abound Configs",

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "blocksabound:block/asphalt"
+      },
+      {
+        "model": "blocksabound:block/asphalt_mirrored"
+      },
+      {
+        "model": "blocksabound:block/asphalt",
+        "y": 180
+      },
+      {
+        "model": "blocksabound:block/asphalt_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}
