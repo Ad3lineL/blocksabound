@@ -6,6 +6,12 @@
     "blocksabound:cut_tawny_plate_stairs",
     "blocksabound:cut_tawny_plate_slab",
     "blocksabound:tawny_trapdoor",
-    "blocksabound:tawny_hull_plate"
+    "blocksabound:tawny_hull_plate",
+    "blocksabound:light_bulb",
+    "blocksabound:soul_light_bulb",
+    "blocksabound:redstone_light_bulb",
+    "blocksabound:asphalt",
+    "blocksabound:asphalt_stairs",
+    "blocksabound:asphalt_slab"
   ]
 }

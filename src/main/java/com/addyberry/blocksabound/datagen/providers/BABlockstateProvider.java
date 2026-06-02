@@ -41,16 +41,24 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockItem(TAWNY_TRAPDOOR.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_trapdoor_bottom")));
 
         this.simpleBlockItem(TAWNY_HULL_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_hull_plate")));
+            //
 
             //Asphalt
         this.simpleBlockItem(ASPHALT.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt")));
+
+        this.stairsBlock((StairBlock) ASPHALT_STAIRS.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"));
+        this.simpleBlockItem(ASPHALT_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt_stairs")));
+
+        this.slabBlock((SlabBlock) ASPHALT_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"));
+        this.simpleBlockItem(ASPHALT_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt_slab")));
+            //
 
 
             //Misc
         this.flatBlockItem(LIGHT_BULB.get());
         this.flatBlockItem(SOUL_LIGHT_BULB.get());
         this.flatBlockItem(REDSTONE_LIGHT_BULB.get());
-
+            //
     }
 
     //shamelessly stolen from cappin im not sory

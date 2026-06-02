@@ -68,6 +68,25 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
         return NORTH_WALL_SHAPE;
     };
 
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        for(Direction direction : context.getNearestLookingDirections()) {
+            BlockState blockstate;
+            if (direction.getAxis() == Direction.Axis.Y) {
+                blockstate = this.defaultBlockState().setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
+            } else {
+                blockstate = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
+            }
+
+            if (blockstate.canSurvive(context.getLevel(), context.getClickedPos())) {
+                return blockstate.setValue(LIT, context.getLevel().hasNeighborSignal(context.getClickedPos())).setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
+            }
+        }
+
+        //return (BlockState)this.defaultBlockState().setValue(LIT, context.getLevel().hasNeighborSignal(context.getClickedPos()));
+        return null;
+    }
+
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;

@@ -34,7 +34,10 @@ public class BABlockTagProvider extends BlockTagsProvider {
         for (DeferredHolder<Block, ? extends Block> block : BABlocks.BLOCKS.getEntries()) {
             String name = block.getRegisteredName().toLowerCase();
             if (name.contains("tawny") ||
-                name.contains("pyrite")) {
+                name.contains("pyrite") ||
+                name.contains("asphalt") ||
+                name.contains("tarmac") ||
+                name.contains("light_bulb")) {
                 pickaxeMinable.add(block.get());
             }
             if (name.contains("stair")) {
