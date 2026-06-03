@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "blocksabound:block/pyrite_plate/cut_pyrite_plate",
+    "side": "blocksabound:block/pyrite_plate/cut_pyrite_plate",
+    "top": "blocksabound:block/pyrite_plate/cut_pyrite_plate"
+  }
+}

@@ -43,6 +43,21 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockItem(TAWNY_HULL_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_hull_plate")));
             //
 
+
+        //Pyrite Plate Set
+        String pyritePlateLoc = ModelProvider.BLOCK_FOLDER + "/pyrite_plate";
+        this.simpleBlockWithItem(CUT_PYRITE_PLATE.get(), this.models().cubeAll("cut_pyrite_plate", this.modLoc(pyritePlateLoc + "/cut_pyrite_plate")));
+
+        this.stairsBlock((StairBlock) CUT_PYRITE_PLATE_STAIRS.get(), this.modLoc(pyritePlateLoc + "/cut_pyrite_plate"));
+        this.simpleBlockItem(CUT_PYRITE_PLATE_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_pyrite_plate_stairs")));
+
+        this.slabBlock((SlabBlock) CUT_PYRITE_PLATE_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_pyrite_plate"), this.modLoc(pyritePlateLoc + "/cut_pyrite_plate"));
+        this.simpleBlockItem(CUT_PYRITE_PLATE_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_pyrite_plate_slab")));
+
+        this.simpleBlockItem(LARGE_PYRITE_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/large_pyrite_plate_south")));
+            //
+
+
             //Asphalt
         this.simpleBlockItem(ASPHALT.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt")));
 

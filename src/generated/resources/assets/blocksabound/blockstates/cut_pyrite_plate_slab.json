@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blocksabound:block/cut_pyrite_plate_slab"
+    },
+    "type=double": {
+      "model": "blocksabound:block/cut_pyrite_plate"
+    },
+    "type=top": {
+      "model": "blocksabound:block/cut_pyrite_plate_slab_top"
+    }
+  }
+}

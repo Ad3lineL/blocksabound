@@ -2,10 +2,19 @@
   "variants": {
     "": [
       {
-        "model": "blocksabound:block/asphalt"
+        "model": "blocksabound:block/asphalt",
+        "weight": 8
       },
       {
         "model": "blocksabound:block/asphalt_mirrored"
+      },
+            {
+        "model": "blocksabound:block/asphalt",
+        "y": 90
+      },
+      {
+        "model": "blocksabound:block/asphalt_mirrored",
+        "y": 90
       },
       {
         "model": "blocksabound:block/asphalt",
@@ -14,6 +23,45 @@
       {
         "model": "blocksabound:block/asphalt_mirrored",
         "y": 180
+      },
+      {
+        "model": "blocksabound:block/asphalt",
+        "y": 270
+      },
+      {
+        "model": "blocksabound:block/asphalt_mirrored",
+        "y": 270
+      },
+      {
+        "model": "blocksabound:block/asphalt_1",
+        "weight": 2
+      },
+      {
+        "model": "blocksabound:block/asphalt_1_mirrored"
+      },
+      {
+        "model": "blocksabound:block/asphalt_1",
+        "y": 90
+      },
+      {
+        "model": "blocksabound:block/asphalt_1_mirrored",
+        "y": 90
+      },
+      {
+        "model": "blocksabound:block/asphalt_1",
+        "y": 180
+      },
+      {
+        "model": "blocksabound:block/asphalt_1_mirrored",
+        "y": 180
+      },
+      {
+        "model": "blocksabound:block/asphalt_1",
+        "y": 270
+      },
+      {
+        "model": "blocksabound:block/asphalt_1_mirrored",
+        "y": 270
       }
     ]
   }

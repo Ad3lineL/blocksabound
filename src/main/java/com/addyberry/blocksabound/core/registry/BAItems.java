@@ -1,6 +1,7 @@
 package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
+import com.addyberry.blocksabound.common.items.LargePlateBlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -13,6 +14,7 @@ public class BAItems {
 
 
     public static final DeferredItem<Item> TAR = registerItem("tar", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LARGE_PYRITE_PLATE = registerItem("large_pyrite_plate", () -> new LargePlateBlockItem(BABlocks.LARGE_PYRITE_PLATE.get(), new Item.Properties()));
 
 
     public static <T extends Item> DeferredItem<T> registerItem(String name, final Supplier<T> supplier) {

@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "facing=down,connected=false": {
+      "model": "blocksabound:block/large_pyrite_plate"
+    },
+    "facing=down,connected=true": {
+      "model": "blocksabound:block/large_pyrite_plate_down"
+    },
+    "facing=east,connected=false": {
+      "model": "blocksabound:block/large_pyrite_plate"
+    },
+    "facing=east,connected=true": {
+      "model": "blocksabound:block/large_pyrite_plate_east"
+    },
+    "facing=north,connected=false": {
+      "model": "blocksabound:block/large_pyrite_plate"
+    },
+    "facing=north,connected=true": {
+      "model": "blocksabound:block/large_pyrite_plate_north"
+    },
+    "facing=south,connected=false": {
+      "model": "blocksabound:block/large_pyrite_plate"
+    },
+    "facing=south,connected=true": {
+      "model": "blocksabound:block/large_pyrite_plate_south"
+    },
+    "facing=up,connected=false": {
+      "model": "blocksabound:block/large_pyrite_plate"
+    },
+    "facing=up,connected=true": {
+      "model": "blocksabound:block/large_pyrite_plate_up"
+    },
+    "facing=west,connected=false": {
+      "model": "blocksabound:block/large_pyrite_plate"
+    },
+    "facing=west,connected=true": {
+      "model": "blocksabound:block/large_pyrite_plate_west"
+    }
+  }
+}

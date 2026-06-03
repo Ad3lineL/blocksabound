@@ -2,6 +2,7 @@ package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
 import com.addyberry.blocksabound.common.blocks.HullPlateBlock;
+import com.addyberry.blocksabound.common.blocks.LargePlateBlock;
 import com.addyberry.blocksabound.common.blocks.LightBulbBlock;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.*;
@@ -36,7 +37,21 @@ public class BABlocks {
     public static final DeferredBlock<Block> TAWNY_HULL_PLATE = registerBlock("tawny_hull_plate", () -> new HullPlateBlock(getTawnyProperties()));
 
 
-        //Light Bulb
+        //Pyrite Plate
+    public static final BlockSetType PYRITE_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType("pyrite", true, true, false, BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.METAL, SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
+    public static BlockBehaviour.Properties getPyriteProperties() {
+        return BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_LIGHT_GREEN)
+                .strength(1F, 4.0F)
+                .sound(SoundType.METAL)
+                .requiresCorrectToolForDrops();
+    }
+    public static final DeferredBlock<Block> CUT_PYRITE_PLATE = registerBlock("cut_pyrite_plate", () -> new Block(getPyriteProperties()));
+    public static final DeferredBlock<Block> CUT_PYRITE_PLATE_STAIRS = registerBlock("cut_pyrite_plate_stairs", () -> new StairBlock(CUT_PYRITE_PLATE.get().defaultBlockState(), getPyriteProperties()));
+    public static final DeferredBlock<Block> CUT_PYRITE_PLATE_SLAB = registerBlock("cut_pyrite_plate_slab", () -> new SlabBlock(getPyriteProperties()));
+    public static final DeferredBlock<Block> LARGE_PYRITE_PLATE = registerBlock("large_pyrite_plate", () -> new LargePlateBlock(getPyriteProperties()));
+
+    //Light Bulb
     public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
     public static final DeferredBlock<Block> SOUL_LIGHT_BULB = registerBlock("soul_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
     public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));

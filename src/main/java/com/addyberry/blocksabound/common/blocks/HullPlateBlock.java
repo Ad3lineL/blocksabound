@@ -30,6 +30,7 @@ public class HullPlateBlock extends Block {
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
         return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
+
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         boolean canConnect = neighborState.is(this);
 
@@ -41,9 +42,6 @@ public class HullPlateBlock extends Block {
             return state.setValue(DOWN, !canConnect);
         return state;
     }
-
-
-
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState > builder) {
