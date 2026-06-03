@@ -50,6 +50,11 @@ public class LargePlateBlock extends DirectionalBlock {
     }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        BlockPos blockpos = pos.relative(state.getValue(FACING), 1);
+        BlockState blockstate = level.getBlockState(blockpos);
+            if (!blockstate.is(this)) {
+                return state.setValue(CONNECTED, false);
+            }
         return state;
     }
 
