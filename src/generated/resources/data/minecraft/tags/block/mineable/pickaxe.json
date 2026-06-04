@@ -11,11 +11,11 @@
     "blocksabound:cut_pyrite_plate_stairs",
     "blocksabound:cut_pyrite_plate_slab",
     "blocksabound:large_pyrite_plate",
-    "blocksabound:light_bulb",
-    "blocksabound:soul_light_bulb",
-    "blocksabound:redstone_light_bulb",
     "blocksabound:asphalt",
     "blocksabound:asphalt_stairs",
-    "blocksabound:asphalt_slab"
+    "blocksabound:asphalt_slab",
+    "blocksabound:light_bulb",
+    "blocksabound:soul_light_bulb",
+    "blocksabound:redstone_light_bulb"
   ]
 }
