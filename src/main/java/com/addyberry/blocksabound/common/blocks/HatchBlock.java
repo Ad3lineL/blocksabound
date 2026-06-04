@@ -122,7 +122,7 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
 
             return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
         }
-        
+
         return null;
     }
 
@@ -139,11 +139,16 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     }
 
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        Direction facing = Direction.UP;
+
+        Direction facing = switch (state.getValue(FACE)) {
+            case CEILING -> Direction.UP;
+            case FLOOR -> Direction.DOWN;
+            case WALL -> state.getValue(FACING).getOpposite();
+        };
         Vec3 entityPosition = entity.position();
 
-        double offset = entityPosition.get(facing.getAxis()) - pos.get(facing.getAxis()) + 0.875;
-        if (Math.abs(offset) <= 0.125) {
+        double offset = entityPosition.get(facing.getAxis()) - pos.get(facing.getAxis()) + facing.getAxisDirection().getStep()*0.875;
+        if (Math.abs(offset) <= 0.375) {
             if (!state.getValue(OPEN)) {
                 BlockState blockstate = state.setValue(OPEN, true);
                 level.setBlockAndUpdate(pos, blockstate);
