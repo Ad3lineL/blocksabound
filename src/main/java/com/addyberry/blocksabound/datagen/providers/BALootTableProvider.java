@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 
 import java.util.Set;
 
@@ -22,8 +23,9 @@ public class BALootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         for (Block block : this.getKnownBlocks()) {
-            dropSelf(block);
-            //todo: figure out how to not make slabs be a fuck
+            if (block instanceof SlabBlock) {
+                add(block, createSlabItemTable(block));
+            } else dropSelf(block);
         }
     }
 

@@ -1,25 +1,56 @@
 name: Build
+on:
+  push:
+    paths:
+      - 'src/main/java/**'
+      - '**/gradle.properties'
+      - '**/settings.gradle'
+      - '**/build.gradle'
+      - '**/settings.gradle'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches:
+      - 'main'
 
-on: [push, pull_request]
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout sources
+        uses: actions/checkout@v6
         with:
-          fetch-depth: 0
-          fetch-tags: true
+          ref: ${{ github.head_ref }}
 
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
+      - name: Setup Java
+        uses: actions/setup-java@v5
         with:
-          java-version: '21'
           distribution: 'temurin'
+          java-version: 21
+          cache: gradle
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v6
 
-      - name: Build with Gradle
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x ./gradlew
+
+      - name: Run data generation
+        run: ./gradlew runData
+
+      - name: Commit and push generated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A src/generated/resources
+          if git diff --cached --quiet; then
+            echo "No generated data changes to commit."
+          else
+            git commit -m "Generate data [skip ci]"
+            git push origin HEAD:${{ github.head_ref || github.ref_name }}
+          fi
+
+      - name: Execute Gradle build
         run: ./gradlew build
