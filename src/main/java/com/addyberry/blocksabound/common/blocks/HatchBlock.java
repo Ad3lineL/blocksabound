@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -141,20 +142,25 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 
         Direction facing = switch (state.getValue(FACE)) {
-            case CEILING -> Direction.UP;
-            case FLOOR -> Direction.DOWN;
-            case WALL -> state.getValue(FACING).getOpposite();
+            case CEILING -> Direction.DOWN;
+            case FLOOR -> Direction.UP;
+            case WALL -> state.getValue(FACING);
         };
-        Vec3 entityPosition = entity.position();
+        
+        Direction.Axis axis = facing.getAxis();
+        int step = facing.getAxisDirection().getStep();
+        double s0 = pos.get(axis) + (step == 1 ? 0.0   : 0.875);
+        double s1 = pos.get(axis) + (step == 1 ? 0.125 : 1.0);
 
-        double offset = entityPosition.get(facing.getAxis()) - pos.get(facing.getAxis()) + facing.getAxisDirection().getStep()*0.875;
-        if (Math.abs(offset) <= 0.375) {
+        AABB box = entity.getBoundingBox();
+        if (box.max(axis) >= s0 && box.min(axis) <= s1) {
             if (!state.getValue(OPEN)) {
                 BlockState blockstate = state.setValue(OPEN, true);
                 level.setBlockAndUpdate(pos, blockstate);
                 this.playSound((Player) null, level, pos, true);
             }
         }
+
     }
 
     protected void playSound(@Nullable Player player, LevelAccessor level, BlockPos pos, boolean isOpen) {
