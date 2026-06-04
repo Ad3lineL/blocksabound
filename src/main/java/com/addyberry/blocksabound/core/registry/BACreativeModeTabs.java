@@ -30,6 +30,8 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.ASPHALT);
             event.accept(BABlocks.ASPHALT_STAIRS);
             event.accept(BABlocks.ASPHALT_SLAB);
+
+            event.accept(BABlocks.HATCH);
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

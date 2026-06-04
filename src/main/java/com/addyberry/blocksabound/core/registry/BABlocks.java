@@ -1,6 +1,7 @@
 package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
+import com.addyberry.blocksabound.common.blocks.HatchBlock;
 import com.addyberry.blocksabound.common.blocks.HullPlateBlock;
 import com.addyberry.blocksabound.common.blocks.LargePlateBlock;
 import com.addyberry.blocksabound.common.blocks.LightBulbBlock;
@@ -18,6 +19,7 @@ import java.util.function.Supplier;
 public class BABlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BlocksAbound.MODID);
     public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(BlocksAbound.MODID);
+
 
         //Tawny Plate
     public static final BlockSetType TAWNY_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType("tawny", true, true, false, BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.METAL, SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
@@ -51,11 +53,6 @@ public class BABlocks {
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_SLAB = registerBlock("cut_pyrite_plate_slab", () -> new SlabBlock(getPyriteProperties()));
     public static final DeferredBlock<Block> LARGE_PYRITE_PLATE = registerBlock("large_pyrite_plate", () -> new LargePlateBlock(getPyriteProperties()));
 
-    //Light Bulb
-    public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
-    public static final DeferredBlock<Block> SOUL_LIGHT_BULB = registerBlock("soul_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
-    public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
-
 
         //Asphalt
     public static BlockBehaviour.Properties getAsphaltProperties() {
@@ -67,6 +64,16 @@ public class BABlocks {
     public static final DeferredBlock<Block> ASPHALT = registerBlock("asphalt", () -> new Block(getAsphaltProperties()));
     public static final DeferredBlock<Block> ASPHALT_STAIRS = registerBlock("asphalt_stairs", () -> new StairBlock(ASPHALT.get().defaultBlockState(), getAsphaltProperties()));
     public static final DeferredBlock<Block> ASPHALT_SLAB = registerBlock("asphalt_slab", () -> new SlabBlock(getAsphaltProperties()));
+
+
+    //Light Bulb
+    public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
+    public static final DeferredBlock<Block> SOUL_LIGHT_BULB = registerBlock("soul_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
+    public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
+
+
+    //Hatch
+    public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
 
 
     /* TODO:
