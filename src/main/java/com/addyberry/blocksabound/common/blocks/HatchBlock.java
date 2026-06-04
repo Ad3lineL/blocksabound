@@ -3,8 +3,10 @@ package com.addyberry.blocksabound.common.blocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -86,27 +88,27 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         Direction direction = state.getValue(FACING);
         boolean flag = state.getValue(OPEN);
-        switch (state.getValue(FACE)) {
-            case FLOOR:
+        return switch (state.getValue(FACE)) {
+            case FLOOR -> {
                 if (direction.getAxis() == Direction.Axis.X) {
-                    return flag ? UP_OPEN_X : UP_AABB;
+                    yield flag ? UP_OPEN_X : UP_AABB;
                 }
-                return flag ? UP_OPEN_Z : UP_AABB;
-            case WALL:
-                return switch (state.getValue(FACING)) {
-                    case NORTH -> flag ? NORTH_OPEN : NORTH_AABB;
-                    case SOUTH -> flag ? SOUTH_OPEN : SOUTH_AABB;
-                    case WEST -> flag ? WEST_OPEN : WEST_AABB;
-                    case EAST -> flag ? EAST_OPEN : EAST_AABB;
-                    default -> throw new MatchException((String) null, (Throwable) null);
-                };
-            case CEILING:
-            default:
+                yield flag ? UP_OPEN_Z : UP_AABB;
+            }
+            case WALL -> switch (state.getValue(FACING)) {
+                case NORTH -> flag ? NORTH_OPEN : NORTH_AABB;
+                case SOUTH -> flag ? SOUTH_OPEN : SOUTH_AABB;
+                case WEST -> flag ? WEST_OPEN : WEST_AABB;
+                case EAST -> flag ? EAST_OPEN : EAST_AABB;
+                default -> throw new MatchException(null, null);
+            };
+            default -> {
                 if (direction.getAxis() == Direction.Axis.X) {
-                    return flag ? DOWN_OPEN_X : DOWN_AABB;
+                    yield flag ? DOWN_OPEN_X : DOWN_AABB;
                 }
-                return flag ? DOWN_OPEN_Z : DOWN_AABB;
-        }
+                yield flag ? DOWN_OPEN_Z : DOWN_AABB;
+            }
+        };
 
     }
 
@@ -114,20 +116,28 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         if (!state.getValue(OPEN)) {
             VoxelShape shape = getShape(state, level, pos, context);
-            Direction facing = switch (state.getValue(FACE)) {
-                case CEILING -> Direction.DOWN;
-                case FLOOR -> Direction.UP;
-                case WALL -> state.getValue(FACING);
-            };
-            Direction.Axis axis = facing.getAxis();
-            int step = facing.getAxisDirection().getStep();
-            return Shapes.create(shape.bounds().contract(
-                    axis == Direction.Axis.X ? step * 0.1 : 0,
-                    axis == Direction.Axis.Y ? step * 0.1 : 0,
-                    axis == Direction.Axis.Z ? step * 0.1 : 0
-            ));
+            Direction facingOpposite = getOpenDirection(state).getOpposite();
+            Direction.Axis axis = facingOpposite.getAxis();
+            if (axis != Direction.Axis.Y) {
+                int step = facingOpposite.getAxisDirection().getStep();
+                return Shapes.create(shape.bounds().contract(
+                        axis == Direction.Axis.X ? step * 0.01 : 0,
+                        0,
+                        axis == Direction.Axis.Z ? step * 0.01 : 0
+                ));
+            }
         }
+
         return super.getCollisionShape(state, level, pos, context);
+    }
+
+    @Override
+    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        if (state.getValue(FACE) != AttachFace.WALL && changeState(state, level, pos, entity instanceof Player player ? player : null, true)) {
+            Direction.Axis axis = state.getValue(FACING).getAxis();
+            Vec3 towardsCenter = entity.position().vectorTo(Vec3.atCenterOf(pos)).multiply(axis == Direction.Axis.X ? 0.5 : 0, 0, axis == Direction.Axis.Z ? 0.5 : 0);
+            entity.addDeltaMovement(towardsCenter);
+        }
     }
 
     @Nullable
@@ -156,17 +166,15 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
+        if (state.getValue(POWERED) != level.hasNeighborSignal(currentPos)) {
+            state = state.cycle(POWERED);
+        }
+
         return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
     }
 
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-
-        Direction facing = switch (state.getValue(FACE)) {
-            case CEILING -> Direction.DOWN;
-            case FLOOR -> Direction.UP;
-            case WALL -> state.getValue(FACING);
-        };
-
+        Direction facing = getOpenDirection(state);
         Direction.Axis axis = facing.getAxis();
         int step = facing.getAxisDirection().getStep();
         double s0 = pos.get(axis) + (step == 1 ? 0.0   : 0.775);
@@ -174,18 +182,48 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
 
         AABB box = entity.getBoundingBox();
         if (box.max(axis) >= s0 && box.min(axis) <= s1) {
-            if (!state.getValue(OPEN)) {
-                BlockState blockstate = state.setValue(OPEN, true);
-                level.setBlockAndUpdate(pos, blockstate);
-                this.playSound((Player) null, level, pos, true);
+            if (changeState(state, level, pos, entity instanceof Player player ? player : null, true)) {
+                if (axis == Direction.Axis.Y) {
+                    Direction.Axis secondAxis = state.getValue(FACING).getAxis();
+                    Vec3 towardsCenter = entity.position().vectorTo(Vec3.atCenterOf(pos)).multiply(0.2, 0, 0.2);
+                    entity.addDeltaMovement(new Vec3(secondAxis == Direction.Axis.X ? towardsCenter.x : 0, 0, secondAxis == Direction.Axis.Z ? towardsCenter.z : 0));
+                } else if (entity.blockPosition().equals(pos)) {
+                    entity.addDeltaMovement(new Vec3(0, 0.25, 0));
+                }
             }
         }
-
     }
 
-    protected void playSound(@Nullable Player player, LevelAccessor level, BlockPos pos, boolean isOpen) {
-        level.playSound(player, pos, isOpen ? SoundEvents.IRON_TRAPDOOR_OPEN : SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-        level.gameEvent(player, isOpen ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        Direction facing = getOpenDirection(state);
+        Direction.Axis axis = facing.getAxis();
+        int step = facing.getAxisDirection().getStep();
+        if (level.getEntitiesOfClass(Entity.class, new AABB(pos).inflate(axis == Direction.Axis.X ? step*0.6 : 0, axis == Direction.Axis.Y ? step*0.6 : 0.1, axis == Direction.Axis.Z ? step*0.6 : 0)).isEmpty()) {
+            changeState(state, level, pos, null, false);
+        } else level.scheduleTick(pos, this, 20);
+
+        super.tick(state, level, pos, random);
+    }
+
+    protected static Direction getOpenDirection(BlockState state) {
+        return switch (state.getValue(FACE)) {
+            case CEILING -> Direction.DOWN;
+            case FLOOR -> Direction.UP;
+            case WALL -> state.getValue(FACING);
+        };
+    }
+
+    protected static boolean changeState(BlockState state, Level level, BlockPos pos, @Nullable Player player, boolean open) {
+        if (!state.getValue(POWERED) && state.getValue(OPEN) != open) {
+            level.setBlockAndUpdate(pos, state.setValue(OPEN, open));
+            level.playSound(player, pos, open ? SoundEvents.IRON_TRAPDOOR_OPEN : SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+            level.gameEvent(player, open ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+            if (open) level.scheduleTick(pos, state.getBlock(), 20);
+            return true;
+        }
+
+        return false;
     }
 
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
