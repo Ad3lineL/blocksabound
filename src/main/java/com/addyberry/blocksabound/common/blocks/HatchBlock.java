@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -122,10 +123,16 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     }
 
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!state.getValue(OPEN)) {
-            BlockState blockstate = state.setValue(OPEN, true);
-            level.setBlockAndUpdate(pos, blockstate);
-            this.playSound((Player) null, level, pos, true);
+        Direction facing = Direction.UP;
+        Vec3 entityPosition = entity.position();
+
+        double offset = entityPosition.get(facing.getAxis()) - pos.get(facing.getAxis()) + 0.875;
+        if (Math.abs(offset) <= 0.125) {
+            if (!state.getValue(OPEN)) {
+                BlockState blockstate = state.setValue(OPEN, true);
+                level.setBlockAndUpdate(pos, blockstate);
+                this.playSound((Player) null, level, pos, true);
+            }
         }
     }
 
