@@ -110,6 +110,26 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
 
     }
 
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        if (!state.getValue(OPEN)) {
+            VoxelShape shape = getShape(state, level, pos, context);
+            Direction facing = switch (state.getValue(FACE)) {
+                case CEILING -> Direction.DOWN;
+                case FLOOR -> Direction.UP;
+                case WALL -> state.getValue(FACING);
+            };
+            Direction.Axis axis = facing.getAxis();
+            int step = facing.getAxisDirection().getStep();
+            return Shapes.create(shape.bounds().contract(
+                    axis == Direction.Axis.X ? step * 0.1 : 0,
+                    axis == Direction.Axis.Y ? step * 0.1 : 0,
+                    axis == Direction.Axis.Z ? step * 0.1 : 0
+            ));
+        }
+        return super.getCollisionShape(state, level, pos, context);
+    }
+
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
@@ -146,11 +166,11 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
             case FLOOR -> Direction.UP;
             case WALL -> state.getValue(FACING);
         };
-        
+
         Direction.Axis axis = facing.getAxis();
         int step = facing.getAxisDirection().getStep();
-        double s0 = pos.get(axis) + (step == 1 ? 0.0   : 0.875);
-        double s1 = pos.get(axis) + (step == 1 ? 0.125 : 1.0);
+        double s0 = pos.get(axis) + (step == 1 ? 0.0   : 0.775);
+        double s1 = pos.get(axis) + (step == 1 ? 0.225 : 1.0);
 
         AABB box = entity.getBoundingBox();
         if (box.max(axis) >= s0 && box.min(axis) <= s1) {
