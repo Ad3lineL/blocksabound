@@ -50,9 +50,18 @@ public class LargePlateBlock extends DirectionalBlock {
     }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        BlockPos blockpos = pos.relative(state.getValue(FACING), 1);
-        BlockState blockstate = level.getBlockState(blockpos);
-        return state.setValue(CONNECTED, blockstate.is(this));
+        Direction facing = state.getValue(FACING);
+        return direction == facing ? state.setValue(CONNECTED, neighborState.is(this) && neighborState.getValue(FACING) == facing.getOpposite()) : state;
+    }
+
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        super.onPlace(state, level, pos, oldState, movedByPiston);
+    }
+
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
     @Override

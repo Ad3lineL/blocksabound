@@ -32,10 +32,8 @@ public class HullPlateBlock extends Block {
     }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        boolean canConnect = neighborState.is(this);
+        boolean canConnect = neighborState.is(this) && neighborState.getValue(FACING) == state.getValue(FACING);
 
-        if (direction.getAxis() != Direction.Axis.Y) return state;
-        if (canConnect) canConnect &= neighborState.getValue(FACING) == state.getValue(FACING);
         if (direction == Direction.UP)
             return state.setValue(UP, !canConnect);
         else if (direction == Direction.DOWN)
