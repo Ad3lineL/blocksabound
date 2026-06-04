@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -65,8 +66,6 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     protected static final VoxelShape DOWN_JAW_SOUTH;
     protected static final VoxelShape DOWN_JAW_NORTH;
 
-    protected static final VoxelShape OPEN_PLACEHOLDER = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-
     public HatchBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
@@ -108,6 +107,23 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
                 return flag ? DOWN_OPEN_Z : DOWN_AABB;
         }
 
+    }
+
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+        for(Direction direction : context.getNearestLookingDirections()) {
+            BlockState blockstate;
+            if (direction.getAxis() == Direction.Axis.Y) {
+                blockstate = this.defaultBlockState().setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
+            } else {
+                blockstate = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
+            }
+
+            return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+        }
+        
+        return null;
     }
 
     protected FluidState getFluidState(BlockState state) {
