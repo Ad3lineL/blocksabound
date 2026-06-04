@@ -51,7 +51,7 @@ public class BABlocks {
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE = registerBlock("cut_pyrite_plate", () -> new Block(getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_STAIRS = registerBlock("cut_pyrite_plate_stairs", () -> new StairBlock(CUT_PYRITE_PLATE.get().defaultBlockState(), getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_SLAB = registerBlock("cut_pyrite_plate_slab", () -> new SlabBlock(getPyriteProperties()));
-    public static final DeferredBlock<Block> LARGE_PYRITE_PLATE = registerBlock("large_pyrite_plate", () -> new LargePlateBlock(getPyriteProperties()));
+    public static final DeferredBlock<Block> LARGE_PYRITE_PLATE = registerBlockNoItem("large_pyrite_plate", () -> new LargePlateBlock(getPyriteProperties()));
 
 
         //Asphalt
@@ -101,7 +101,9 @@ public class BABlocks {
         return block;
     }
 
-
+    public static <T extends Block> DeferredBlock<T> registerBlockNoItem(String name, final Supplier<T> supplier) {
+        return BLOCKS.register(name, supplier);
+    }
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
