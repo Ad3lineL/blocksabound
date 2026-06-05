@@ -37,6 +37,7 @@ public class BABlockTagProvider extends BlockTagsProvider {
                 name.contains("pyrite") ||
                 name.contains("asphalt") ||
                 name.contains("tarmac") ||
+                name.contains("pipe") ||
                 name.contains("light_bulb")) {
                 pickaxeMinable.add(block.get());
             }

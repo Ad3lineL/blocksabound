@@ -54,7 +54,16 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return FRAME;
+        VoxelShape shape = FRAME;
+
+        if (!state.getValue(NORTH)) shape = Shapes.or(shape, PLATE_NORTH);
+        if (!state.getValue(EAST)) shape = Shapes.or(shape, PLATE_EAST);
+        if (!state.getValue(SOUTH)) shape = Shapes.or(shape, PLATE_SOUTH);
+        if (!state.getValue(WEST)) shape = Shapes.or(shape, PLATE_WEST);
+        if (!state.getValue(UP)) shape = Shapes.or(shape, PLATE_UP);
+        if (!state.getValue(DOWN)) shape = Shapes.or(shape, PLATE_DOWN);
+
+        return shape;
     }
 
     @Override
@@ -78,11 +87,11 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
 
     static {
         FRAME = Shapes.or(Block.box(0.0D, 0.0D, 14.0D, 2.0D, 16.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 2.0D), Block.box(14.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D), Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D), Block.box(0.0D, 0.0D, 0.0D, 2.0D, 2.0D, 16.0D), Block.box(14.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 2.0D), Block.box(0.0D, 0.0D, 14.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 14.0D, 0.0D, 2.0D, 16.0D, 16.0D), Block.box(14.0D, 14.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.box(0.0D, 14.0D, 0.0D, 16.0D, 16.0D, 2.0D), Block.box(0.0D, 14.0D, 14.0D, 16.0D, 16.0D, 16.0D));
-        PLATE_NORTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-        PLATE_EAST = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-        PLATE_SOUTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-        PLATE_WEST = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-        PLATE_UP = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-        PLATE_DOWN = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_NORTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
+        PLATE_EAST = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_SOUTH = Block.box(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_WEST = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
+        PLATE_UP = Block.box(2.0D, 14.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+        PLATE_DOWN = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 2.0D, 14.0D);
     }
 }
