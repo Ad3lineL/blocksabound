@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "foundations:block/pipe_junction"
+        "model": "blocksabound:block/pipe_junction"
       }
     },
     {
@@ -10,7 +10,7 @@
         "up": "false"
       },
       "apply": {
-        "model": "foundations:block/pipe_junction_side",
+        "model": "blocksabound:block/pipe_junction_side",
         "x": 270,
         "uvlock": true
       }
@@ -20,7 +20,7 @@
         "down": "false"
       },
       "apply": {
-        "model": "foundations:block/pipe_junction_side",
+        "model": "blocksabound:block/pipe_junction_side",
         "x": 90,
         "uvlock": true
       }
@@ -30,7 +30,7 @@
         "north": "false"
       },
       "apply": {
-        "model": "foundations:block/pipe_junction_side",
+        "model": "blocksabound:block/pipe_junction_side",
         "uvlock": true
       }
     },
@@ -39,7 +39,7 @@
         "east": "false"
       },
       "apply": {
-        "model": "foundations:block/pipe_junction_side",
+        "model": "blocksabound:block/pipe_junction_side",
         "y": 90,
         "uvlock": true
       }
@@ -49,7 +49,7 @@
         "south": "false"
       },
       "apply": {
-        "model": "foundations:block/pipe_junction_side",
+        "model": "blocksabound:block/pipe_junction_side",
         "y": 180,
         "uvlock": true
       }
@@ -59,7 +59,7 @@
         "west": "false"
       },
       "apply": {
-        "model": "foundations:block/pipe_junction_side",
+        "model": "blocksabound:block/pipe_junction_side",
         "y": 270,
         "uvlock": true
       }

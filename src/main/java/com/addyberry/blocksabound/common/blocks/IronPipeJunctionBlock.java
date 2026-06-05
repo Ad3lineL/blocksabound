@@ -1,24 +1,88 @@
 package com.addyberry.blocksabound.common.blocks;
 
+import com.addyberry.blocksabound.core.registry.BABlocks;
+import com.addyberry.blocksabound.core.registry.BAItems;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class IronPipeJunctionBlock extends PipeBlock implements SimpleWaterloggedBlock {
+public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
+    public static final BooleanProperty EAST = BlockStateProperties.EAST;
+    public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
+    public static final BooleanProperty WEST = BlockStateProperties.WEST;
+    public static final BooleanProperty UP = BlockStateProperties.UP;
+    public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
 
-    public IronPipeJunctionBlock(float apothem, Properties properties) {
-        super(apothem, properties);
+    protected static final VoxelShape FRAME;
+    protected static final VoxelShape PLATE_NORTH;
+    protected static final VoxelShape PLATE_EAST;
+    protected static final VoxelShape PLATE_SOUTH;
+    protected static final VoxelShape PLATE_WEST;
+    protected static final VoxelShape PLATE_UP;
+    protected static final VoxelShape PLATE_DOWN;
+
+
+    public IronPipeJunctionBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.defaultBlockState()
                 .setValue(WATERLOGGED, false)
+                .setValue(NORTH, false)
+                .setValue(EAST, false)
+                .setValue(SOUTH, false)
+                .setValue(WEST, false)
+                .setValue(UP, false)
+                .setValue(DOWN, false)
         );
+    }
+
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return FRAME;
     }
 
     @Override
     protected MapCodec<? extends PipeBlock> codec() {
         return null;
+    }
+
+    protected FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        return BABlocks.PIPE.toStack();
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED, NORTH, EAST, SOUTH, WEST, UP, DOWN);
+    }
+
+    static {
+        FRAME = Shapes.or(Block.box(0.0D, 0.0D, 14.0D, 2.0D, 16.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 2.0D), Block.box(14.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D), Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D), Block.box(0.0D, 0.0D, 0.0D, 2.0D, 2.0D, 16.0D), Block.box(14.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 2.0D), Block.box(0.0D, 0.0D, 14.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 14.0D, 0.0D, 2.0D, 16.0D, 16.0D), Block.box(14.0D, 14.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.box(0.0D, 14.0D, 0.0D, 16.0D, 16.0D, 2.0D), Block.box(0.0D, 14.0D, 14.0D, 16.0D, 16.0D, 16.0D));
+        PLATE_NORTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_EAST = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_SOUTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_WEST = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_UP = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        PLATE_DOWN = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     }
 }

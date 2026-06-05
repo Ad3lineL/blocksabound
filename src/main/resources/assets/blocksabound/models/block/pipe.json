@@ -1,5 +1,6 @@
 {
 	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
 	"parent": "block/cube",
 	"render_type": "minecraft:cutout",
 	"textures": {
@@ -19,6 +20,16 @@
 				"west": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "up"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "down"}
+			}
+		},
+		{
+			"from": [14, 16, 14],
+			"to": [2, 0, 2],
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "texture": "#5"},
+				"east": {"uv": [2, 0, 14, 16], "texture": "#5"},
+				"south": {"uv": [2, 0, 14, 16], "texture": "#5"},
+				"west": {"uv": [2, 0, 14, 16], "texture": "#5"}
 			}
 		},
 		{

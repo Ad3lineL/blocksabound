@@ -1,16 +1,15 @@
 {
   "variants": {
     "axis=x": {
-      "model": "blocksabound:block/pipe",
-      "x": 90,
-      "y": 90
+      "model": "blocksabound:block/pipe_horizontal",
+      "y": 270
     },
     "axis=y": {
       "model": "blocksabound:block/pipe"
     },
     "axis=z": {
-      "model": "blocksabound:block/pipe",
-      "x": 90
+      "model": "blocksabound:block/pipe_horizontal",
+      "y": 180
     }
   }
 }

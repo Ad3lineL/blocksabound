@@ -217,7 +217,7 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     protected static boolean changeState(BlockState state, Level level, BlockPos pos, @Nullable Player player, boolean open) {
         if (!state.getValue(POWERED) && state.getValue(OPEN) != open) {
             level.setBlockAndUpdate(pos, state.setValue(OPEN, open));
-            level.playSound(player, pos, open ? SoundEvents.IRON_TRAPDOOR_OPEN : SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+            level.playSound(player, pos, open ? SoundEvents.IRON_TRAPDOOR_OPEN : SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.6F);
             level.gameEvent(player, open ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
             if (open) level.scheduleTick(pos, state.getBlock(), 20);
             return true;

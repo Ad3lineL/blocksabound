@@ -72,20 +72,40 @@ public class BABlocks {
     //Mechanical Iron
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final DeferredBlock<Block> PIPE = registerBlock("pipe", () -> new IronPipeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
 
 
 
     /* TODO:
      TARMAC
-     TARRED PAPER
-     SEALED GLASS
-     FLUORESCENT TUBES
      BUMPER
+     TARRED PAPER
+     IRON CABLE
+     FLUORESCENT TUBES
+     GUIDING ROD
+     NAIL
+     SEALED GLASS
+     CLOCK BLOCK
      SKATES
      GIRDER
      LOCKER
      HAZARD STRIPE
      MECHANICAL LEVER
+     VENT BLOCK
+     WIND-UP LEVER
+
+     Sets:
+     BLUE SET
+     RED SET
+
+     Insane maybes:
+     TRAFFIC CONE
+     SANDBAG
+     MECHANICAL HORN
+     APERTURE HATCH
+     METAL ENVELOPE BLOCK
+     ELECTRIC COIL BLOCK
+     ARROW SIGNS
     */
 
 
