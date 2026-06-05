@@ -73,15 +73,15 @@ public class BABlocks {
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final DeferredBlock<Block> PIPE = registerBlock("pipe", () -> new IronPipeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
 
+
+
     /* TODO:
-     ASPHALT
      TARMAC
      TARRED PAPER
      SEALED GLASS
      FLUORESCENT TUBES
      BUMPER
      SKATES
-     PIPE
      GIRDER
      LOCKER
      HAZARD STRIPE
