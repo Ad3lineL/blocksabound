@@ -16,6 +16,8 @@
     "blocksabound:asphalt_slab",
     "blocksabound:light_bulb",
     "blocksabound:soul_light_bulb",
-    "blocksabound:redstone_light_bulb"
+    "blocksabound:redstone_light_bulb",
+    "blocksabound:pipe",
+    "blocksabound:pipe_junction"
   ]
 }
