@@ -25,18 +25,20 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.CUT_PYRITE_PLATE);
             event.accept(BABlocks.CUT_PYRITE_PLATE_STAIRS);
             event.accept(BABlocks.CUT_PYRITE_PLATE_SLAB);
-            event.accept(BABlocks.LARGE_PYRITE_PLATE);
+            event.accept(BAItems.LARGE_PYRITE_PLATE);
 
             event.accept(BABlocks.ASPHALT);
             event.accept(BABlocks.ASPHALT_STAIRS);
             event.accept(BABlocks.ASPHALT_SLAB);
 
-            event.accept(BABlocks.HATCH);
+
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.SOUL_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(BABlocks.HATCH);
+            event.accept(BABlocks.PIPE);
         }
         if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.insertAfter(Items.REDSTONE_LAMP.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

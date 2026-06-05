@@ -1,0 +1,20 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "block/cube",
+	"textures": {
+		"0": "blocksabound:block/pipe_intersection",
+		"2": "blocksabound:block/pipe_intersection_inside",
+		"particle": "blocksabound:block/pipe_intersection"
+	},
+	"elements": [
+		{
+			"from": [2, 2, 0],
+			"to": [14, 14, 2],
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#0", "cullface": "north"},
+				"south": {"uv": [2, 2, 14, 14], "texture": "#2"}
+			}
+		}
+	]
+}

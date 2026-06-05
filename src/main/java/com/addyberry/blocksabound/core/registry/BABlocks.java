@@ -1,10 +1,7 @@
 package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
-import com.addyberry.blocksabound.common.blocks.HatchBlock;
-import com.addyberry.blocksabound.common.blocks.HullPlateBlock;
-import com.addyberry.blocksabound.common.blocks.LargePlateBlock;
-import com.addyberry.blocksabound.common.blocks.LightBulbBlock;
+import com.addyberry.blocksabound.common.blocks.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -72,9 +69,9 @@ public class BABlocks {
     public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
 
 
-    //Hatch
+    //Mechanical Iron
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
-
+    public static final DeferredBlock<Block> PIPE = registerBlock("pipe", () -> new IronPipeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
 
     /* TODO:
      ASPHALT
@@ -86,7 +83,6 @@ public class BABlocks {
      SKATES
      PIPE
      GIRDER
-     HATCH
      LOCKER
      HAZARD STRIPE
      MECHANICAL LEVER

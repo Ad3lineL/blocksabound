@@ -1,0 +1,35 @@
+{
+	"format_version": "1.9.0",
+	"parent": "block/cube",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"1": "blocksabound:block/pipe_side",
+		"2": "blocksabound:block/pipe_top",
+		"5": "blocksabound:block/pipe_side_inside",
+		"particle": "blocksabound:block/pipe_side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "down"}
+			}
+		},
+		{
+			"from": [14.1, 16, 14.1],
+			"to": [1.9, 0, 1.9],
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "texture": "#5"},
+				"east": {"uv": [2, 0, 14, 16], "texture": "#5"},
+				"south": {"uv": [2, 0, 14, 16], "texture": "#5"},
+				"west": {"uv": [2, 0, 14, 16], "texture": "#5"}
+			}
+		}
+	]
+}
