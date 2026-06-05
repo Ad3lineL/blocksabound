@@ -118,11 +118,11 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
             VoxelShape shape = getShape(state, level, pos, context);
             Direction facingOpposite = getOpenDirection(state).getOpposite();
             Direction.Axis axis = facingOpposite.getAxis();
-            if (axis != Direction.Axis.Y) {
+            if (facingOpposite != Direction.UP) {
                 int step = facingOpposite.getAxisDirection().getStep();
                 return Shapes.create(shape.bounds().contract(
                         axis == Direction.Axis.X ? step * 0.01 : 0,
-                        0,
+                        axis == Direction.Axis.Y ? step *0.01 : 0,
                         axis == Direction.Axis.Z ? step * 0.01 : 0
                 ));
             }
@@ -183,10 +183,10 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
         AABB box = entity.getBoundingBox();
         if (box.max(axis) >= s0 && box.min(axis) <= s1) {
             if (changeState(state, level, pos, entity instanceof Player player ? player : null, true)) {
-                if (axis == Direction.Axis.Y) {
-                    Direction.Axis secondAxis = state.getValue(FACING).getAxis();
-                    Vec3 towardsCenter = entity.position().vectorTo(Vec3.atCenterOf(pos)).multiply(0.2, 0, 0.2);
-                    entity.addDeltaMovement(new Vec3(secondAxis == Direction.Axis.X ? towardsCenter.x : 0, 0, secondAxis == Direction.Axis.Z ? towardsCenter.z : 0));
+                if (axis == Direction.Axis.Y && entity.getY() > pos.getY()) {
+                    Direction.Axis axis1 = state.getValue(FACING).getAxis();
+                    Vec3 towardsCenter = entity.position().vectorTo(Vec3.atCenterOf(pos)).multiply(axis1 == Direction.Axis.X ? 0.5 : 0, 0, axis1 == Direction.Axis.Z ? 0.5 : 0);
+                    entity.addDeltaMovement(towardsCenter);
                 } else if (entity.blockPosition().equals(pos)) {
                     entity.addDeltaMovement(new Vec3(0, 0.25, 0));
                 }
@@ -199,9 +199,14 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
         Direction facing = getOpenDirection(state);
         Direction.Axis axis = facing.getAxis();
         int step = facing.getAxisDirection().getStep();
-        if (level.getEntitiesOfClass(Entity.class, new AABB(pos).inflate(axis == Direction.Axis.X ? step*0.6 : 0, axis == Direction.Axis.Y ? step*0.6 : 0.1, axis == Direction.Axis.Z ? step*0.6 : 0)).isEmpty()) {
-            changeState(state, level, pos, null, false);
-        } else level.scheduleTick(pos, this, 20);
+        if (
+                !level.getEntitiesOfClass(Entity.class, new AABB(pos).inflate(
+                        axis == Direction.Axis.X ? step*0.6 : 0,
+                        axis == Direction.Axis.Y ? step*0.6 : 0.1,
+                        axis == Direction.Axis.Z ? step*0.6 : 0)
+                ).isEmpty()
+                || !changeState(state, level, pos, null, false)
+        ) level.scheduleTick(pos, this, 20);
 
         super.tick(state, level, pos, random);
     }
