@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.addyberry.blocksabound.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "${mod_id}.refmap.json",
+  "mixins": [
+    "LargePlateStickinessMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

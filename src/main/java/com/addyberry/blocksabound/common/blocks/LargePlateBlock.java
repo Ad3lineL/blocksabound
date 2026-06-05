@@ -55,6 +55,16 @@ public class LargePlateBlock extends DirectionalBlock {
     }
 
     @Override
+    public boolean isStickyBlock(BlockState state) {
+        return state.getValue(CONNECTED);
+    }
+
+    @Override
+    public boolean canStickTo(BlockState state, BlockState other) {
+        return other.is(this) && other.getValue(CONNECTED) && state.getValue(FACING) == other.getValue(FACING).getOpposite();
+    }
+
+    @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);
     }
