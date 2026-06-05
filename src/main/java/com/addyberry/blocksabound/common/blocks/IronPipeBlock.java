@@ -1,9 +1,11 @@
 package com.addyberry.blocksabound.common.blocks;
 
+import com.addyberry.blocksabound.core.registry.BABlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -56,6 +58,20 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
         boolean flag = fluidstate.getType() == Fluids.WATER;
         return super.getStateForPlacement(context).setValue(WATERLOGGED, flag);
+    }
+
+    public static void connectBlock(BlockState state, Direction direction, Level level, BlockPos pos) {
+        BlockState blockstate = state;
+        if (state.is(BABlocks.PIPE)) {
+            if (state.getValue(AXIS) ==) {
+                        state.setValue(AXIS, direction.getAxis());
+                level.setBlockAndUpdate(pos, blockstate);
+            }
+
+
+        } else if (state.is(BABlocks.PIPE_JUNCTION)) {
+            level.setBlockAndUpdate(pos, blockstate);
+        }
     }
 
     protected FluidState getFluidState(BlockState state) {

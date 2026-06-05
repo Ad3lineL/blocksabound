@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "blocksabound:block/hatch",
+		"1": "blocksabound:block/hatch_inverted",
+		"particle": "blocksabound:block/hatch"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 2],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [7, 0, 9, 16], "texture": "#0"},
+				"south": {"uv": [16, 16, 0, 0], "texture": "#1"},
+				"west": {"uv": [7, 0, 9, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#0"},
+				"down": {"uv": [0, 14, 16, 16], "texture": "#0"}
+			}
+		}
+	]
+}

@@ -106,6 +106,8 @@ public class BABlocks {
      METAL ENVELOPE BLOCK
      ELECTRIC COIL BLOCK
      ARROW SIGNS
+     DETECTOR PIPE
+     WINDOWED PIPE
     */
 
 
