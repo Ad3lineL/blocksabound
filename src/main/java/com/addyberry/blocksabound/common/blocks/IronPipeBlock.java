@@ -60,17 +60,29 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
         return super.getStateForPlacement(context).setValue(WATERLOGGED, flag);
     }
 
-    public static void connectBlock(BlockState state, Direction direction, Level level, BlockPos pos) {
-        BlockState blockstate = state;
+    public static void connectBlock(BlockState state, Direction direction, Level level, BlockPos pos, Direction.Axis axis) {
+
         if (state.is(BABlocks.PIPE)) {
-            if (state.getValue(AXIS) ==) {
-                        state.setValue(AXIS, direction.getAxis());
-                level.setBlockAndUpdate(pos, blockstate);
+            if (state.getValue(AXIS) != axis) {
+                boolean flag = false;
+                for (Direction neighbourDirection : Direction.values()) {
+                    if (neighbourDirection.getAxis() != axis) continue;
+
+                    BlockPos blockpos = pos.relative(neighbourDirection, 1);
+                    BlockState blockstate1 = level.getBlockState(blockpos);
+
+                    if (blockstate1.is(BABlocks.PIPE)) {
+                        flag |= blockstate1.getValue(AXIS) == axis;
+                    }
+                    //why is this always true??????
+                }
+
+                if (flag) {
+                    BlockState blockstate = state
+                            .setValue(AXIS, axis);
+                    level.setBlockAndUpdate(pos, blockstate);
+                }
             }
-
-
-        } else if (state.is(BABlocks.PIPE_JUNCTION)) {
-            level.setBlockAndUpdate(pos, blockstate);
         }
     }
 

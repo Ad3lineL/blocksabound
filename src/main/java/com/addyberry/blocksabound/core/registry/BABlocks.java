@@ -71,7 +71,7 @@ public class BABlocks {
 
     //Mechanical Iron
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
-    public static final DeferredBlock<Block> PIPE = registerBlock("pipe", () -> new IronPipeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final DeferredBlock<Block> PIPE = registerBlockNoItem("pipe", () -> new IronPipeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
 
 
