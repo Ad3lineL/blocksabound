@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "blocksabound:chiseled_pyrite_plate"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "blocksabound:blocks/pipe"
+  "random_sequence": "blocksabound:blocks/chiseled_pyrite_plate"
 }

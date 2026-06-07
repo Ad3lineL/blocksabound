@@ -72,9 +72,9 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
                     BlockState blockstate1 = level.getBlockState(blockpos);
 
                     if (blockstate1.is(BABlocks.PIPE)) {
-                        flag |= blockstate1.getValue(AXIS) == axis;
+                        flag |= blockstate1.getValue(AXIS) == state.getValue(AXIS);
                     }
-                    //why is this always true??????
+
                 }
 
                 if (flag) {

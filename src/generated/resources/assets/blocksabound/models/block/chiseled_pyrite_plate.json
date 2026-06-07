@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "blocksabound:block/pyrite_plate/chiseled_pyrite_plate"
+  }
+}

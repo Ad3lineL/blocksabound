@@ -22,6 +22,7 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.TAWNY_TRAPDOOR);
             event.accept(BABlocks.TAWNY_HULL_PLATE);
 
+            event.accept(BABlocks.CHISELED_PYRITE_PLATE);
             event.accept(BABlocks.CUT_PYRITE_PLATE);
             event.accept(BABlocks.CUT_PYRITE_PLATE_STAIRS);
             event.accept(BABlocks.CUT_PYRITE_PLATE_SLAB);

@@ -45,6 +45,7 @@ public class BABlocks {
                 .sound(SoundType.METAL)
                 .requiresCorrectToolForDrops();
     }
+    public static final DeferredBlock<Block> CHISELED_PYRITE_PLATE = registerBlock("chiseled_pyrite_plate", () -> new Block(getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE = registerBlock("cut_pyrite_plate", () -> new Block(getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_STAIRS = registerBlock("cut_pyrite_plate_stairs", () -> new StairBlock(CUT_PYRITE_PLATE.get().defaultBlockState(), getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_SLAB = registerBlock("cut_pyrite_plate_slab", () -> new SlabBlock(getPyriteProperties()));
