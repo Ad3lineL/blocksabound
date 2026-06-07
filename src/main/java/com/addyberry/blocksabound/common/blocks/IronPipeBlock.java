@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -84,6 +85,21 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
                 }
             }
         }
+    }
+
+    public static boolean isOpen(BlockState state, Direction direction)
+    {
+        return state.getBlock() instanceof IronPipeBlock neighborBlock && neighborBlock.isPointingInto(state, direction);
+    }
+
+    protected boolean isPointingInto(BlockState state, Direction direction)
+    {
+        return state.getValue(AXIS).test(direction);
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        return state;
     }
 
     protected FluidState getFluidState(BlockState state) {

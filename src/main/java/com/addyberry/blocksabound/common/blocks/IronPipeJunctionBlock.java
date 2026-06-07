@@ -1,15 +1,13 @@
 package com.addyberry.blocksabound.common.blocks;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
-import com.addyberry.blocksabound.core.registry.BAItems;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -22,7 +20,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlock {
+public class IronPipeJunctionBlock extends IronPipeBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
@@ -43,6 +41,7 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
     public IronPipeJunctionBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState()
+                .setValue(AXIS, Direction.Axis.Y)
                 .setValue(WATERLOGGED, false)
                 .setValue(NORTH, false)
                 .setValue(EAST, false)
@@ -66,12 +65,6 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
         return shape;
     }
 
-    @Override
-    protected MapCodec<? extends PipeBlock> codec() {
-        return null;
-    }
-
-
 
     protected FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
@@ -84,7 +77,8 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, NORTH, EAST, SOUTH, WEST, UP, DOWN);
+        super.createBlockStateDefinition(builder);
+        builder.add(NORTH, EAST, SOUTH, WEST, UP, DOWN);
     }
 
     static {
