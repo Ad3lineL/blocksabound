@@ -70,6 +70,10 @@ public class BABlocks {
     public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
 
 
+    //Fluorescent Tube
+    public static final DeferredBlock<Block> FLUORESCENT_TUBE = registerBlock("fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
+
+
     //Mechanical Iron
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final DeferredBlock<Block> PIPE = registerBlockNoItem("pipe", () -> new IronPipeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));

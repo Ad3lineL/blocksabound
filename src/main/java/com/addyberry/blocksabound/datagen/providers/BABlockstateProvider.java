@@ -44,7 +44,7 @@ public class BABlockstateProvider extends BlockStateProvider {
             //
 
 
-        //Pyrite Plate Set
+            //Pyrite Plate Set
         String pyritePlateLoc = ModelProvider.BLOCK_FOLDER + "/pyrite_plate";
 
         this.simpleBlockWithItem(CHISELED_PYRITE_PLATE.get(), this.models().cubeAll("chiseled_pyrite_plate", this.modLoc(pyritePlateLoc + "/chiseled_pyrite_plate")));
@@ -78,6 +78,8 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.flatBlockItem(LIGHT_BULB.get());
         this.flatBlockItem(SOUL_LIGHT_BULB.get());
         this.flatBlockItem(REDSTONE_LIGHT_BULB.get());
+
+        this.simpleBlockItem(FLUORESCENT_TUBE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/fluorescent_tube")));
             //
     }
 

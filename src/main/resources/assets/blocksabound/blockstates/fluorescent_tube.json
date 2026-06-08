@@ -1,0 +1,54 @@
+{
+  "variants": {
+    "axis=x,extended_up=false,extended_down=false": {
+      "model": "blocksabound:block/fluorescent_tube",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=false,extended_down=true": {
+      "model": "blocksabound:block/fluorescent_tube_top",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=true,extended_down=true": {
+      "model": "blocksabound:block/fluorescent_tube_middle",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=true,extended_down=false": {
+      "model": "blocksabound:block/fluorescent_tube_bottom",
+      "y": 90,
+      "x": 90
+    },
+    
+    "axis=y,extended_up=false,extended_down=false": {
+      "model": "blocksabound:block/fluorescent_tube"
+    },
+    "axis=y,extended_up=false,extended_down=true": {
+      "model": "blocksabound:block/fluorescent_tube_top"
+    },
+    "axis=y,extended_up=true,extended_down=true": {
+      "model": "blocksabound:block/fluorescent_tube_middle"
+    },
+    "axis=y,extended_up=true,extended_down=false": {
+      "model": "blocksabound:block/fluorescent_tube_bottom"
+    },
+    
+    "axis=z,extended_up=false,extended_down=false": {
+      "model": "blocksabound:block/fluorescent_tube",
+      "x": 90
+    },
+    "axis=z,extended_up=false,extended_down=true": {
+      "model": "blocksabound:block/fluorescent_tube_top",
+      "x": 90
+    },
+    "axis=z,extended_up=true,extended_down=true": {
+      "model": "blocksabound:block/fluorescent_tube_middle",
+      "x": 90
+    },
+    "axis=z,extended_up=true,extended_down=false": {
+      "model": "blocksabound:block/fluorescent_tube_bottom",
+      "x": 90
+    }
+  }
+}

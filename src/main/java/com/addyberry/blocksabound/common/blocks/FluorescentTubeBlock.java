@@ -1,0 +1,102 @@
+package com.addyberry.blocksabound.common.blocks;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+import javax.annotation.Nullable;
+
+public class FluorescentTubeBlock extends RotatedPillarBlock {
+    public static final BooleanProperty LIT = BlockStateProperties.LIT;
+    public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
+    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public static final BooleanProperty EXTENDED_UP = BooleanProperty.create("extended_up");;
+    public static final BooleanProperty EXTENDED_DOWN = BooleanProperty.create("extended_down");;
+
+    protected static final VoxelShape AXIS_X = Block.box(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+    protected static final VoxelShape AXIS_Y = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+    protected static final VoxelShape AXIS_Z = Block.box(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+
+    public FluorescentTubeBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.defaultBlockState()
+                .setValue(LIT, false)
+                .setValue(INVERTED, false)
+                .setValue(POWERED, false)
+                .setValue(EXTENDED_UP, false)
+                .setValue(EXTENDED_DOWN, false)
+                .setValue(AXIS, Direction.Axis.Y)
+        );
+    }
+
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return switch (state.getValue(AXIS)) {
+            case X -> AXIS_X;
+            case Y -> AXIS_Y;
+            case Z -> AXIS_Z;
+        };
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        return state;
+    }
+
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            this.invert(state, level, pos, (Player)null);
+            return InteractionResult.CONSUME;
+        }
+    }
+
+    private void invert (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        BlockState blockstate = state.cycle(INVERTED);
+        this.setLit(blockstate, level, pos, (Player)null);
+        this.playSound(player, level, pos, blockstate.getValue(LIT));
+    }
+
+    private void setLit (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        BlockState blockstate = state.cycle(LIT);
+        level.setBlockAndUpdate(pos, blockstate);
+    }
+
+    protected void playSound(@Nullable Player player, LevelAccessor level, BlockPos pos, boolean isLit) {
+        float f = isLit ? 0.6F : 0.9F;
+        level.playSound(player, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, f);
+        level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+    }
+
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        if (!level.isClientSide) {
+            boolean flag = level.hasNeighborSignal(pos);
+            if (state.getValue(POWERED) != flag) {
+                BlockState blockstate = state.cycle(POWERED);
+                this.setLit(blockstate, level, pos, (Player)null);
+            }
+        }
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(AXIS, EXTENDED_DOWN, EXTENDED_UP, LIT, POWERED, INVERTED);
+    }
+}
