@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -54,8 +55,23 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
         };
     }
 
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return (BlockState)this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
+    }
+
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (neighborState.is(this)) {
+
+            if ((direction.getAxis() == state.getValue(AXIS)) && (state.getValue(AXIS) == neighborState.getValue(AXIS)) && !state.equals(neighborState)) {
+                state = state
+                        .setValue(LIT, neighborState.getValue(LIT))
+                        .setValue(INVERTED, neighborState.getValue(INVERTED))
+                        .setValue(POWERED, neighborState.getValue(POWERED))
+                ;
+            }
+
+        }
         return state;
     }
 

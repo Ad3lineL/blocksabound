@@ -23,6 +23,12 @@
   "block.blocksabound.asphalt_slab": "Asphalt Slab",
   "block.blocksabound.hatch": "Hatch",
   "block.blocksabound.pipe": "Pipe",
+  "block.blocksabound.cold_fluorescent_tube": "Cold Fluorescent Tube",
+  "block.blocksabound.cool_fluorescent_tube": "Cool Fluorescent Tube",
+  "block.blocksabound.fluorescent_tube": "Fluorescent Tube",
+  "block.blocksabound.warm_fluorescent_tube": "Warm Fluorescent Tube",
+  "block.blocksabound.hot_fluorescent_tube": "Hot Fluorescent Tube",
+  "block.blocksabound.aberrant_fluorescent_tube": "Aberrant Fluorescent Tube",
 
   "item.blocksabound.tar": "Tar",
 
