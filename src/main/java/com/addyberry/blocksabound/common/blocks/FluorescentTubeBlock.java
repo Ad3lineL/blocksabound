@@ -79,6 +79,8 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
         return state;
     }
 
+    //Direction.AxisDirection.POSITIVE
+
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         if (neighborState.is(this)) {

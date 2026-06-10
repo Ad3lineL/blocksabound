@@ -20,6 +20,10 @@ public class IronPipeBlockItem extends BlockItem {
             BlockPos clickedPos = context.getClickedPos().relative(context.getClickedFace().getOpposite());
             BlockState clickedState = context.getLevel().getBlockState(clickedPos);
             IronPipeBlock.connectBlock(clickedState, context.getClickedFace(), context.getLevel(), clickedPos, context.getClickedFace().getAxis());
+
+            BlockPos oppositeClickedPos = context.getClickedPos().relative(context.getClickedFace());
+            BlockState oppositeClickedState = context.getLevel().getBlockState(oppositeClickedPos);
+            IronPipeBlock.connectBlock(oppositeClickedState, context.getClickedFace().getOpposite(), context.getLevel(), oppositeClickedPos, context.getClickedFace().getAxis());
         }
         return result;
     }

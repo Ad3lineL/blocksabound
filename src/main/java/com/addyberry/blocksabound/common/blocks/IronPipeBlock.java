@@ -51,12 +51,21 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return !context.isHoldingItem(state.getBlock().asItem()) ? getCollisionShape(state, level, pos, context) : Shapes.block();
+    }
+
+    protected VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return Shapes.block();
+    }
+
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(AXIS)) {
             case X -> AXIS_X;
             case Y -> AXIS_Y;
             case Z -> AXIS_Z;
         };
     }
+
 
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
