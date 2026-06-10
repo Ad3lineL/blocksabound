@@ -56,7 +56,27 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return (BlockState)this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
+
+        BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos().relative(context.getClickedFace().getOpposite()));
+        BlockState oppositeClickedState = context.getLevel().getBlockState(context.getClickedPos().relative(context.getClickedFace()));
+
+        BlockState state = this.defaultBlockState();
+        boolean poweredflag = false;
+        if ((clickedState.is(this) && clickedState.getValue(POWERED)) || (oppositeClickedState.is(this) && oppositeClickedState.getValue(POWERED))) {
+            poweredflag = true;
+        }
+
+        if ((clickedState.is(this) && clickedState.getValue(INVERTED)) || (oppositeClickedState.is(this) && oppositeClickedState.getValue(INVERTED))) {
+            state = state.setValue(INVERTED, true);
+        }
+
+        state = state
+                .setValue(AXIS, context.getClickedFace().getAxis())
+                .setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()) || poweredflag);
+
+        state = state.setValue(LIT, state.getValue(POWERED) != state.getValue(INVERTED));
+
+        return state;
     }
 
     @Override
