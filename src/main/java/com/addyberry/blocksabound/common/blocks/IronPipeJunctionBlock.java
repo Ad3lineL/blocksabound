@@ -20,7 +20,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class IronPipeJunctionBlock extends IronPipeBlock implements SimpleWaterloggedBlock {
+public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
@@ -40,8 +40,7 @@ public class IronPipeJunctionBlock extends IronPipeBlock implements SimpleWaterl
 
     public IronPipeJunctionBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState()
-                .setValue(AXIS, Direction.Axis.Y)
+        this.registerDefaultState(this.stateDefinition.any()
                 .setValue(WATERLOGGED, false)
                 .setValue(NORTH, false)
                 .setValue(EAST, false)
@@ -65,20 +64,29 @@ public class IronPipeJunctionBlock extends IronPipeBlock implements SimpleWaterl
         return shape;
     }
 
+    public static BlockState setDirection(BlockState state, Direction direction, boolean open) {
+        return switch (direction) {
+            case NORTH -> state.setValue(NORTH, open);
+            case EAST -> state.setValue(EAST, open);
+            case SOUTH -> state.setValue(SOUTH, open);
+            case WEST -> state.setValue(WEST, open);
+            case UP -> state.setValue(UP, open);
+            case DOWN -> state.setValue(DOWN, open);
+        };
+    }
 
     protected FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
-        return BABlocks.PIPE.toStack();
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED, NORTH, EAST, SOUTH, WEST, UP, DOWN);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(NORTH, EAST, SOUTH, WEST, UP, DOWN);
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        return super.getCloneItemStack(BABlocks.PIPE.get().withPropertiesOf(state), target, level, pos, player);
     }
 
     static {

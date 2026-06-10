@@ -1,22 +1,26 @@
 package com.addyberry.blocksabound.common.blocks;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
+import com.addyberry.blocksabound.core.registry.BAItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -40,7 +44,7 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
 
     public IronPipeBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState()
+        this.registerDefaultState(this.stateDefinition.any()
             .setValue(AXIS, Direction.Axis.Y)
             .setValue(WATERLOGGED, false)
         );
@@ -62,39 +66,37 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
     }
 
     public static void connectBlock(BlockState state, Direction direction, Level level, BlockPos pos, Direction.Axis axis) {
+        if (state.is(BABlocks.PIPE_JUNCTION)) {
+            level.setBlockAndUpdate(pos, IronPipeJunctionBlock.setDirection(state, direction, true));
+        }
 
         if (state.is(BABlocks.PIPE)) {
             if (state.getValue(AXIS) != axis) {
-                boolean flag = false;
-                for (Direction neighbourDirection : Direction.values()) {
-                    if (neighbourDirection.getAxis() != axis) continue;
+                boolean positive = false;
+                boolean negative = false;
 
-                    BlockPos blockpos = pos.relative(neighbourDirection, 1);
-                    BlockState blockstate1 = level.getBlockState(blockpos);
+                for (Direction neighborDirection : Direction.values()) {
+                    if (neighborDirection.getAxis() != state.getValue(AXIS)) continue;
 
-                    if (blockstate1.is(BABlocks.PIPE)) {
-                        flag |= blockstate1.getValue(AXIS) == state.getValue(AXIS);
+                    BlockPos neighborPos = pos.relative(neighborDirection);
+                    BlockState neighborState = level.getBlockState(neighborPos);
+
+                    if (neighborState.is(BABlocks.PIPE) && neighborState.getValue(AXIS) == state.getValue(AXIS)) {
+                        if (neighborDirection.getAxisDirection() == Direction.AxisDirection.POSITIVE) positive = true;
+                        else negative = true;
                     }
-
                 }
 
-                if (flag) {
-                    BlockState blockstate = state
-                            .setValue(AXIS, axis);
-                    level.setBlockAndUpdate(pos, blockstate);
+                if (!positive && !negative) {
+                    level.setBlockAndUpdate(pos, state.setValue(AXIS, axis));
+                } else {
+                    BlockState junctionState = IronPipeJunctionBlock.setDirection(BABlocks.PIPE_JUNCTION.get().withPropertiesOf(state), direction, true);
+                    if (positive) junctionState = IronPipeJunctionBlock.setDirection(junctionState, Direction.fromAxisAndDirection(state.getValue(AXIS), Direction.AxisDirection.POSITIVE), true);
+                    if (negative) junctionState = IronPipeJunctionBlock.setDirection(junctionState, Direction.fromAxisAndDirection(state.getValue(AXIS), Direction.AxisDirection.NEGATIVE), true);
+                    level.setBlockAndUpdate(pos, junctionState);
                 }
             }
         }
-    }
-
-    public static boolean isOpen(BlockState state, Direction direction)
-    {
-        return state.getBlock() instanceof IronPipeBlock neighborBlock && neighborBlock.isPointingInto(state, direction);
-    }
-
-    protected boolean isPointingInto(BlockState state, Direction direction)
-    {
-        return state.getValue(AXIS).test(direction);
     }
 
     @Override
@@ -109,6 +111,11 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(WATERLOGGED, AXIS);
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        return BAItems.PIPE.toStack();
     }
 
     static {
