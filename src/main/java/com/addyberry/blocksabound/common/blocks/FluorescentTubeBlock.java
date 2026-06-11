@@ -79,20 +79,21 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
         return state;
     }
 
-    //Direction.AxisDirection.POSITIVE
+    //
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         if (neighborState.is(this)) {
-
-            if ((direction.getAxis() == state.getValue(AXIS)) && (state.getValue(AXIS) == neighborState.getValue(AXIS)) && !state.equals(neighborState)) {
+            boolean neighborIsSameAxis = (direction.getAxis() == state.getValue(AXIS)) && (state.getValue(AXIS) == neighborState.getValue(AXIS));
+            if (neighborIsSameAxis && !state.equals(neighborState)) {
                 state = state
                         .setValue(LIT, neighborState.getValue(LIT))
                         .setValue(INVERTED, neighborState.getValue(INVERTED))
                         .setValue(POWERED, neighborState.getValue(POWERED))
                 ;
             }
-
+            boolean positiveFlag = direction.getAxisDirection() == Direction.AxisDirection.POSITIVE;
+            state = state.setValue(positiveFlag ? EXTENDED_UP : EXTENDED_DOWN, neighborIsSameAxis);
         }
         return state;
     }
