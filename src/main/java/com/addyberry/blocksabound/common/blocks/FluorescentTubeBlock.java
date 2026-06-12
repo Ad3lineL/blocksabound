@@ -101,13 +101,6 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
             }
         }
 
-
-        BlockState axisEndStateNegative = level.getBlockState(pos.relative(Direction.get(Direction.AxisDirection.NEGATIVE, state.getValue(AXIS)), 1));
-        state = state.setValue(EXTENDED_DOWN, false);
-        if (axisEndStateNegative.is(this)) {
-            state = state.setValue(EXTENDED_DOWN, axisEndStateNegative.getValue(AXIS) == state.getValue(AXIS));
-        }
-
         return state;
     }
 
