@@ -71,7 +71,7 @@
       "model": "blocksabound:block/fluorescent_tube",
       "x": 90
     },
-    "axis=z,extended_up=false,extended_down=true,lit=false": {
+    "axis=z,extended_up=true,extended_down=false,lit=false": {
       "model": "blocksabound:block/fluorescent_tube_top",
       "x": 90
     },
@@ -79,15 +79,15 @@
       "model": "blocksabound:block/fluorescent_tube_middle",
       "x": 90
     },
-    "axis=z,extended_up=true,extended_down=false,lit=false": {
+    "axis=z,extended_up=false,extended_down=true,lit=false": {
       "model": "blocksabound:block/fluorescent_tube_bottom",
       "x": 90
     },
-        "axis=z,extended_up=false,extended_down=false,lit=true": {
+    "axis=z,extended_up=false,extended_down=false,lit=true": {
       "model": "blocksabound:block/fluorescent_tube_lit",
       "x": 90
     },
-    "axis=z,extended_up=false,extended_down=true,lit=true": {
+    "axis=z,extended_up=true,extended_down=false,lit=true": {
       "model": "blocksabound:block/fluorescent_tube_top_lit",
       "x": 90
     },
@@ -95,7 +95,7 @@
       "model": "blocksabound:block/fluorescent_tube_middle_lit",
       "x": 90
     },
-    "axis=z,extended_up=true,extended_down=false,lit=true": {
+    "axis=z,extended_up=false,extended_down=true,lit=true": {
       "model": "blocksabound:block/fluorescent_tube_bottom_lit",
       "x": 90
     }

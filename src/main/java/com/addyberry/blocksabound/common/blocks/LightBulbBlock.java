@@ -98,7 +98,7 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
 
     private void invert (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
         BlockState blockstate = state.cycle(INVERTED);
-        this.setLit(blockstate, level, pos, (Player)null);
+        this.setLit(blockstate, level, pos, null);
         this.playSound(player, level, pos, blockstate.getValue(LIT));
     }
 
@@ -118,7 +118,7 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
             boolean flag = level.hasNeighborSignal(pos);
             if (state.getValue(POWERED) != flag) {
                 BlockState blockstate = state.cycle(POWERED);
-                this.setLit(blockstate, level, pos, (Player)null);
+                this.setLit(blockstate, level, pos, null);
             }
         }
     }

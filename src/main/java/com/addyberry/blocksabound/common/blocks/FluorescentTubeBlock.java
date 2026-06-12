@@ -92,9 +92,22 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
                         .setValue(POWERED, neighborState.getValue(POWERED))
                 ;
             }
-            boolean positiveFlag = direction.getAxisDirection() == Direction.AxisDirection.POSITIVE;
-            state = state.setValue(positiveFlag ? EXTENDED_UP : EXTENDED_DOWN, neighborIsSameAxis);
         }
+        for (int i = 0; i <= 1; i++) {
+            BlockState axisEndState = level.getBlockState(pos.relative(Direction.get(i == 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE, state.getValue(AXIS)), 1));
+            state = state.setValue(i == 0 ? EXTENDED_UP : EXTENDED_DOWN, false);
+            if (axisEndState.is(this)) {
+                state = state.setValue(i == 0 ? EXTENDED_UP : EXTENDED_DOWN, axisEndState.getValue(AXIS) == state.getValue(AXIS));
+            }
+        }
+
+
+        BlockState axisEndStateNegative = level.getBlockState(pos.relative(Direction.get(Direction.AxisDirection.NEGATIVE, state.getValue(AXIS)), 1));
+        state = state.setValue(EXTENDED_DOWN, false);
+        if (axisEndStateNegative.is(this)) {
+            state = state.setValue(EXTENDED_DOWN, axisEndStateNegative.getValue(AXIS) == state.getValue(AXIS));
+        }
+
         return state;
     }
 
@@ -102,14 +115,14 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         } else {
-            this.invert(state, level, pos, (Player)null);
+            this.invert(state, level, pos, null);
             return InteractionResult.CONSUME;
         }
     }
 
     private void invert (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
         BlockState blockstate = state.cycle(INVERTED);
-        this.setLit(blockstate, level, pos, (Player)null);
+        this.setLit(blockstate, level, pos, null);
         this.playSound(player, level, pos, blockstate.getValue(LIT));
     }
 
