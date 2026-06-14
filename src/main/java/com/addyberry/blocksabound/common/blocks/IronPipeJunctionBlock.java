@@ -52,6 +52,14 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return !context.isHoldingItem(BABlocks.PIPE.asItem()) ? getCollisionShape(state, level, pos, context) : Shapes.block();
+    }
+
+    protected VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return Shapes.block();
+    }
+
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         VoxelShape shape = FRAME;
 
         if (!state.getValue(NORTH)) shape = Shapes.or(shape, PLATE_NORTH);

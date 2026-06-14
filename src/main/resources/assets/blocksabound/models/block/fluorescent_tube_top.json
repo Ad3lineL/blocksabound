@@ -2,17 +2,17 @@
   "loader": "neoforge:composite",
   "parent": "block/block",
   "textures": {
-	"0": "blocksabound:block/fluorescent_tube_glass",
-	"1": "blocksabound:block/fluorescent_tube_lamp",
-	"2": "blocksabound:block/fluorescent_tube_caps",
-	"particle": "blocksabound:block/fluorescent_tube_glass"
+	"0": "blocksabound:block/fluorescent_tube/fluorescent_tube_glass",
+	"1": "blocksabound:block/fluorescent_tube/fluorescent_tube_lamp",
+	"2": "blocksabound:block/fluorescent_tube/fluorescent_tube_caps",
+	"particle": "blocksabound:block/fluorescent_tube/fluorescent_tube_glass"
   },
   "children": {
     "caps": {
       "render_type": "minecraft:solid",
       "textures": {
-	"1": "blocksabound:block/fluorescent_tube_lamp",
-	"2": "blocksabound:block/fluorescent_tube_caps"
+	"1": "blocksabound:block/fluorescent_tube/fluorescent_tube_lamp",
+	"2": "blocksabound:block/fluorescent_tube/fluorescent_tube_caps"
       },
 	"elements": [
 		{
@@ -59,7 +59,7 @@
 		"glass": {
       "render_type": "minecraft:translucent",
       "textures": {
-	"0": "blocksabound:block/fluorescent_tube_glass"
+	"0": "blocksabound:block/fluorescent_tube/fluorescent_tube_glass"
       },
       "elements": [
 		{

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "blocksabound:cold_fluorescent_tube"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "blocksabound:blocks/cold_fluorescent_tube"
+}

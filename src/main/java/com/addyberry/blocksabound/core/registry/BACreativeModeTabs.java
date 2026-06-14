@@ -38,7 +38,12 @@ public class BACreativeModeTabs {
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.SOUL_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(BABlocks.COLD_FLUORESCENT_TUBE);
+            event.accept(BABlocks.COOL_FLUORESCENT_TUBE);
             event.accept(BABlocks.FLUORESCENT_TUBE);
+            event.accept(BABlocks.WARM_FLUORESCENT_TUBE);
+            event.accept(BABlocks.HOT_FLUORESCENT_TUBE);
+            event.accept(BABlocks.ABERRANT_FLUORESCENT_TUBE);
             event.accept(BABlocks.HATCH);
             event.accept(BAItems.PIPE);
         }

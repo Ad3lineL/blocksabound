@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blocksabound:item/cold_fluorescent_tube"
+  }
+}

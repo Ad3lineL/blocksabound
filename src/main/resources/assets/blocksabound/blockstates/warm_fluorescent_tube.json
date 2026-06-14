@@ -1,0 +1,103 @@
+{
+  "variants": {
+    "axis=x,extended_up=false,extended_down=false,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=false,extended_down=true,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_top",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=true,extended_down=true,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_middle",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=true,extended_down=false,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_bottom",
+      "y": 90,
+      "x": 90
+    },
+        "axis=x,extended_up=false,extended_down=false,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_lit",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=false,extended_down=true,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_top_lit",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=true,extended_down=true,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_middle_lit",
+      "y": 90,
+      "x": 90
+    },
+    "axis=x,extended_up=true,extended_down=false,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_bottom_lit",
+      "y": 90,
+      "x": 90
+    },
+    
+    "axis=y,extended_up=false,extended_down=false,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube"
+    },
+    "axis=y,extended_up=false,extended_down=true,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_top"
+    },
+    "axis=y,extended_up=true,extended_down=true,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_middle"
+    },
+    "axis=y,extended_up=true,extended_down=false,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_bottom"
+    },
+        "axis=y,extended_up=false,extended_down=false,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_lit"
+    },
+    "axis=y,extended_up=false,extended_down=true,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_top_lit"
+    },
+    "axis=y,extended_up=true,extended_down=true,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_middle_lit"
+    },
+    "axis=y,extended_up=true,extended_down=false,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_bottom_lit"
+    },
+    
+    
+    "axis=z,extended_up=false,extended_down=false,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube",
+      "x": 90
+    },
+    "axis=z,extended_up=true,extended_down=false,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_top",
+      "x": 90
+    },
+    "axis=z,extended_up=true,extended_down=true,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_middle",
+      "x": 90
+    },
+    "axis=z,extended_up=false,extended_down=true,lit=false": {
+      "model": "blocksabound:block/warm_fluorescent_tube_bottom",
+      "x": 90
+    },
+    "axis=z,extended_up=false,extended_down=false,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_lit",
+      "x": 90
+    },
+    "axis=z,extended_up=true,extended_down=false,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_top_lit",
+      "x": 90
+    },
+    "axis=z,extended_up=true,extended_down=true,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_middle_lit",
+      "x": 90
+    },
+    "axis=z,extended_up=false,extended_down=true,lit=true": {
+      "model": "blocksabound:block/warm_fluorescent_tube_bottom_lit",
+      "x": 90
+    }
+  }
+}
