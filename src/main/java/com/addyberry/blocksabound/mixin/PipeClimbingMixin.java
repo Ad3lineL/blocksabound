@@ -1,0 +1,43 @@
+package com.addyberry.blocksabound.mixin;
+
+import com.addyberry.blocksabound.common.blocks.IronPipeBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Optional;
+
+@Mixin(LivingEntity.class)
+public abstract class PipeClimbingMixin extends Entity {
+
+    @Shadow
+    private Optional<BlockPos> lastClimbablePos;
+
+    public PipeClimbingMixin(EntityType<?> entityType, Level level) {
+        super(entityType, level);
+    }
+
+    @Inject(method = "onClimbable", at = @At("TAIL"), cancellable = true)
+    public void onClimbable(CallbackInfoReturnable<Boolean> cir) {
+        BlockPos pos = this.blockPosition();
+        BlockState state = this.getInBlockState();
+
+        if (state.getBlock() instanceof IronPipeBlock) {
+            Direction.Axis facing = state.getValue(IronPipeBlock.AXIS);
+            if (facing == Direction.Axis.Y) {
+                this.lastClimbablePos = Optional.of(pos);
+                cir.setReturnValue(true);
+            }
+        }
+    }
+}

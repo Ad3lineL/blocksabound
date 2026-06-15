@@ -66,7 +66,6 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
         };
     }
 
-
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
