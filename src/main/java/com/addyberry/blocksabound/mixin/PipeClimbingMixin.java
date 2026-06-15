@@ -1,6 +1,7 @@
 package com.addyberry.blocksabound.mixin;
 
 import com.addyberry.blocksabound.common.blocks.IronPipeBlock;
+import com.addyberry.blocksabound.common.blocks.IronPipeJunctionBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
@@ -35,6 +36,11 @@ public abstract class PipeClimbingMixin extends Entity {
         if (state.getBlock() instanceof IronPipeBlock) {
             Direction.Axis facing = state.getValue(IronPipeBlock.AXIS);
             if (facing == Direction.Axis.Y) {
+                this.lastClimbablePos = Optional.of(pos);
+                cir.setReturnValue(true);
+            }
+        } else if (state.getBlock() instanceof IronPipeJunctionBlock) {
+            if (IronPipeJunctionBlock.isVertical(state)) {
                 this.lastClimbablePos = Optional.of(pos);
                 cir.setReturnValue(true);
             }

@@ -31,7 +31,4 @@ public abstract class PipeCrawlingMixin extends Entity {
             this.setPose(Pose.SWIMMING);
         }
     }
-
-
-
 }

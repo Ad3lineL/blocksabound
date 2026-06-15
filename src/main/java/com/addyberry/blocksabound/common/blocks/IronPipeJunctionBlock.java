@@ -72,6 +72,10 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
         return shape;
     }
 
+    public static boolean isVertical(BlockState state) {
+    return state.getValue(UP) || state.getValue(DOWN);
+    }
+
     public static BlockState setDirection(BlockState state, Direction direction, boolean open) {
         return switch (direction) {
             case NORTH -> state.setValue(NORTH, open);
