@@ -2,13 +2,11 @@ package com.addyberry.blocksabound.mixin;
 
 import com.addyberry.blocksabound.common.blocks.IronPipeBlock;
 import com.addyberry.blocksabound.common.blocks.IronPipeJunctionBlock;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,12 +32,8 @@ public abstract class PipeMovementMixin {
             return;
         }
 
-        Level level = self.level();
-        BlockPos pos = self.blockPosition();
-        BlockState above = level.getBlockState(pos.above());
-        BlockState below = level.getBlockState(pos.below());
-        boolean canAscend = blocksabound$openUp(inState) && blocksabound$openDown(above);
-        boolean canDescend = blocksabound$openDown(inState) && blocksabound$openUp(below);
+        boolean canAscend = blocksabound$openUp(inState);
+        boolean canDescend = blocksabound$openDown(inState);
 
         float yawRad = self.getYRot() * ((float) Math.PI / 180.0F);
         Vec3 look = self.getLookAngle();

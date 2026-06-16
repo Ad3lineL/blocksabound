@@ -197,14 +197,12 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         Direction facing = getOpenDirection(state);
-        Direction.Axis axis = facing.getAxis();
-        int step = facing.getAxisDirection().getStep();
+        AABB box = new AABB(pos).expandTowards(facing.getStepX() * 0.6, facing.getStepY() * 0.6, facing.getStepZ() * 0.6);
+        if (facing.getAxis() != Direction.Axis.Y) {
+            box = box.inflate(0.0, 0.1, 0.0);
+        }
         if (
-                !level.getEntitiesOfClass(Entity.class, new AABB(pos).inflate(
-                        axis == Direction.Axis.X ? step*0.6 : 0,
-                        axis == Direction.Axis.Y ? step*0.6 : 0.1,
-                        axis == Direction.Axis.Z ? step*0.6 : 0)
-                ).isEmpty()
+                level.getEntitiesOfClass(Entity.class, box).isEmpty()
                 || !changeState(state, level, pos, null, false)
         ) level.scheduleTick(pos, this, 20);
 
