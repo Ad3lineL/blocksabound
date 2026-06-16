@@ -31,7 +31,7 @@ public abstract class PipeStepSoundMixin {
             boolean inPipe = inState.getBlock() instanceof IronPipeBlock || inState.getBlock() instanceof IronPipeJunctionBlock;
             if (inPipe && !instance.isSwimming() && instance.getPose() == Pose.SWIMMING) {
                 SoundType soundType = inState.getSoundType(instance.level(), instance.blockPosition(), instance);
-                float volume = soundType.getVolume() * 2;
+                float volume = soundType.getVolume() * 0.5F;
                 float pitch = soundType.getPitch() * 0.7F;
                 instance.playSound(Blocks.NETHERITE_BLOCK.defaultBlockState().getSoundType(level, pos, instance).getStepSound(), volume, pitch);
                 return true;

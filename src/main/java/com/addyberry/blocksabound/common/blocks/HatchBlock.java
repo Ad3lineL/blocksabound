@@ -9,19 +9,15 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -31,7 +27,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+public class HatchBlock extends AbstractPanelBlock {
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -140,27 +136,6 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
         }
     }
 
-    @Nullable
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
-        for(Direction direction : context.getNearestLookingDirections()) {
-            BlockState blockstate;
-            if (direction.getAxis() == Direction.Axis.Y) {
-                blockstate = this.defaultBlockState().setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
-            } else {
-                blockstate = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
-            }
-
-            return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
-        }
-
-        return null;
-    }
-
-    protected FluidState getFluidState(BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
     protected BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
@@ -227,10 +202,6 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
         }
 
         return false;
-    }
-
-    protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return true;
     }
 
     @Override

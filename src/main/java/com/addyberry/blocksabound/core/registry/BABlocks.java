@@ -90,6 +90,8 @@ public class BABlocks {
      TARMAC
      BUMPER
      TARRED PAPER
+     VENT BLOCK
+
      IRON CABLE
      FLUORESCENT TUBES
      GUIDING ROD
@@ -101,7 +103,6 @@ public class BABlocks {
      LOCKER
      HAZARD STRIPE
      MECHANICAL LEVER
-     VENT BLOCK
      WIND-UP LEVER
 
      Sets:
