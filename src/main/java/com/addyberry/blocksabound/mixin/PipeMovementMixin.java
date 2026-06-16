@@ -32,9 +32,6 @@ public abstract class PipeMovementMixin {
             return;
         }
 
-        boolean canAscend = blocksabound$openUp(inState);
-        boolean canDescend = blocksabound$openDown(inState);
-
         float yawRad = self.getYRot() * ((float) Math.PI / 180.0F);
         Vec3 look = self.getLookAngle();
         Vec3 lateral = new Vec3(Mth.cos(yawRad), 0.0D, Mth.sin(yawRad));
@@ -45,12 +42,6 @@ public abstract class PipeMovementMixin {
         double wishX = look.x * forward + lateral.x * strafe;
         double wishZ = look.z * forward + lateral.z * strafe;
         double wishY = look.y * forward + vertical;
-        if (wishY > 0.0D && !canAscend) {
-            wishY = 0.0D;
-        }
-        if (wishY < 0.0D && !canDescend) {
-            wishY = 0.0D;
-        }
 
         Vec3 wish = new Vec3(wishX, wishY, wishZ);
         if (wish.lengthSqr() > 1.0E-6D) {
@@ -60,11 +51,8 @@ public abstract class PipeMovementMixin {
         }
 
         Vec3 delta = self.getDeltaMovement().add(wish);
-        if (!canDescend) {
+        if (!blocksabound$hasVerticalOpening(inState)) {
             delta = delta.add(0.0D, -0.08D, 0.0D);
-        }
-        if (!canAscend && delta.y > 0.0D) {
-            delta = new Vec3(delta.x, 0.0D, delta.z);
         }
 
         self.resetFallDistance();
@@ -79,22 +67,12 @@ public abstract class PipeMovementMixin {
         return state.getBlock() instanceof IronPipeBlock || state.getBlock() instanceof IronPipeJunctionBlock;
     }
 
-    private static boolean blocksabound$openUp(BlockState state) {
+    private static boolean blocksabound$hasVerticalOpening(BlockState state) {
         if (state.getBlock() instanceof IronPipeBlock) {
             return state.getValue(IronPipeBlock.AXIS) == Direction.Axis.Y;
         }
         if (state.getBlock() instanceof IronPipeJunctionBlock) {
-            return state.getValue(IronPipeJunctionBlock.UP);
-        }
-        return false;
-    }
-
-    private static boolean blocksabound$openDown(BlockState state) {
-        if (state.getBlock() instanceof IronPipeBlock) {
-            return state.getValue(IronPipeBlock.AXIS) == Direction.Axis.Y;
-        }
-        if (state.getBlock() instanceof IronPipeJunctionBlock) {
-            return state.getValue(IronPipeJunctionBlock.DOWN);
+            return state.getValue(IronPipeJunctionBlock.UP) || state.getValue(IronPipeJunctionBlock.DOWN);
         }
         return false;
     }

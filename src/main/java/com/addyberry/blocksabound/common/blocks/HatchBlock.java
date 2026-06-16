@@ -202,7 +202,7 @@ public class HatchBlock extends FaceAttachedHorizontalDirectionalBlock implement
             box = box.inflate(0.0, 0.1, 0.0);
         }
         if (
-                level.getEntitiesOfClass(Entity.class, box).isEmpty()
+                !level.getEntitiesOfClass(Entity.class, box).isEmpty()
                 || !changeState(state, level, pos, null, false)
         ) level.scheduleTick(pos, this, 20);
 
