@@ -1,11 +1,16 @@
 package com.addyberry.blocksabound.common.blocks;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
+import com.addyberry.blocksabound.core.registry.BAItems;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -19,6 +24,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import java.util.Map;
 
 public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -36,6 +43,15 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
     protected static final VoxelShape PLATE_WEST;
     protected static final VoxelShape PLATE_UP;
     protected static final VoxelShape PLATE_DOWN;
+
+    public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(Util.make(Maps.newEnumMap(Direction.class), p_55164_ -> {
+        p_55164_.put(Direction.NORTH, NORTH);
+        p_55164_.put(Direction.EAST, EAST);
+        p_55164_.put(Direction.SOUTH, SOUTH);
+        p_55164_.put(Direction.WEST, WEST);
+        p_55164_.put(Direction.UP, UP);
+        p_55164_.put(Direction.DOWN, DOWN);
+    }));
 
 
     public IronPipeJunctionBlock(Properties properties) {
@@ -72,10 +88,6 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
         return shape;
     }
 
-    public static boolean isVertical(BlockState state) {
-    return state.getValue(UP) || state.getValue(DOWN);
-    }
-
     public static BlockState setDirection(BlockState state, Direction direction, boolean open) {
         return switch (direction) {
             case NORTH -> state.setValue(NORTH, open);
@@ -86,6 +98,30 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
             case DOWN -> state.setValue(DOWN, open);
         };
     }
+
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (!neighborState.is(BABlocks.PIPE) && !(neighborState.getBlock() instanceof AbstractPanelBlock)) {
+            state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), false);
+        } else if (neighborState.getBlock() instanceof AbstractPanelBlock) {
+            state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), true);
+        }
+        int axisCount = 0;
+        Direction.Axis axis = Direction.Axis.Y;
+        if (state.getValue(UP) || state.getValue(DOWN)) {
+            axisCount++;
+        }
+        if (state.getValue(NORTH) || state.getValue(SOUTH)) {
+            axisCount++;
+            axis = Direction.Axis.Z;
+        }
+        if (state.getValue(EAST) || state.getValue(WEST)) {
+            axisCount++;
+            axis = Direction.Axis.X;
+        }
+
+        return axisCount == 1 ? BABlocks.PIPE.get().defaultBlockState().setValue(IronPipeBlock.AXIS, axis) : state;
+    } //this implementation sucks and I need to fix this later, but I'm gonna forget
 
     protected FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
@@ -98,7 +134,7 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
 
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
-        return super.getCloneItemStack(BABlocks.PIPE.get().withPropertiesOf(state), target, level, pos, player);
+        return BAItems.PIPE.toStack();
     }
 
     static {
