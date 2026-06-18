@@ -72,8 +72,20 @@ public class BABlockstateProvider extends BlockStateProvider {
             //
 
 
+            //Asphalt
+        this.simpleBlockItem(TARMAC.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac")));
+
+        this.stairsBlock((StairBlock) TARMAC_STAIRS.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac"));
+        this.simpleBlockItem(TARMAC_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac_stairs")));
+
+        this.slabBlock((SlabBlock) TARMAC_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac"));
+        this.simpleBlockItem(TARMAC_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac_slab")));
+            //
+
+
             //Misc
         this.simpleBlockItem(PIPE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/pipe")));
+        this.simpleBlockWithItem(REINFORCED_IRON.get(), this.models().cubeAll("reinforced_iron", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_iron")));
 
         this.flatBlockItem(LIGHT_BULB.get());
         this.flatBlockItem(SOUL_LIGHT_BULB.get());

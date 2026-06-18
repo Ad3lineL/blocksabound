@@ -184,14 +184,6 @@ public class HatchBlock extends AbstractPanelBlock {
         super.tick(state, level, pos, random);
     }
 
-    protected static Direction getOpenDirection(BlockState state) {
-        return switch (state.getValue(FACE)) {
-            case CEILING -> Direction.DOWN;
-            case FLOOR -> Direction.UP;
-            case WALL -> state.getValue(FACING);
-        };
-    }
-
     protected static boolean changeState(BlockState state, Level level, BlockPos pos, @Nullable Player player, boolean open) {
         if (!state.getValue(POWERED) && state.getValue(OPEN) != open) {
             level.setBlockAndUpdate(pos, state.setValue(OPEN, open));

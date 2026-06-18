@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+	[
+      {
+        "item": "minecraft:honeycomb"
+      },
+      {
+        "item": "minecraft:slime_ball"
+      }
+    ],
+	[
+      {
+        "item": "minecraft:coal"
+      },
+      {
+        "item": "minecraft:charcoal"
+      }
+    ],
+    [
+      {
+        "item": "minecraft:coal"
+      },
+      {
+        "item": "minecraft:charcoal"
+      }
+    ]
+    ],
+    "result": {
+        "id": "blocksabound:tar",
+        "count": 8
+    }
+}

@@ -63,6 +63,17 @@ public class BABlocks {
     public static final DeferredBlock<Block> ASPHALT_STAIRS = registerBlock("asphalt_stairs", () -> new StairBlock(ASPHALT.get().defaultBlockState(), getAsphaltProperties()));
     public static final DeferredBlock<Block> ASPHALT_SLAB = registerBlock("asphalt_slab", () -> new SlabBlock(getAsphaltProperties()));
 
+        //Tarmac
+    public static BlockBehaviour.Properties getTarmacProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF)
+                .mapColor(MapColor.COLOR_GRAY)
+                .sound(SoundType.NETHERRACK)
+                .requiresCorrectToolForDrops();
+    }
+    public static final DeferredBlock<Block> TARMAC = registerBlock("tarmac", () -> new Block(getTarmacProperties()));
+    public static final DeferredBlock<Block> TARMAC_STAIRS = registerBlock("tarmac_stairs", () -> new StairBlock(TARMAC.get().defaultBlockState(), getTarmacProperties()));
+    public static final DeferredBlock<Block> TARMAC_SLAB = registerBlock("tarmac_slab", () -> new SlabBlock(getTarmacProperties()));
+
 
     //Light Bulb
     public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
@@ -70,7 +81,7 @@ public class BABlocks {
     public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)));
 
 
-    //Fluorescent Tube
+        //Fluorescent Tube
     public static final DeferredBlock<Block> FLUORESCENT_TUBE = registerBlock("fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
     public static final DeferredBlock<Block> COLD_FLUORESCENT_TUBE = registerBlock("cold_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
     public static final DeferredBlock<Block> COOL_FLUORESCENT_TUBE = registerBlock("cool_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
@@ -79,18 +90,25 @@ public class BABlocks {
     public static final DeferredBlock<Block> ABERRANT_FLUORESCENT_TUBE = registerBlock("aberrant_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
 
 
-    //Mechanical Iron
-    public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
-    public static final DeferredBlock<Block> PIPE = registerBlockNoItem("pipe", () -> new IronPipeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
-    public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()));
+        //Mechanical Iron
+        public static BlockBehaviour.Properties getReinforcedIronProperties() {
+            return BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1F, 4.0F)
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops();
+        }
 
-
+    public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(getReinforcedIronProperties().noOcclusion()));
+    public static final DeferredBlock<Block> VENT = registerBlock("vent", () -> new VentBlock(getReinforcedIronProperties().noOcclusion()));
+    public static final DeferredBlock<Block> PIPE = registerBlockNoItem("pipe", () -> new IronPipeBlock(getReinforcedIronProperties().noOcclusion()));
+    public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(getReinforcedIronProperties().noOcclusion()));
+    public static final DeferredBlock<Block> REINFORCED_IRON = registerBlock("reinforced_iron", () -> new Block(getReinforcedIronProperties()));
 
     /* TODO:
      TARMAC
      BUMPER
      TARRED PAPER
-     VENT BLOCK
 
      IRON CABLE
      FLUORESCENT TUBES

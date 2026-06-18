@@ -39,6 +39,14 @@ public abstract class AbstractPanelBlock extends FaceAttachedHorizontalDirection
         return null;
     }
 
+    protected static Direction getOpenDirection(BlockState state) {
+        return switch (state.getValue(FACE)) {
+            case CEILING -> Direction.DOWN;
+            case FLOOR -> Direction.UP;
+            case WALL -> state.getValue(FACING);
+        };
+    }
+
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return true;
     }

@@ -28,9 +28,16 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.CUT_PYRITE_PLATE_SLAB);
             event.accept(BAItems.LARGE_PYRITE_PLATE);
 
+            event.accept(BAItems.PIPE);
+            event.accept(BABlocks.REINFORCED_IRON);
+
             event.accept(BABlocks.ASPHALT);
             event.accept(BABlocks.ASPHALT_STAIRS);
             event.accept(BABlocks.ASPHALT_SLAB);
+
+            event.accept(BABlocks.TARMAC);
+            event.accept(BABlocks.TARMAC_STAIRS);
+            event.accept(BABlocks.TARMAC_SLAB);
 
 
         }
@@ -45,7 +52,9 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.HOT_FLUORESCENT_TUBE);
             event.accept(BABlocks.ABERRANT_FLUORESCENT_TUBE);
             event.accept(BABlocks.HATCH);
+            event.accept(BABlocks.VENT);
             event.accept(BAItems.PIPE);
+            event.accept(BABlocks.REINFORCED_IRON);
         }
         if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.insertAfter(Items.REDSTONE_LAMP.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

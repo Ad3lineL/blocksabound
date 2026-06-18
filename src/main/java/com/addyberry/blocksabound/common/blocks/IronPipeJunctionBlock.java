@@ -121,7 +121,7 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
         }
 
         return axisCount == 1 ? BABlocks.PIPE.get().defaultBlockState().setValue(IronPipeBlock.AXIS, axis) : state;
-    } //this implementation sucks and I need to fix this later, but I'm gonna forget
+    }
 
     protected FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
