@@ -21,7 +21,10 @@
     "blocksabound:light_bulb",
     "blocksabound:soul_light_bulb",
     "blocksabound:redstone_light_bulb",
+    "blocksabound:hatch",
+    "blocksabound:vent",
     "blocksabound:pipe",
-    "blocksabound:pipe_junction"
+    "blocksabound:pipe_junction",
+    "blocksabound:reinforced_iron"
   ]
 }
