@@ -7,10 +7,12 @@
     "blocksabound:cut_tawny_plate_slab",
     "blocksabound:tawny_trapdoor",
     "blocksabound:tawny_hull_plate",
+    "blocksabound:pyrite_plate",
     "blocksabound:chiseled_pyrite_plate",
     "blocksabound:cut_pyrite_plate",
     "blocksabound:cut_pyrite_plate_stairs",
     "blocksabound:cut_pyrite_plate_slab",
+    "blocksabound:pyrite_trapdoor",
     "blocksabound:large_pyrite_plate",
     "blocksabound:asphalt",
     "blocksabound:asphalt_stairs",
@@ -21,7 +23,10 @@
     "blocksabound:light_bulb",
     "blocksabound:soul_light_bulb",
     "blocksabound:redstone_light_bulb",
+    "blocksabound:hatch",
+    "blocksabound:vent",
     "blocksabound:pipe",
-    "blocksabound:pipe_junction"
+    "blocksabound:pipe_junction",
+    "blocksabound:reinforced_iron"
   ]
 }

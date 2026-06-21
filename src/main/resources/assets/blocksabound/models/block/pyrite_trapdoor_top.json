@@ -4,9 +4,9 @@
 	"parent": "minecraft:block/template_orientable_trapdoor_top",
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"particle": "blocksabound:block/tawny_plate/tawny_trapdoor",
-		"front": "blocksabound:block/tawny_plate/tawny_trapdoor",
-		"side": "blocksabound:block/tawny_plate/tawny_trapdoor_sides"
+		"particle": "blocksabound:block/pyrite_plate/pyrite_trapdoor",
+		"front": "blocksabound:block/pyrite_plate/pyrite_trapdoor",
+		"side": "blocksabound:block/pyrite_plate/pyrite_trapdoor_sides"
 	},
 	"elements": [
 		{

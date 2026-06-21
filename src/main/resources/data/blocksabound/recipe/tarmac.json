@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+      {
+        "item": "blocksabound:tar"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      },
+      {
+        "item": "minecraft:deepslate_cobblestone"
+      }
+    ],
+    "result": {
+        "id": "blocksabound:tarmac",
+        "count": 8
+    }
+}

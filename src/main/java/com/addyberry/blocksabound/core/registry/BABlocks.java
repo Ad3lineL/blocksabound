@@ -45,10 +45,12 @@ public class BABlocks {
                 .sound(SoundType.METAL)
                 .requiresCorrectToolForDrops();
     }
+    public static final DeferredBlock<Block> PYRITE_PLATE = registerBlock("pyrite_plate", () -> new Block(getPyriteProperties()));
     public static final DeferredBlock<Block> CHISELED_PYRITE_PLATE = registerBlock("chiseled_pyrite_plate", () -> new Block(getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE = registerBlock("cut_pyrite_plate", () -> new Block(getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_STAIRS = registerBlock("cut_pyrite_plate_stairs", () -> new StairBlock(CUT_PYRITE_PLATE.get().defaultBlockState(), getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_SLAB = registerBlock("cut_pyrite_plate_slab", () -> new SlabBlock(getPyriteProperties()));
+    public static final DeferredBlock<Block> PYRITE_TRAPDOOR = registerBlock("pyrite_trapdoor", () -> new TrapDoorBlock(PYRITE_BLOCK_SET_TYPE, getPyriteProperties().noOcclusion()));
     public static final DeferredBlock<Block> LARGE_PYRITE_PLATE = registerBlockNoItem("large_pyrite_plate", () -> new LargePlateBlock(getPyriteProperties()));
 
 
@@ -63,10 +65,11 @@ public class BABlocks {
     public static final DeferredBlock<Block> ASPHALT_STAIRS = registerBlock("asphalt_stairs", () -> new StairBlock(ASPHALT.get().defaultBlockState(), getAsphaltProperties()));
     public static final DeferredBlock<Block> ASPHALT_SLAB = registerBlock("asphalt_slab", () -> new SlabBlock(getAsphaltProperties()));
 
+
         //Tarmac
     public static BlockBehaviour.Properties getTarmacProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF)
-                .mapColor(MapColor.COLOR_GRAY)
+                .mapColor(MapColor.COLOR_BLACK)
                 .sound(SoundType.NETHERRACK)
                 .requiresCorrectToolForDrops();
     }
@@ -106,7 +109,6 @@ public class BABlocks {
     public static final DeferredBlock<Block> REINFORCED_IRON = registerBlock("reinforced_iron", () -> new Block(getReinforcedIronProperties()));
 
     /* TODO:
-     TARMAC
      BUMPER
      TARRED PAPER
 

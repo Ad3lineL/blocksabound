@@ -28,7 +28,6 @@ public class BABlockstateProvider extends BlockStateProvider {
 
         this.simpleBlockWithItem(TAWNY_PLATE.get(), this.models().cubeAll("tawny_plate", this.modLoc(tawnyPlateLoc + "/tawny_plate")));
         this.simpleBlockWithItem(CHISELED_TAWNY_PLATE.get(), this.models().cubeAll("chiseled_tawny_plate", this.modLoc(tawnyPlateLoc + "/chiseled_tawny_plate")));
-        //this.simpleBlockWithItem(TAWNY_GRATE.get(), this.models().cubeAll("tawny_grate", this.modLoc(tawnyPlateLoc + "tawny_grate")).renderType("cutout"));
 
         this.simpleBlockWithItem(CUT_TAWNY_PLATE.get(), this.models().cubeAll("cut_tawny_plate", this.modLoc(tawnyPlateLoc + "/cut_tawny_plate")));
 
@@ -47,6 +46,7 @@ public class BABlockstateProvider extends BlockStateProvider {
             //Pyrite Plate Set
         String pyritePlateLoc = ModelProvider.BLOCK_FOLDER + "/pyrite_plate";
 
+        this.simpleBlockWithItem(PYRITE_PLATE.get(), this.models().cubeAll("pyrite_plate", this.modLoc(pyritePlateLoc + "/pyrite_plate")));
         this.simpleBlockWithItem(CHISELED_PYRITE_PLATE.get(), this.models().cubeAll("chiseled_pyrite_plate", this.modLoc(pyritePlateLoc + "/chiseled_pyrite_plate")));
 
         this.simpleBlockWithItem(CUT_PYRITE_PLATE.get(), this.models().cubeAll("cut_pyrite_plate", this.modLoc(pyritePlateLoc + "/cut_pyrite_plate")));
@@ -56,6 +56,8 @@ public class BABlockstateProvider extends BlockStateProvider {
 
         this.slabBlock((SlabBlock) CUT_PYRITE_PLATE_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_pyrite_plate"), this.modLoc(pyritePlateLoc + "/cut_pyrite_plate"));
         this.simpleBlockItem(CUT_PYRITE_PLATE_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_pyrite_plate_slab")));
+
+        this.simpleBlockItem(PYRITE_TRAPDOOR.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/pyrite_trapdoor_bottom")));
 
         this.simpleBlockItem(LARGE_PYRITE_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/large_pyrite_plate_south")));
             //
