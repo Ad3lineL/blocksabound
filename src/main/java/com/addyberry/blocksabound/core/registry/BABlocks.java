@@ -112,11 +112,10 @@ public class BABlocks {
      BUMPER
      TARRED PAPER
 
+     SEALED GLASS
      IRON CABLE
-     FLUORESCENT TUBES
      GUIDING ROD
      NAIL
-     SEALED GLASS
      CLOCK BLOCK
      SKATES
      GIRDER

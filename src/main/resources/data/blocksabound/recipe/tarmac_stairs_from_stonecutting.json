@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "blocksabound:tarmac"
+  },
+  "result": {
+    "id": "blocksabound:tarmac_stairs"
+  }
+}
