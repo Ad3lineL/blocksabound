@@ -29,8 +29,16 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("N#N")
                 .pattern(" N ")
                 .unlockedBy(getHasName(Items.COPPER_BLOCK), has(Items.COPPER_BLOCK)).save(output);
+
         standardSet(output, TAWNY_PLATE, CHISELED_TAWNY_PLATE, CUT_TAWNY_PLATE, CUT_TAWNY_PLATE_STAIRS, CUT_TAWNY_PLATE_SLAB, TAWNY_TRAPDOOR, TAWNY_DOOR);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TAWNY_HULL_PLATE, 3)
+                .define('#', TAWNY_PLATE)
+                .pattern("#")
+                .pattern("#")
+                .pattern("#")
+                .unlockedBy(getHasName(TAWNY_PLATE), has(TAWNY_PLATE)).save(output);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, TAWNY_HULL_PLATE, TAWNY_PLATE);
 
             //Pyrite Plate
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, PYRITE_PLATE, 4)
@@ -39,7 +47,15 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("N#N")
                 .pattern(" N ")
                 .unlockedBy(getHasName(Items.COPPER_BLOCK), has(Items.COPPER_BLOCK)).save(output);
+
         standardSet(output, PYRITE_PLATE, CHISELED_PYRITE_PLATE, CUT_PYRITE_PLATE, CUT_PYRITE_PLATE_STAIRS, CUT_PYRITE_PLATE_SLAB, PYRITE_TRAPDOOR, PYRITE_DOOR);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, LARGE_PYRITE_PLATE, 2)
+                .define('#', PYRITE_PLATE)
+                .pattern("#")
+                .pattern("#")
+                .unlockedBy(getHasName(PYRITE_PLATE), has(PYRITE_PLATE)).save(output);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, LARGE_PYRITE_PLATE, PYRITE_PLATE);
 
 
             //Asphalt

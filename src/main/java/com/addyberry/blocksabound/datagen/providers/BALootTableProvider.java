@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.SlabBlock;
 
 import java.util.Set;
@@ -25,6 +26,8 @@ public class BALootTableProvider extends BlockLootSubProvider {
         for (Block block : this.getKnownBlocks()) {
             if (block instanceof SlabBlock) {
                 add(block, createSlabItemTable(block));
+            } else if (block instanceof DoorBlock) {
+                add(block, createDoorTable(block));
             } else dropSelf(block);
         }
     }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pyrite_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "blocksabound:pyrite_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:large_pyrite_plate_from_pyrite_plate_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pyrite_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:large_pyrite_plate_from_pyrite_plate_stonecutting"
+    ]
+  }
+}
