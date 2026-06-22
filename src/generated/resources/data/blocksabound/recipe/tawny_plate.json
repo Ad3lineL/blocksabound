@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:copper_block"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    " N ",
+    "N#N",
+    " N "
+  ],
+  "result": {
+    "count": 4,
+    "id": "blocksabound:tawny_plate"
+  }
+}

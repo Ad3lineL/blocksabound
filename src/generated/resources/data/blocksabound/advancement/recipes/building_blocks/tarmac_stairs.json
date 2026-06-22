@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tarmac": {
+      "conditions": {
+        "items": [
+          {
+            "items": "blocksabound:tarmac"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "blocksabound:tarmac_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tarmac"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "blocksabound:tarmac_stairs"
+    ]
+  }
+}

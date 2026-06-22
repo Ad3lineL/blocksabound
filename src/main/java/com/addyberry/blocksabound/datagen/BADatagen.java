@@ -1,10 +1,7 @@
 package com.addyberry.blocksabound.datagen;
 
 import com.addyberry.blocksabound.BlocksAbound;
-import com.addyberry.blocksabound.datagen.providers.BABlockstateProvider;
-import com.addyberry.blocksabound.datagen.providers.BAItemModelProvider;
-import com.addyberry.blocksabound.datagen.providers.BALootTableProvider;
-import com.addyberry.blocksabound.datagen.providers.BABlockTagProvider;
+import com.addyberry.blocksabound.datagen.providers.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -32,6 +29,9 @@ public class BADatagen {
                 List.of(new LootTableProvider.SubProviderEntry(BALootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
         BABlockTagProvider blockTags = new BABlockTagProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(true, blockTags);
+
+        generator.addProvider(true, new BARecipeProvider(output, lookupProvider));
+
         generator.addProvider(event.includeClient(), new BABlockstateProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new BAItemModelProvider(output, existingFileHelper));
     }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "blocksabound:asphalt"
+  },
+  "result": {
+    "count": 1,
+    "id": "blocksabound:asphalt_stairs"
+  }
+}

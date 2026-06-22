@@ -1,0 +1,8 @@
+{
+  "parent": "blocksabound:block/alt_door_bottom_left",
+  "textures": {
+    "bottom": "blocksabound:block/pyrite_plate/pyrite_door_bottom",
+    "top": "blocksabound:block/pyrite_plate/pyrite_door_top",
+    "side": "blocksabound:block/pyrite_plate/pyrite_door_sides"
+  }
+}

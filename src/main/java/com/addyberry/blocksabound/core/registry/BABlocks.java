@@ -32,6 +32,7 @@ public class BABlocks {
     public static final DeferredBlock<Block> CUT_TAWNY_PLATE = registerBlock("cut_tawny_plate", () -> new Block(getTawnyProperties()));
     public static final DeferredBlock<Block> CUT_TAWNY_PLATE_STAIRS = registerBlock("cut_tawny_plate_stairs", () -> new StairBlock(CUT_TAWNY_PLATE.get().defaultBlockState(), getTawnyProperties()));
     public static final DeferredBlock<Block> CUT_TAWNY_PLATE_SLAB = registerBlock("cut_tawny_plate_slab", () -> new SlabBlock(getTawnyProperties()));
+    public static final DeferredBlock<Block> TAWNY_DOOR = registerBlock("tawny_door", () -> new DoorBlock(TAWNY_BLOCK_SET_TYPE, getTawnyProperties().noOcclusion()));
     public static final DeferredBlock<Block> TAWNY_TRAPDOOR = registerBlock("tawny_trapdoor", () -> new TrapDoorBlock(TAWNY_BLOCK_SET_TYPE, getTawnyProperties().noOcclusion()));
     public static final DeferredBlock<Block> TAWNY_HULL_PLATE = registerBlock("tawny_hull_plate", () -> new HullPlateBlock(getTawnyProperties()));
 
@@ -50,6 +51,7 @@ public class BABlocks {
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE = registerBlock("cut_pyrite_plate", () -> new Block(getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_STAIRS = registerBlock("cut_pyrite_plate_stairs", () -> new StairBlock(CUT_PYRITE_PLATE.get().defaultBlockState(), getPyriteProperties()));
     public static final DeferredBlock<Block> CUT_PYRITE_PLATE_SLAB = registerBlock("cut_pyrite_plate_slab", () -> new SlabBlock(getPyriteProperties()));
+    public static final DeferredBlock<Block> PYRITE_DOOR = registerBlock("pyrite_door", () -> new DoorBlock(PYRITE_BLOCK_SET_TYPE, getPyriteProperties().noOcclusion()));
     public static final DeferredBlock<Block> PYRITE_TRAPDOOR = registerBlock("pyrite_trapdoor", () -> new TrapDoorBlock(PYRITE_BLOCK_SET_TYPE, getPyriteProperties().noOcclusion()));
     public static final DeferredBlock<Block> LARGE_PYRITE_PLATE = registerBlockNoItem("large_pyrite_plate", () -> new LargePlateBlock(getPyriteProperties()));
 

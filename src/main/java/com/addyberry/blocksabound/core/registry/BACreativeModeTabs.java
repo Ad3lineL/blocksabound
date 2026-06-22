@@ -19,6 +19,7 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.CUT_TAWNY_PLATE);
             event.accept(BABlocks.CUT_TAWNY_PLATE_STAIRS);
             event.accept(BABlocks.CUT_TAWNY_PLATE_SLAB);
+            event.accept(BABlocks.TAWNY_DOOR);
             event.accept(BABlocks.TAWNY_TRAPDOOR);
             event.accept(BABlocks.TAWNY_HULL_PLATE);
 
@@ -27,6 +28,7 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.CUT_PYRITE_PLATE);
             event.accept(BABlocks.CUT_PYRITE_PLATE_STAIRS);
             event.accept(BABlocks.CUT_PYRITE_PLATE_SLAB);
+            event.accept(BABlocks.PYRITE_DOOR);
             event.accept(BABlocks.PYRITE_TRAPDOOR);
             event.accept(BAItems.LARGE_PYRITE_PLATE);
 

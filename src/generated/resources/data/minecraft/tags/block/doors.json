@@ -1,6 +1,8 @@
 {
   "values": [
+    "blocksabound:tawny_door",
     "blocksabound:tawny_trapdoor",
+    "blocksabound:pyrite_door",
     "blocksabound:pyrite_trapdoor"
   ]
 }

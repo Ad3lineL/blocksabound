@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "blocksabound:cut_tawny_plate"
+  },
+  "result": {
+    "count": 1,
+    "id": "blocksabound:chiseled_tawny_plate"
+  }
+}

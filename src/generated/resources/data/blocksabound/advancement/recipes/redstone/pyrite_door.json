@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pyrite_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "blocksabound:pyrite_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "blocksabound:pyrite_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pyrite_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "blocksabound:pyrite_door"
+    ]
+  }
+}

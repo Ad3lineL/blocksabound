@@ -37,6 +37,7 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.slabBlock((SlabBlock) CUT_TAWNY_PLATE_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_tawny_plate"), this.modLoc(tawnyPlateLoc + "/cut_tawny_plate"));
         this.simpleBlockItem(CUT_TAWNY_PLATE_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_tawny_plate_slab")));
 
+        this.flatBlockItem(TAWNY_DOOR.get());
         this.simpleBlockItem(TAWNY_TRAPDOOR.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_trapdoor_bottom")));
 
         this.simpleBlockItem(TAWNY_HULL_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_hull_plate")));
@@ -57,6 +58,7 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.slabBlock((SlabBlock) CUT_PYRITE_PLATE_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_pyrite_plate"), this.modLoc(pyritePlateLoc + "/cut_pyrite_plate"));
         this.simpleBlockItem(CUT_PYRITE_PLATE_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/cut_pyrite_plate_slab")));
 
+        this.flatBlockItem(PYRITE_DOOR.get());
         this.simpleBlockItem(PYRITE_TRAPDOOR.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/pyrite_trapdoor_bottom")));
 
         this.simpleBlockItem(LARGE_PYRITE_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/large_pyrite_plate_south")));

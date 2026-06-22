@@ -1,0 +1,8 @@
+{
+  "parent": "blocksabound:block/alt_door_top_left_open",
+  "textures": {
+    "bottom": "blocksabound:block/tawny_plate/tawny_door_bottom",
+    "top": "blocksabound:block/tawny_plate/tawny_door_top",
+    "side": "blocksabound:block/tawny_plate/tawny_door_sides"
+  }
+}
