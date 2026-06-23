@@ -58,7 +58,6 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.HATCH);
             event.accept(BABlocks.VENT);
             event.accept(BAItems.PIPE);
-            event.accept(BABlocks.REINFORCED_IRON);
         }
         if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.insertAfter(Items.REDSTONE_LAMP.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
