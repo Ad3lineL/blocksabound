@@ -60,20 +60,32 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
         BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos().relative(context.getClickedFace().getOpposite()));
         BlockState oppositeClickedState = context.getLevel().getBlockState(context.getClickedPos().relative(context.getClickedFace()));
 
-        BlockState state = this.defaultBlockState();
+        BlockState state = this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
+
         boolean poweredflag = false;
-        if ((clickedState.is(this) && clickedState.getValue(POWERED)) || (oppositeClickedState.is(this) && oppositeClickedState.getValue(POWERED))) {
-            poweredflag = true;
+        if (clickedState.is(this) && clickedState.getValue(POWERED)) {
+            if (state.getValue(AXIS) == clickedState.getValue(AXIS)) {
+                poweredflag = true;
+            }
+        } else if (oppositeClickedState.is(this) && oppositeClickedState.getValue(POWERED)) {
+            if (state.getValue(AXIS) == oppositeClickedState.getValue(AXIS)) {
+                poweredflag = true;
+            }
         }
 
-        if ((clickedState.is(this) && clickedState.getValue(INVERTED)) || (oppositeClickedState.is(this) && oppositeClickedState.getValue(INVERTED))) {
-            state = state.setValue(INVERTED, true);
+        if (clickedState.is(this) && clickedState.getValue(INVERTED)) {
+            if (state.getValue(AXIS) == clickedState.getValue(AXIS)) {
+                state = state.setValue(INVERTED, true);
+            }
+        } else if (oppositeClickedState.is(this) && oppositeClickedState.getValue(INVERTED)) {
+            if (state.getValue(AXIS) == oppositeClickedState.getValue(AXIS)) {
+                state = state.setValue(INVERTED, true);
+            }
         }
 
-        state = state
-                .setValue(AXIS, context.getClickedFace().getAxis())
-                .setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()) || poweredflag);
+        //LONG LIGHTRODS FUCK UP WHEN IT COMES TO POWERED STATES IF THEY HAVE MORE THAN ONE POWER SOURCE
 
+        state = state.setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()) || poweredflag);
         state = state.setValue(LIT, state.getValue(POWERED) != state.getValue(INVERTED));
 
         return state;

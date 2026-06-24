@@ -20,8 +20,6 @@ public class BARecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput output) {
 
-
-
             //Tawny Plate
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TAWNY_PLATE, 4)
                 .define('#', Items.COPPER_BLOCK).define('N', Items.GOLD_NUGGET)
@@ -117,6 +115,14 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern(" G ")
                 .pattern("NTN")
                 .unlockedBy(getHasName(Items.REDSTONE_TORCH), has(Items.REDSTONE_TORCH)).save(output);
+
+            //Misc
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BAItems.TAR, 8)
+                .requires(Ingredient.of(Items.HONEYCOMB, Items.SLIME_BALL))
+                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .unlockedBy(getHasName(Items.COAL), has(Items.COAL))
+                .unlockedBy(getHasName(Items.CHARCOAL), has(Items.CHARCOAL))
+                .save(output);
     }
 
     protected static void standardSet(RecipeOutput recipeOutput, ItemLike plate, ItemLike chiseled, ItemLike cut, ItemLike cutStair, ItemLike cutSlab, ItemLike trapdoor, ItemLike door) {
