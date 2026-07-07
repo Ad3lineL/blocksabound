@@ -57,6 +57,8 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
         };
     }
 
+    /*
+    thanks cappin but i have no idea how to use this in the slightest
     public List<BlockPos> getBlocksInRod(Level level, BlockPos startPos, BlockState startState) {
         List<BlockPos> list = new ArrayList<>();
         Direction.Axis axis = startState.getValue(AXIS);
@@ -92,6 +94,7 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
 
         return list;
     }
+    */
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
 
@@ -137,10 +140,11 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
             boolean neighborIsSameAxis = (direction.getAxis() == state.getValue(AXIS)) && (state.getValue(AXIS) == neighborState.getValue(AXIS));
             if (neighborIsSameAxis && !state.equals(neighborState)) {
                 state = state
-                        .setValue(LIT, neighborState.getValue(LIT))
+
                         .setValue(INVERTED, neighborState.getValue(INVERTED))
-                        .setValue(POWERED, neighborState.getValue(POWERED))
+                        .setValue(POWERED, level.hasNeighborSignal(pos) || neighborState.getValue(POWERED))
                 ;
+                state = state.setValue(LIT, state.getValue(POWERED) != state.getValue(INVERTED));
             }
         }
         for (int i = 0; i <= 1; i++) {
@@ -150,6 +154,8 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
                 state = state.setValue(i == 0 ? EXTENDED_UP : EXTENDED_DOWN, axisEndState.getValue(AXIS) == state.getValue(AXIS));
             }
         }
+
+        //level.hasNeighborSignal(pos)
 
         return state;
     }
