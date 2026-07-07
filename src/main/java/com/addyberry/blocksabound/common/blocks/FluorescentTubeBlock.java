@@ -146,6 +146,10 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
                 ;
                 state = state.setValue(LIT, state.getValue(POWERED) != state.getValue(INVERTED));
             }
+            if (neighborIsSameAxis && level.hasNeighborSignal(pos)) {
+                neighborState = neighborState.setValue(POWERED, true);
+                level.setBlock(neighborPos, neighborState, 3);
+            }
         }
         for (int i = 0; i <= 1; i++) {
             BlockState axisEndState = level.getBlockState(pos.relative(Direction.get(i == 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE, state.getValue(AXIS)), 1));
@@ -154,8 +158,6 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
                 state = state.setValue(i == 0 ? EXTENDED_UP : EXTENDED_DOWN, axisEndState.getValue(AXIS) == state.getValue(AXIS));
             }
         }
-
-        //level.hasNeighborSignal(pos)
 
         return state;
     }
@@ -191,7 +193,7 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
             boolean flag = level.hasNeighborSignal(pos);
             if (state.getValue(POWERED) != flag) {
                 BlockState blockstate = state.cycle(POWERED);
-                this.setLit(blockstate, level, pos, (Player)null);
+                this.setLit(blockstate, level, pos, null);
             }
         }
     }
