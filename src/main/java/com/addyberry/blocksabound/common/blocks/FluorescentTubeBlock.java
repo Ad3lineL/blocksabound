@@ -23,6 +23,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FluorescentTubeBlock extends RotatedPillarBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
@@ -53,6 +55,42 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
             case Y -> AXIS_Y;
             case Z -> AXIS_Z;
         };
+    }
+
+    public List<BlockPos> getBlocksInRod(Level level, BlockPos startPos, BlockState startState) {
+        List<BlockPos> list = new ArrayList<>();
+        Direction.Axis axis = startState.getValue(AXIS);
+        BlockPos.MutableBlockPos testPos = startPos.mutable();
+
+        Direction forward = null;
+        switch (axis) {
+            case X -> forward = Direction.EAST;
+            case Y -> forward = Direction.UP;
+            case Z -> forward = Direction.NORTH;
+        }
+
+        list.add(startPos);
+
+        // check forwards along the chain
+        testPos.set(startPos).move(forward);
+        BlockState testState = level.getBlockState(testPos);
+        while (testState.is(this) && testState.getValue(AXIS) == axis) {
+            list.add(testPos.immutable());
+            testPos.move(forward);
+            testState = level.getBlockState(testPos);
+        }
+
+        // check backwards
+        Direction backward = forward.getOpposite();
+        testPos.set(startPos).move(backward);
+        testState = level.getBlockState(testPos);
+        while (testState.is(this) && testState.getValue(AXIS) == axis) {
+            list.add(testPos.immutable());
+            testPos.move(backward);
+            testState = level.getBlockState(testPos);
+        }
+
+        return list;
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
