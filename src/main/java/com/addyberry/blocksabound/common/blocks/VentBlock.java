@@ -1,9 +1,11 @@
 package com.addyberry.blocksabound.common.blocks;
 
+import com.addyberry.blocksabound.core.registry.BABlocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,6 +18,7 @@ public class VentBlock extends AbstractPanelBlock{
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<AttachFace> FACE = BlockStateProperties.ATTACH_FACE;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");
 
     protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
     protected static final VoxelShape WEST_AABB = Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
@@ -30,6 +33,7 @@ public class VentBlock extends AbstractPanelBlock{
                 .setValue(WATERLOGGED, false)
                 .setValue(FACE, AttachFace.FLOOR)
                 .setValue(FACING, Direction.NORTH)
+                .setValue(CONNECTED, false)
         );
     }
 
@@ -53,7 +57,21 @@ public class VentBlock extends AbstractPanelBlock{
     }
 
     @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        Direction connectionSide = AbstractPanelBlock.getOpenDirection(state);
+        boolean connectedFlag = false;
+        if (neighborState.is(BABlocks.PIPE_JUNCTION)) {
+            connectedFlag = neighborState.getValue(IronPipeJunctionBlock.PROPERTY_BY_DIRECTION.get(connectionSide));
+
+        } else if (neighborState.is(BABlocks.PIPE)) {
+            //connectedFlag = neighborState.getValue(IronPipeBlock.AXIS) == Direction.Axis.Y;
+        }
+        state = state.setValue(CONNECTED, connectedFlag);
+        return state;
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, FACE, FACING);
+        builder.add(WATERLOGGED, FACE, FACING, CONNECTED);
     }
 }

@@ -116,15 +116,16 @@ public class BABlocks {
 
      SEALED GLASS
      IRON CABLE
+     CLOCK BLOCK
      GUIDING ROD
      NAIL
-     CLOCK BLOCK
      SKATES
      GIRDER
      LOCKER
      HAZARD STRIPE
      MECHANICAL LEVER
      WIND-UP LEVER
+     SHOWERHEAD
 
      Sets:
      BLUE SET

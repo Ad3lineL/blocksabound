@@ -30,8 +30,8 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final BooleanProperty EXTENDED_UP = BooleanProperty.create("extended_up");;
-    public static final BooleanProperty EXTENDED_DOWN = BooleanProperty.create("extended_down");;
+    public static final BooleanProperty EXTENDED_UP = BooleanProperty.create("extended_up");
+    public static final BooleanProperty EXTENDED_DOWN = BooleanProperty.create("extended_down");
 
     protected static final VoxelShape AXIS_X = Block.box(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
     protected static final VoxelShape AXIS_Y = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);

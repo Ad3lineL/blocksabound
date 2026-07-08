@@ -104,7 +104,7 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
         if (!neighborState.is(BABlocks.PIPE) && !(neighborState.getBlock() instanceof AbstractPanelBlock)) {
             state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), false);
         } else if (neighborState.getBlock() instanceof AbstractPanelBlock) {
-            state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), true);
+            state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), AbstractPanelBlock.getOpenDirection(neighborState) == direction);
         }
         int axisCount = 0;
         Direction.Axis axis = Direction.Axis.Y;
