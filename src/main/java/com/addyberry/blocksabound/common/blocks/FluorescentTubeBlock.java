@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -39,7 +38,7 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
 
     public FluorescentTubeBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState()
+        this.registerDefaultState(this.stateDefinition.any()
                 .setValue(LIT, false)
                 .setValue(INVERTED, false)
                 .setValue(POWERED, false)
@@ -57,145 +56,95 @@ public class FluorescentTubeBlock extends RotatedPillarBlock {
         };
     }
 
-    /*
-    thanks cappin but i have no idea how to use this in the slightest
-    public List<BlockPos> getBlocksInRod(Level level, BlockPos startPos, BlockState startState) {
-        List<BlockPos> list = new ArrayList<>();
-        Direction.Axis axis = startState.getValue(AXIS);
-        BlockPos.MutableBlockPos testPos = startPos.mutable();
-
-        Direction forward = null;
-        switch (axis) {
-            case X -> forward = Direction.EAST;
-            case Y -> forward = Direction.UP;
-            case Z -> forward = Direction.NORTH;
-        }
-
-        list.add(startPos);
-
-        // check forwards along the chain
-        testPos.set(startPos).move(forward);
-        BlockState testState = level.getBlockState(testPos);
-        while (testState.is(this) && testState.getValue(AXIS) == axis) {
-            list.add(testPos.immutable());
-            testPos.move(forward);
-            testState = level.getBlockState(testPos);
-        }
-
-        // check backwards
-        Direction backward = forward.getOpposite();
-        testPos.set(startPos).move(backward);
-        testState = level.getBlockState(testPos);
-        while (testState.is(this) && testState.getValue(AXIS) == axis) {
-            list.add(testPos.immutable());
-            testPos.move(backward);
-            testState = level.getBlockState(testPos);
-        }
-
-        return list;
-    }
-    */
-
     public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        Direction.Axis axis = context.getClickedFace().getAxis();
+        BlockState state = this.defaultBlockState().setValue(AXIS, axis);
 
-        BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos().relative(context.getClickedFace().getOpposite()));
-        BlockState oppositeClickedState = context.getLevel().getBlockState(context.getClickedPos().relative(context.getClickedFace()));
+        Direction positive = Direction.get(Direction.AxisDirection.POSITIVE, axis);
+        boolean powered = level.hasNeighborSignal(pos);
+        boolean inverted = false;
 
-        BlockState state = this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
-
-        boolean poweredflag = false;
-        if (clickedState.is(this) && clickedState.getValue(POWERED)) {
-            if (state.getValue(AXIS) == clickedState.getValue(AXIS)) {
-                poweredflag = true;
-            }
-        } else if (oppositeClickedState.is(this) && oppositeClickedState.getValue(POWERED)) {
-            if (state.getValue(AXIS) == oppositeClickedState.getValue(AXIS)) {
-                poweredflag = true;
-            }
+        BlockState positiveNeighbor = level.getBlockState(pos.relative(positive));
+        if (positiveNeighbor.is(this) && positiveNeighbor.getValue(AXIS) == axis) {
+            state = state.setValue(EXTENDED_UP, true);
+            powered |= positiveNeighbor.getValue(POWERED);
+            inverted |= positiveNeighbor.getValue(INVERTED);
+        }
+        BlockState negativeNeighbor = level.getBlockState(pos.relative(positive.getOpposite()));
+        if (negativeNeighbor.is(this) && negativeNeighbor.getValue(AXIS) == axis) {
+            state = state.setValue(EXTENDED_DOWN, true);
+            powered |= negativeNeighbor.getValue(POWERED);
+            inverted |= negativeNeighbor.getValue(INVERTED);
         }
 
-        if (clickedState.is(this) && clickedState.getValue(INVERTED)) {
-            if (state.getValue(AXIS) == clickedState.getValue(AXIS)) {
-                state = state.setValue(INVERTED, true);
-            }
-        } else if (oppositeClickedState.is(this) && oppositeClickedState.getValue(INVERTED)) {
-            if (state.getValue(AXIS) == oppositeClickedState.getValue(AXIS)) {
-                state = state.setValue(INVERTED, true);
-            }
-        }
-
-        //LONG LIGHTRODS FUCK UP WHEN IT COMES TO POWERED STATES IF THEY HAVE MORE THAN ONE POWER SOURCE
-
-        state = state.setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()) || poweredflag);
-        state = state.setValue(LIT, state.getValue(POWERED) != state.getValue(INVERTED));
-
-        return state;
+        return state.setValue(POWERED, powered).setValue(INVERTED, inverted).setValue(LIT, powered != inverted);
     }
-
-    //
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        if (neighborState.is(this)) {
-            boolean neighborIsSameAxis = (direction.getAxis() == state.getValue(AXIS)) && (state.getValue(AXIS) == neighborState.getValue(AXIS));
-            if (neighborIsSameAxis && !state.equals(neighborState)) {
-                state = state
-
-                        .setValue(INVERTED, neighborState.getValue(INVERTED))
-                        .setValue(POWERED, level.hasNeighborSignal(pos) || neighborState.getValue(POWERED))
-                ;
-                state = state.setValue(LIT, state.getValue(POWERED) != state.getValue(INVERTED));
-            }
-            if (neighborIsSameAxis && level.hasNeighborSignal(pos)) {
-                neighborState = neighborState.setValue(POWERED, true);
-                level.setBlock(neighborPos, neighborState, 3);
-            }
+        if (direction.getAxis() == state.getValue(AXIS)) {
+            boolean connected = neighborState.is(this) && neighborState.getValue(AXIS) == state.getValue(AXIS);
+            BooleanProperty end = direction.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EXTENDED_UP : EXTENDED_DOWN;
+            state = state.setValue(end, connected);
         }
-        for (int i = 0; i <= 1; i++) {
-            BlockState axisEndState = level.getBlockState(pos.relative(Direction.get(i == 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE, state.getValue(AXIS)), 1));
-            state = state.setValue(i == 0 ? EXTENDED_UP : EXTENDED_DOWN, false);
-            if (axisEndState.is(this)) {
-                state = state.setValue(i == 0 ? EXTENDED_UP : EXTENDED_DOWN, axisEndState.getValue(AXIS) == state.getValue(AXIS));
-            }
-        }
-
         return state;
     }
 
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-            this.invert(state, level, pos, null);
-            return InteractionResult.CONSUME;
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        if (level.isClientSide) return;
+        BlockPos origin = pos;
+        BlockState neighborState = level.getBlockState(fromPos);
+        if (neighborState.is(this) && neighborState.getValue(AXIS) == state.getValue(AXIS)) origin = fromPos;
+        updateLine(level, origin, state.getValue(AXIS));
+    }
+
+    private void updateLine(Level level, BlockPos origin, Direction.Axis axis) {
+        List<BlockPos> line = new ArrayList<>();
+        line.add(origin);
+        Direction positive = Direction.get(Direction.AxisDirection.POSITIVE, axis);
+        for (Direction dir : new Direction[]{positive, positive.getOpposite()}) {
+            BlockPos.MutableBlockPos cursor = origin.mutable().move(dir);
+            BlockState cursorState = level.getBlockState(cursor);
+            while (cursorState.is(this) && cursorState.getValue(AXIS) == axis) {
+                line.add(cursor.immutable());
+                cursor.move(dir);
+                cursorState = level.getBlockState(cursor);
+            }
+        }
+
+        boolean powered = false;
+        for (BlockPos pos : line) {
+            if (level.hasNeighborSignal(pos)) {
+                powered = true;
+                break;
+            }
+        }
+
+        boolean inverted = level.getBlockState(origin).getValue(INVERTED);
+        for (BlockPos pos : line) {
+            BlockState state = level.getBlockState(pos);
+            boolean lit = powered != inverted;
+            if (state.getValue(POWERED) != powered || state.getValue(LIT) != lit || state.getValue(INVERTED) != inverted) {
+                level.setBlock(pos, state.setValue(POWERED, powered).setValue(LIT, lit).setValue(INVERTED, inverted), Block.UPDATE_CLIENTS);
+            }
         }
     }
 
-    private void invert (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
-        BlockState blockstate = state.cycle(INVERTED);
-        this.setLit(blockstate, level, pos, null);
-        this.playSound(player, level, pos, blockstate.getValue(LIT));
-    }
-
-    private void setLit (BlockState state, Level level, BlockPos pos, @Nullable Player player) {
-        BlockState blockstate = state.cycle(LIT);
-        level.setBlockAndUpdate(pos, blockstate);
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        boolean inverted = !state.getValue(INVERTED);
+        boolean lit = state.getValue(POWERED) != inverted;
+        level.setBlockAndUpdate(pos, state.setValue(INVERTED, inverted).setValue(LIT, lit));
+        this.playSound(player, level, pos, lit);
+        return InteractionResult.SUCCESS;
     }
 
     protected void playSound(@Nullable Player player, LevelAccessor level, BlockPos pos, boolean isLit) {
         float f = isLit ? 0.6F : 0.9F;
         level.playSound(player, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, f);
         level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-    }
-
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        if (!level.isClientSide) {
-            boolean flag = level.hasNeighborSignal(pos);
-            if (state.getValue(POWERED) != flag) {
-                BlockState blockstate = state.cycle(POWERED);
-                this.setLit(blockstate, level, pos, null);
-            }
-        }
     }
 
     @Override
