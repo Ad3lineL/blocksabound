@@ -49,6 +49,20 @@ public class VentBlock extends AbstractPanelBlock{
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return switch (state.getValue(FACE)) {
+            case FLOOR -> UP_AABB;
+            case WALL -> switch (state.getValue(FACING)) {
+                case NORTH -> NORTH_AABB;
+                case SOUTH -> SOUTH_AABB;
+                case WEST -> WEST_AABB;
+                case EAST -> EAST_AABB;
+                default -> throw new MatchException(null, null);
+            };
+            default -> DOWN_AABB;
+        };
+    }
+
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         boolean flag = state.getValue(CONNECTED);
         return switch (state.getValue(FACE)) {
             case FLOOR -> flag ? UP_CONNECTED_AABB : UP_AABB;
