@@ -9,7 +9,8 @@
     "PipeCrawlingMixin",
     "PipeClimbingMixin",
     "PipeStepSoundMixin",
-    "PipeMovementMixin"
+    "PipeMovementMixin",
+    "PipePoseMixin"
   ],
   "client": [
   ],
