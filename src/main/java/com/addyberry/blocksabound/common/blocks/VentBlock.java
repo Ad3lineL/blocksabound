@@ -86,14 +86,20 @@ public class VentBlock extends AbstractPanelBlock{
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
         for(Direction direction : context.getNearestLookingDirections()) {
-            BlockState blockstate;
+            BlockState state;
             if (direction.getAxis() == Direction.Axis.Y) {
-                blockstate = this.defaultBlockState().setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
+                state = this.defaultBlockState().setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
             } else {
-                blockstate = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
+                state = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
             }
 
-            return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+            BlockPos clickedPos = context.getClickedPos().relative(context.getClickedFace().getOpposite());
+            BlockState blockState = context.getLevel().getBlockState(clickedPos);
+            if (blockState.is(BABlocks.PIPE) && blockState.getValue(IronPipeBlock.AXIS) == direction.getAxis()) {
+                state = state.setValue(CONNECTED, true);
+            }
+
+            return state.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
         }
 
         return null;
@@ -107,8 +113,8 @@ public class VentBlock extends AbstractPanelBlock{
             connectedFlag = neighborState.getValue(IronPipeJunctionBlock.PROPERTY_BY_DIRECTION.get(connectionSide));
 
         } else if (neighborState.is(BABlocks.PIPE)) {
-            if (direction.getOpposite() == connectionSide) {
-                connectedFlag = true;
+            if (connectionSide.getAxis() == neighborState.getValue(IronPipeBlock.AXIS)) {
+                connectedFlag = direction.getOpposite() == connectionSide;
             }
         }
         state = state.setValue(CONNECTED, connectedFlag);
