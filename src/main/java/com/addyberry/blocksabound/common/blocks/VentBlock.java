@@ -1,6 +1,5 @@
 package com.addyberry.blocksabound.common.blocks;
 
-import com.addyberry.blocksabound.core.registry.BABlocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -93,11 +92,9 @@ public class VentBlock extends AbstractPanelBlock{
                 state = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
             }
 
-            BlockPos clickedPos = context.getClickedPos().relative(context.getClickedFace().getOpposite());
-            BlockState blockState = context.getLevel().getBlockState(clickedPos);
-            if (blockState.is(BABlocks.PIPE) && blockState.getValue(IronPipeBlock.AXIS) == direction.getAxis()) {
-                state = state.setValue(CONNECTED, true);
-            }
+            Direction connectionSide = getOpenDirection(state).getOpposite();
+            BlockState connectionNeighbor = context.getLevel().getBlockState(context.getClickedPos().relative(connectionSide));
+            state = state.setValue(CONNECTED, IronPipeJunctionBlock.opensToward(connectionNeighbor, connectionSide.getOpposite()));
 
             return state.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
         }
@@ -107,18 +104,10 @@ public class VentBlock extends AbstractPanelBlock{
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        Direction connectionSide = getOpenDirection(state);
-        boolean connectedFlag = false;
-        if (neighborState.is(BABlocks.PIPE_JUNCTION)) {
-            connectedFlag = neighborState.getValue(IronPipeJunctionBlock.PROPERTY_BY_DIRECTION.get(connectionSide));
-
-        } else if (neighborState.is(BABlocks.PIPE)) {
-            if (connectionSide.getAxis() == neighborState.getValue(IronPipeBlock.AXIS)) {
-                connectedFlag = direction.getOpposite() == connectionSide;
-            }
-        }
-        state = state.setValue(CONNECTED, connectedFlag);
-        return state;
+        Direction connectionSide = getOpenDirection(state).getOpposite();
+        BlockState connectionNeighbor = level.getBlockState(pos.relative(connectionSide));
+        boolean connectedFlag = IronPipeJunctionBlock.opensToward(connectionNeighbor, connectionSide.getOpposite());
+        return state.setValue(CONNECTED, connectedFlag);
     }
 
     @Override

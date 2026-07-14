@@ -24,7 +24,7 @@ public abstract class PipeMovementMixin {
     @Inject(method = "travel", at = @At("HEAD"), cancellable = true)
     private void blocksabound$pipeTravel(Vec3 travelVector, CallbackInfo ci) {
         LivingEntity self = (LivingEntity) (Object) this;
-        if (!(self instanceof Player player) || !player.isLocalPlayer()) {
+        if (!(self instanceof Player player) || !player.isLocalPlayer() || player.isSpectator()) {
             return;
         }
         BlockState inState = self.getInBlockState();

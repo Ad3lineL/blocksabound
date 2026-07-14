@@ -26,7 +26,7 @@ public abstract class PipeCrawlingMixin extends Entity {
     @Inject(method = "updatePlayerPose", at = @At("HEAD"), cancellable = true)
     private void updatePlayerPose(CallbackInfo ci) {
         BlockState state = this.getInBlockState();
-        if (state.getBlock() instanceof IronPipeBlock  || state.getBlock() instanceof IronPipeJunctionBlock) {
+        if (!this.isSpectator() && (state.getBlock() instanceof IronPipeBlock || state.getBlock() instanceof IronPipeJunctionBlock)) {
             ci.cancel();
             this.setPose(Pose.SWIMMING);
         }

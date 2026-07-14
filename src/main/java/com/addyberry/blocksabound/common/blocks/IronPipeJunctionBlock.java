@@ -1,7 +1,6 @@
 package com.addyberry.blocksabound.common.blocks;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
-import com.addyberry.blocksabound.core.registry.BAItems;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.Util;
@@ -99,28 +98,20 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
         };
     }
 
+    public static boolean opensToward(BlockState state, Direction direction) {
+        Block block = state.getBlock();
+        return switch (block) {
+            case IronPipeJunctionBlock pipeJunction -> true;
+            case IronPipeBlock pipe -> direction.getAxis() == state.getValue(IronPipeBlock.AXIS);
+            case AbstractPanelBlock panel ->
+                    direction == AbstractPanelBlock.getOpenDirection(state).getOpposite();
+            default -> false;
+        };
+    }
+
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        if (!neighborState.is(BABlocks.PIPE) && !(neighborState.getBlock() instanceof AbstractPanelBlock)) {
-            state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), false);
-        } else if (neighborState.getBlock() instanceof AbstractPanelBlock) {
-            state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), AbstractPanelBlock.getOpenDirection(neighborState) == direction);
-        }
-        int axisCount = 0;
-        Direction.Axis axis = Direction.Axis.Y;
-        if (state.getValue(UP) || state.getValue(DOWN)) {
-            axisCount++;
-        }
-        if (state.getValue(NORTH) || state.getValue(SOUTH)) {
-            axisCount++;
-            axis = Direction.Axis.Z;
-        }
-        if (state.getValue(EAST) || state.getValue(WEST)) {
-            axisCount++;
-            axis = Direction.Axis.X;
-        }
-
-        return axisCount == 1 ? BABlocks.PIPE.get().defaultBlockState().setValue(IronPipeBlock.AXIS, axis) : state;
+        return IronPipeBlock.connectedState(level, pos, Direction.Axis.Y, state.getValue(WATERLOGGED));
     }
 
     protected FluidState getFluidState(BlockState state) {
@@ -134,7 +125,7 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
 
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
-        return BAItems.PIPE.toStack();
+        return BABlocks.PIPE.toStack();
     }
 
     static {

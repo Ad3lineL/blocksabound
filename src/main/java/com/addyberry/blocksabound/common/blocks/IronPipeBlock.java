@@ -1,7 +1,6 @@
 package com.addyberry.blocksabound.common.blocks;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
-import com.addyberry.blocksabound.core.registry.BAItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -68,48 +67,35 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
 
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
-        boolean flag = fluidstate.getType() == Fluids.WATER;
-        return super.getStateForPlacement(context).setValue(WATERLOGGED, flag);
+        boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
+        return connectedState(context.getLevel(), context.getClickedPos(), context.getClickedFace().getAxis(), waterlogged);
     }
 
-    public static void connectBlock(BlockState state, Direction direction, Level level, BlockPos pos, Direction.Axis axis) {
-        if (state.is(BABlocks.PIPE_JUNCTION)) {
-            level.setBlockAndUpdate(pos, IronPipeJunctionBlock.setDirection(state, direction, true));
-        }
+    public static BlockState connectedState(BlockGetter level, BlockPos pos, Direction.Axis fallbackAxis, boolean waterlogged) {
+        boolean x = connectsFrom(level, pos, Direction.EAST) || connectsFrom(level, pos, Direction.WEST);
+        boolean y = connectsFrom(level, pos, Direction.UP) || connectsFrom(level, pos, Direction.DOWN);
+        boolean z = connectsFrom(level, pos, Direction.NORTH) || connectsFrom(level, pos, Direction.SOUTH);
+        int axes = (x ? 1 : 0) + (y ? 1 : 0) + (z ? 1 : 0);
 
-        if (state.is(BABlocks.PIPE)) {
-            if (state.getValue(AXIS) != axis) {
-                boolean positive = false;
-                boolean negative = false;
-
-                for (Direction neighborDirection : Direction.values()) {
-                    if (neighborDirection.getAxis() != state.getValue(AXIS)) continue;
-
-                    BlockPos neighborPos = pos.relative(neighborDirection);
-                    BlockState neighborState = level.getBlockState(neighborPos);
-
-                    if (neighborState.is(BABlocks.PIPE) && neighborState.getValue(AXIS) == state.getValue(AXIS)) {
-                        if (neighborDirection.getAxisDirection() == Direction.AxisDirection.POSITIVE) positive = true;
-                        else negative = true;
-                    }
-                }
-
-                if (!positive && !negative) {
-                    level.setBlockAndUpdate(pos, state.setValue(AXIS, axis));
-                } else {
-                    BlockState junctionState = IronPipeJunctionBlock.setDirection(BABlocks.PIPE_JUNCTION.get().withPropertiesOf(state), direction, true);
-                    if (positive) junctionState = IronPipeJunctionBlock.setDirection(junctionState, Direction.fromAxisAndDirection(state.getValue(AXIS), Direction.AxisDirection.POSITIVE), true);
-                    if (negative) junctionState = IronPipeJunctionBlock.setDirection(junctionState, Direction.fromAxisAndDirection(state.getValue(AXIS), Direction.AxisDirection.NEGATIVE), true);
-                    level.setBlockAndUpdate(pos, junctionState);
-                }
+        if (axes >= 2) {
+            BlockState junction = BABlocks.PIPE_JUNCTION.get().defaultBlockState().setValue(IronPipeJunctionBlock.WATERLOGGED, waterlogged);
+            for (Direction side : Direction.values()) {
+                junction = junction.setValue(IronPipeJunctionBlock.PROPERTY_BY_DIRECTION.get(side), connectsFrom(level, pos, side));
             }
+            return junction;
         }
+
+        Direction.Axis axis = x ? Direction.Axis.X : y ? Direction.Axis.Y : z ? Direction.Axis.Z : fallbackAxis;
+        return BABlocks.PIPE.get().defaultBlockState().setValue(AXIS, axis).setValue(WATERLOGGED, waterlogged);
+    }
+
+    private static boolean connectsFrom(BlockGetter level, BlockPos pos, Direction side) {
+        return IronPipeJunctionBlock.opensToward(level.getBlockState(pos.relative(side)), side.getOpposite());
     }
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        return state;
+        return connectedState(level, pos, state.getValue(AXIS), state.getValue(WATERLOGGED));
     }
 
     protected FluidState getFluidState(BlockState state) {
@@ -123,7 +109,7 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
 
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
-        return BAItems.PIPE.toStack();
+        return BABlocks.PIPE.toStack();
     }
 
     static {

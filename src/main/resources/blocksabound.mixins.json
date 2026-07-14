@@ -6,13 +6,13 @@
   "refmap": "${mod_id}.refmap.json",
   "mixins": [
     "LargePlateStickinessMixin",
-    "PipeCrawlingMixin",
     "PipeClimbingMixin",
-    "PipeStepSoundMixin",
+    "PipeCrawlingMixin",
     "PipeMovementMixin",
-    "PipePoseMixin"
+    "PipeStepSoundMixin"
   ],
   "client": [
+    "PipePoseMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -106,7 +106,7 @@ public class BABlocks {
 
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> VENT = registerBlock("vent", () -> new VentBlock(getReinforcedIronProperties().noOcclusion()));
-    public static final DeferredBlock<Block> PIPE = registerBlockNoItem("pipe", () -> new IronPipeBlock(getReinforcedIronProperties().noOcclusion()));
+    public static final DeferredBlock<Block> PIPE = registerBlock("pipe", () -> new IronPipeBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> REINFORCED_IRON = registerBlock("reinforced_iron", () -> new Block(getReinforcedIronProperties()));
 
