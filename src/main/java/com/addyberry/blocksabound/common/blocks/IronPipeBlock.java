@@ -95,7 +95,29 @@ public class IronPipeBlock extends RotatedPillarBlock implements SimpleWaterlogg
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        return connectedState(level, pos, state.getValue(AXIS), state.getValue(WATERLOGGED));
+        Direction.Axis axis = state.getValue(AXIS);
+        if (direction.getAxis() == axis || !IronPipeJunctionBlock.opensToward(neighborState, direction.getOpposite())) {
+            return state;
+        }
+
+        Direction axisPositive = Direction.get(Direction.AxisDirection.POSITIVE, axis);
+        Direction axisNegative = axisPositive.getOpposite();
+        boolean positiveConnected = connectsFrom(level, pos, axisPositive);
+        boolean negativeConnected = connectsFrom(level, pos, axisNegative);
+
+        if (!positiveConnected && !negativeConnected) {
+            return BABlocks.PIPE.get().defaultBlockState().setValue(AXIS, direction.getAxis()).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+        }
+
+        BlockState junction = BABlocks.PIPE_JUNCTION.get().defaultBlockState().setValue(IronPipeJunctionBlock.WATERLOGGED, state.getValue(WATERLOGGED));
+        junction = IronPipeJunctionBlock.setDirection(junction, direction, true);
+        if (positiveConnected) {
+            junction = IronPipeJunctionBlock.setDirection(junction, axisPositive, true);
+        }
+        if (negativeConnected) {
+            junction = IronPipeJunctionBlock.setDirection(junction, axisNegative, true);
+        }
+        return junction;
     }
 
     protected FluidState getFluidState(BlockState state) {

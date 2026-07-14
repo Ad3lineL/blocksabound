@@ -101,7 +101,7 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
     public static boolean opensToward(BlockState state, Direction direction) {
         Block block = state.getBlock();
         return switch (block) {
-            case IronPipeJunctionBlock pipeJunction -> true;
+            case IronPipeJunctionBlock pipeJunction -> state.getValue(PROPERTY_BY_DIRECTION.get(direction));
             case IronPipeBlock pipe -> direction.getAxis() == state.getValue(IronPipeBlock.AXIS);
             case AbstractPanelBlock panel ->
                     direction == AbstractPanelBlock.getOpenDirection(state).getOpposite();
@@ -111,7 +111,17 @@ public class IronPipeJunctionBlock extends Block implements SimpleWaterloggedBlo
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        return IronPipeBlock.connectedState(level, pos, Direction.Axis.Y, state.getValue(WATERLOGGED));
+        state = state.setValue(PROPERTY_BY_DIRECTION.get(direction), opensToward(neighborState, direction.getOpposite()));
+
+        boolean x = state.getValue(EAST) || state.getValue(WEST);
+        boolean y = state.getValue(UP) || state.getValue(DOWN);
+        boolean z = state.getValue(NORTH) || state.getValue(SOUTH);
+        int axes = (x ? 1 : 0) + (y ? 1 : 0) + (z ? 1 : 0);
+        if (axes <= 1) {
+            Direction.Axis axis = x ? Direction.Axis.X : y ? Direction.Axis.Y : z ? Direction.Axis.Z : Direction.Axis.Y;
+            return BABlocks.PIPE.get().withPropertiesOf(state).setValue(IronPipeBlock.AXIS, axis);
+        }
+        return state;
     }
 
     protected FluidState getFluidState(BlockState state) {
