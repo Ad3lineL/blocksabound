@@ -4,6 +4,7 @@ import com.addyberry.blocksabound.core.registry.BABlocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -11,8 +12,12 @@ import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import javax.annotation.Nullable;
 
 public class VentBlock extends AbstractPanelBlock{
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -77,15 +82,34 @@ public class VentBlock extends AbstractPanelBlock{
         };
     }
 
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+        for(Direction direction : context.getNearestLookingDirections()) {
+            BlockState blockstate;
+            if (direction.getAxis() == Direction.Axis.Y) {
+                blockstate = this.defaultBlockState().setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
+            } else {
+                blockstate = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
+            }
+
+            return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+        }
+
+        return null;
+    }
+
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        Direction connectionSide = AbstractPanelBlock.getOpenDirection(state);
+        Direction connectionSide = getOpenDirection(state);
         boolean connectedFlag = false;
         if (neighborState.is(BABlocks.PIPE_JUNCTION)) {
             connectedFlag = neighborState.getValue(IronPipeJunctionBlock.PROPERTY_BY_DIRECTION.get(connectionSide));
 
         } else if (neighborState.is(BABlocks.PIPE)) {
-            //connectedFlag = neighborState.getValue(IronPipeBlock.AXIS) == Direction.Axis.Y;
+            if (direction.getOpposite() == connectionSide) {
+                connectedFlag = true;
+            }
         }
         state = state.setValue(CONNECTED, connectedFlag);
         return state;
