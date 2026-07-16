@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "blocksabound:tar"
+    },
+    "X": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "#X",
+    "X#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "blocksabound:tarred_paper"
+  }
+}

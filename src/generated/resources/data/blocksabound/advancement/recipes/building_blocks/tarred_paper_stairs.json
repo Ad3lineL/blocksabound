@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tarred_paper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "blocksabound:tarred_paper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "blocksabound:tarred_paper_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tarred_paper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "blocksabound:tarred_paper_stairs"
+    ]
+  }
+}

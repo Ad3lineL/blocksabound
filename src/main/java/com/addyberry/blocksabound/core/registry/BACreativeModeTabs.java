@@ -43,6 +43,10 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.TARMAC_STAIRS);
             event.accept(BABlocks.TARMAC_SLAB);
 
+            event.accept(BABlocks.TARRED_PAPER);
+            event.accept(BABlocks.TARRED_PAPER_STAIRS);
+            event.accept(BABlocks.TARRED_PAPER_SLAB);
+
 
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {

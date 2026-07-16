@@ -72,6 +72,16 @@ public class BARecipeProvider extends RecipeProvider {
         stoneStair(output, TARMAC_STAIRS, TARMAC);
 
 
+            //Tarred Paper
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TARRED_PAPER, 4)
+                .define('#', BAItems.TAR).define('X', Items.PAPER)
+                .pattern("#X")
+                .pattern("X#")
+                .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
+        slab(output, TARRED_PAPER_SLAB, TARRED_PAPER);
+        stair(output, TARRED_PAPER_STAIRS, TARRED_PAPER);
+
+
         //Reinforced Iron
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, REINFORCED_IRON, 4)
                 .define('I', Items.IRON_INGOT).define('N', Items.IRON_NUGGET)

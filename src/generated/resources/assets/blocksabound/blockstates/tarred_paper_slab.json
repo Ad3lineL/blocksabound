@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blocksabound:block/tarred_paper_slab"
+    },
+    "type=double": {
+      "model": "blocksabound:block/tarred_paper"
+    },
+    "type=top": {
+      "model": "blocksabound:block/tarred_paper_slab_top"
+    }
+  }
+}

@@ -80,7 +80,17 @@ public class BABlocks {
     public static final DeferredBlock<Block> TARMAC_SLAB = registerBlock("tarmac_slab", () -> new SlabBlock(getTarmacProperties()));
 
 
-    //Light Bulb
+        //Tarred Paper
+    public static BlockBehaviour.Properties getTarredPaperProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)
+                .mapColor(MapColor.COLOR_BLACK);
+    }
+    public static final DeferredBlock<Block> TARRED_PAPER = registerBlock("tarred_paper", () -> new Block(getTarredPaperProperties()));
+    public static final DeferredBlock<Block> TARRED_PAPER_STAIRS = registerBlock("tarred_paper_stairs", () -> new StairBlock(TARRED_PAPER.get().defaultBlockState(), getTarredPaperProperties()));
+    public static final DeferredBlock<Block> TARRED_PAPER_SLAB = registerBlock("tarred_paper_slab", () -> new SlabBlock(getTarredPaperProperties()));
+
+
+        //Light Bulb
     public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 15 : 0))); //15
     public static final DeferredBlock<Block> SOUL_LIGHT_BULB = registerBlock("soul_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 12 : 0)));
     public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 9 : 0)));
@@ -96,24 +106,24 @@ public class BABlocks {
 
 
         //Mechanical Iron
-        public static BlockBehaviour.Properties getReinforcedIronProperties() {
-            return BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_GRAY)
-                    .strength(1F, 4.0F)
-                    .sound(SoundType.METAL)
-                    .requiresCorrectToolForDrops();
-        }
-
+    public static BlockBehaviour.Properties getReinforcedIronProperties() {
+        return BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_GRAY)
+                .strength(1F, 4.0F)
+                .sound(SoundType.METAL)
+                .requiresCorrectToolForDrops();
+    }
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> VENT = registerBlock("vent", () -> new VentBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> PIPE = registerBlock("pipe", () -> new IronPipeBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> REINFORCED_IRON = registerBlock("reinforced_iron", () -> new Block(getReinforcedIronProperties()));
 
-    /* TODO:
-     BUMPER
-     TARRED PAPER
 
+
+    /* TODO:
+     TARRED PAPER
+     BUMPER
      SEALED GLASS
      IRON CABLE
      CLOCK BLOCK

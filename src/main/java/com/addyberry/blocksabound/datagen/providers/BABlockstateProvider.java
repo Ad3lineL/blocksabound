@@ -41,7 +41,6 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockItem(TAWNY_TRAPDOOR.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_trapdoor_bottom")));
 
         this.simpleBlockItem(TAWNY_HULL_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tawny_hull_plate")));
-            //
 
 
             //Pyrite Plate Set
@@ -62,7 +61,6 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockItem(PYRITE_TRAPDOOR.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/pyrite_trapdoor_bottom")));
 
         this.simpleBlockItem(LARGE_PYRITE_PLATE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/large_pyrite_plate_south")));
-            //
 
 
             //Asphalt
@@ -73,7 +71,6 @@ public class BABlockstateProvider extends BlockStateProvider {
 
         this.slabBlock((SlabBlock) ASPHALT_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"));
         this.simpleBlockItem(ASPHALT_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt_slab")));
-            //
 
 
             //Tarmac
@@ -82,7 +79,16 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockItem(TARMAC_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac_stairs")));
 
         this.simpleBlockItem(TARMAC_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarmac_slab")));
-            //
+
+
+            //Tarred Paper
+        this.simpleBlockWithItem(TARRED_PAPER.get(), this.models().cubeAll("tarred_paper", this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarred_paper")));
+
+        this.stairsBlock((StairBlock) TARRED_PAPER_STAIRS.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarred_paper"));
+        this.simpleBlockItem(TARRED_PAPER_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarred_paper_stairs")));
+
+        this.slabBlock((SlabBlock) TARRED_PAPER_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarred_paper"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarred_paper"));
+        this.simpleBlockItem(TARRED_PAPER_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tarred_paper_slab")));
 
 
             //Misc
@@ -99,7 +105,6 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.flatBlockItem(WARM_FLUORESCENT_TUBE.get());
         this.flatBlockItem(HOT_FLUORESCENT_TUBE.get());
         this.flatBlockItem(ABERRANT_FLUORESCENT_TUBE.get());
-            //
     }
 
     //shamelessly stolen from cappin im not sory
