@@ -2,66 +2,10 @@
   "variants": {
     "": [
       {
-        "model": "blocksabound:block/tarmac",
-        "weight": 8
+        "model": "blocksabound:block/tarmac"
       },
       {
-        "model": "blocksabound:block/tarmac_mirrored"
-      },
-            {
-        "model": "blocksabound:block/tarmac",
-        "y": 90
-      },
-      {
-        "model": "blocksabound:block/tarmac_mirrored",
-        "y": 90
-      },
-      {
-        "model": "blocksabound:block/tarmac",
-        "y": 180
-      },
-      {
-        "model": "blocksabound:block/tarmac_mirrored",
-        "y": 180
-      },
-      {
-        "model": "blocksabound:block/tarmac",
-        "y": 270
-      },
-      {
-        "model": "blocksabound:block/tarmac_mirrored",
-        "y": 270
-      },
-      {
-        "model": "blocksabound:block/tarmac_1",
-        "weight": 2
-      },
-      {
-        "model": "blocksabound:block/tarmac_1_mirrored"
-      },
-      {
-        "model": "blocksabound:block/tarmac_1",
-        "y": 90
-      },
-      {
-        "model": "blocksabound:block/tarmac_1_mirrored",
-        "y": 90
-      },
-      {
-        "model": "blocksabound:block/tarmac_1",
-        "y": 180
-      },
-      {
-        "model": "blocksabound:block/tarmac_1_mirrored",
-        "y": 180
-      },
-      {
-        "model": "blocksabound:block/tarmac_1",
-        "y": 270
-      },
-      {
-        "model": "blocksabound:block/tarmac_1_mirrored",
-        "y": 270
+        "model": "blocksabound:block/tarmac_1"
       }
     ]
   }

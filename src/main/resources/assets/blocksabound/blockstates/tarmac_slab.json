@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "type=bottom": [
+      {
+      "model": "blocksabound:block/tarmac_slab"
+      },
+      {
+      "model": "blocksabound:block/tarmac_slab_1"
+      }
+    ],
+    "type=double": [
+      {
+      "model": "blocksabound:block/tarmac"
+      },
+      {
+      "model": "blocksabound:block/tarmac_1"
+      }
+    ],
+    "type=top": [
+      {
+      "model": "blocksabound:block/tarmac_slab_top"
+      },
+      {
+      "model": "blocksabound:block/tarmac_slab_top_1"
+      }
+    ]
+  }
+}
