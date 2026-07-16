@@ -87,12 +87,12 @@ public class BABlocks {
 
 
         //Fluorescent Tube
-    public static final DeferredBlock<Block> FLUORESCENT_TUBE = registerBlock("fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
-    public static final DeferredBlock<Block> COLD_FLUORESCENT_TUBE = registerBlock("cold_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
-    public static final DeferredBlock<Block> COOL_FLUORESCENT_TUBE = registerBlock("cool_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
-    public static final DeferredBlock<Block> WARM_FLUORESCENT_TUBE = registerBlock("warm_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
-    public static final DeferredBlock<Block> HOT_FLUORESCENT_TUBE = registerBlock("hot_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
-    public static final DeferredBlock<Block> ABERRANT_FLUORESCENT_TUBE = registerBlock("aberrant_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion()));
+    public static final DeferredBlock<Block> FLUORESCENT_TUBE = registerBlock("fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
+    public static final DeferredBlock<Block> COLD_FLUORESCENT_TUBE = registerBlock("cold_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
+    public static final DeferredBlock<Block> COOL_FLUORESCENT_TUBE = registerBlock("cool_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
+    public static final DeferredBlock<Block> WARM_FLUORESCENT_TUBE = registerBlock("warm_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
+    public static final DeferredBlock<Block> HOT_FLUORESCENT_TUBE = registerBlock("hot_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
+    public static final DeferredBlock<Block> ABERRANT_FLUORESCENT_TUBE = registerBlock("aberrant_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
 
 
         //Mechanical Iron

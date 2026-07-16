@@ -1,5 +1,6 @@
 package com.addyberry.blocksabound.datagen.providers;
 
+import com.addyberry.blocksabound.common.blocks.IronPipeJunctionBlock;
 import com.addyberry.blocksabound.core.registry.BABlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -28,6 +29,8 @@ public class BALootTableProvider extends BlockLootSubProvider {
                 add(block, createSlabItemTable(block));
             } else if (block instanceof DoorBlock) {
                 add(block, createDoorTable(block));
+            } else if (block instanceof IronPipeJunctionBlock) {
+                dropOther(block, BABlocks.PIPE);
             } else dropSelf(block);
         }
     }

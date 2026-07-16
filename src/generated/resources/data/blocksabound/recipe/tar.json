@@ -17,6 +17,14 @@
       {
         "item": "minecraft:charcoal"
       }
+    ],
+    [
+      {
+        "item": "minecraft:coal"
+      },
+      {
+        "item": "minecraft:charcoal"
+      }
     ]
   ],
   "result": {

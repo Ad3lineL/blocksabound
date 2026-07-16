@@ -57,7 +57,7 @@ public class BARecipeProvider extends RecipeProvider {
 
 
             //Asphalt
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ASPHALT)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ASPHALT, 8)
                 .requires(BAItems.TAR).requires(Items.COBBLESTONE, 8)
                 .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
         stoneSlab(output, ASPHALT_SLAB, ASPHALT);
@@ -65,7 +65,7 @@ public class BARecipeProvider extends RecipeProvider {
 
 
             //Tarmac
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, TARMAC)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, TARMAC, 8)
                 .requires(BAItems.TAR).requires(Items.COBBLED_DEEPSLATE, 8)
                 .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
         stoneSlab(output, TARMAC_SLAB, TARMAC);
@@ -73,14 +73,14 @@ public class BARecipeProvider extends RecipeProvider {
 
 
         //Reinforced Iron
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, REINFORCED_IRON)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, REINFORCED_IRON, 4)
                 .define('I', Items.IRON_INGOT).define('N', Items.IRON_NUGGET)
                 .pattern("NNN")
                 .pattern("NIN")
                 .pattern("NNN")
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, PIPE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, PIPE, 4)
                 .define('#', REINFORCED_IRON)
                 .pattern(" # ")
                 .pattern("# #")
@@ -119,7 +119,7 @@ public class BARecipeProvider extends RecipeProvider {
             //Misc
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BAItems.TAR, 8)
                 .requires(Ingredient.of(Items.HONEYCOMB, Items.SLIME_BALL))
-                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .requires(Ingredient.of(Items.COAL, Items.CHARCOAL), 2)
                 .unlockedBy(getHasName(Items.COAL), has(Items.COAL))
                 .unlockedBy(getHasName(Items.CHARCOAL), has(Items.CHARCOAL))
                 .save(output);
