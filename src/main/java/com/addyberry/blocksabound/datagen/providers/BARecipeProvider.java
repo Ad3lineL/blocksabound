@@ -126,6 +126,44 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("NTN")
                 .unlockedBy(getHasName(Items.REDSTONE_TORCH), has(Items.REDSTONE_TORCH)).save(output);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, COLD_FLUORESCENT_TUBE, 4)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.REDSTONE)
+                .pattern(" N ")
+                .pattern("GCG")
+                .pattern(" N ")
+                .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, COOL_FLUORESCENT_TUBE, 4)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.GLOWSTONE)
+                .pattern(" N ")
+                .pattern("GCG")
+                .pattern(" N ")
+                .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FLUORESCENT_TUBE, 4)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.QUARTZ)
+                .pattern(" N ")
+                .pattern("GCG")
+                .pattern(" N ")
+                .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, WARM_FLUORESCENT_TUBE, 4)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.LAPIS_LAZULI)
+                .pattern(" N ")
+                .pattern("GCG")
+                .pattern(" N ")
+                .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HOT_FLUORESCENT_TUBE, 4)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.AMETHYST_SHARD)
+                .pattern(" N ")
+                .pattern("GCG")
+                .pattern(" N ")
+                .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ABERRANT_FLUORESCENT_TUBE, 4)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.EMERALD)
+                .pattern(" N ")
+                .pattern("GCG")
+                .pattern(" N ")
+                .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
+
+
             //Misc
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BAItems.TAR, 8)
                 .requires(Ingredient.of(Items.HONEYCOMB, Items.SLIME_BALL))
