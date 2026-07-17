@@ -1,0 +1,15 @@
+{
+  "values": [
+    "blocksabound:asphalt",
+    "blocksabound:asphalt_stairs",
+    "blocksabound:asphalt_slab",
+    "blocksabound:tarmac",
+    "blocksabound:tarmac_stairs",
+    "blocksabound:tarmac_slab",
+    
+    {"id": "clutternomore:blocksabound/asphalt_step", "required": false},
+    {"id": "clutternomore:blocksabound/vertical_asphalt_slab", "required": false},
+    {"id": "clutternomore:blocksabound/tarmac_step", "required": false},
+    {"id": "clutternomore:blocksabound/vertical_tarmac_slab", "required": false}
+  ]
+}

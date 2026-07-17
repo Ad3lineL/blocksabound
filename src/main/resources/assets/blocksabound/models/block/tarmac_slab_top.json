@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "blocksabound:block/tarmac",
+    "side": "blocksabound:block/tarmac",
+    "top": "blocksabound:block/tarmac"
+  }
+}

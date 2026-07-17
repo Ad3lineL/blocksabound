@@ -66,10 +66,8 @@ public class BABlockstateProvider extends BlockStateProvider {
             //Asphalt
         this.simpleBlockItem(ASPHALT.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt")));
 
-        this.stairsBlock((StairBlock) ASPHALT_STAIRS.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"));
         this.simpleBlockItem(ASPHALT_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt_stairs")));
 
-        this.slabBlock((SlabBlock) ASPHALT_SLAB.get(), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt"));
         this.simpleBlockItem(ASPHALT_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/asphalt_slab")));
 
 

@@ -122,7 +122,6 @@ public class BABlocks {
 
 
     /* TODO:
-     TARRED PAPER
      BUMPER
      SEALED GLASS
      IRON CABLE
@@ -130,18 +129,19 @@ public class BABlocks {
      GUIDING ROD
      NAIL
      SKATES
-     GIRDER
      LOCKER
      HAZARD STRIPE
      MECHANICAL LEVER
      WIND-UP LEVER
      SHOWERHEAD
+     FUME BLOCK
 
      Sets:
      BLUE SET
      RED SET
 
      Insane maybes:
+     CARGO BAY
      TRAFFIC CONE
      SANDBAG
      MECHANICAL HORN
@@ -151,6 +151,7 @@ public class BABlocks {
      ARROW SIGNS
      DETECTOR PIPE
      WINDOWED PIPE
+     GIRDER
      GLASS PIPE???
     */
 

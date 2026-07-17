@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "type=bottom": [
+      {
+      "model": "blocksabound:block/asphalt_slab"
+      },
+      {
+      "model": "blocksabound:block/asphalt_slab_1"
+      }
+    ],
+    "type=double": [
+      {
+      "model": "blocksabound:block/asphalt"
+      },
+      {
+      "model": "blocksabound:block/asphalt_1"
+      }
+    ],
+    "type=top": [
+      {
+      "model": "blocksabound:block/asphalt_slab_top"
+      },
+      {
+      "model": "blocksabound:block/asphalt_slab_top_1"
+      }
+    ]
+  }
+}
