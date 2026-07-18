@@ -133,7 +133,7 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern(" N ")
                 .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, COOL_FLUORESCENT_TUBE, 4)
-                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.GLOWSTONE)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.GLOWSTONE_DUST)
                 .pattern(" N ")
                 .pattern("GCG")
                 .pattern(" N ")
