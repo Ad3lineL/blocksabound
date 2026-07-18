@@ -3,10 +3,10 @@
 	"credit": "Made by Farcr",
 	"parent": "block/block",
 	"textures": {
-		"0": "blocksabound:block/reinforced_iron",
-		"1": "blocksabound:block/reinforced_iron_slab",
-		"2": "blocksabound:block/reinforced_iron_vertical_slab",
-		"particle": "blocksabound:block/reinforced_iron"
+		"0": "#full",
+		"1": "#horizontal",
+		"2": "#vertical",
+		"particle": "#full"
 	},
 	"elements": [
 		{
@@ -14,9 +14,9 @@
 			"to": [16, 16, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "north"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
 				"east": {"uv": [0, 0, 8, 16], "texture": "#2", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "south"},
 				"west": {"uv": [8, 0, 16, 16], "texture": "#2", "cullface": "west"},
 				"up": {"uv": [0, 8, 16, 16], "texture": "#1", "cullface": "up"},
 				"down": {"uv": [16, 16, 0, 8], "texture": "#1", "cullface": "down"}

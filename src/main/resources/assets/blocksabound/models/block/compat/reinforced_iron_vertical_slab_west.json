@@ -1,0 +1,8 @@
+{
+	"parent": "blocksabound:block/compat/parents/polished_vertical_slab_west",
+	"textures": {
+		"full": "blocksabound:block/reinforced_iron",
+		"horizontal": "blocksabound:block/reinforced_iron_slab",
+		"vertical": "blocksabound:block/reinforced_iron_vertical_slab"
+	}
+}

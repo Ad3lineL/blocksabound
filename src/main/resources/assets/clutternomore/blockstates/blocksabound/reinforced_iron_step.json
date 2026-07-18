@@ -1,40 +1,40 @@
 {
   "variants": {
     "facing=north,type=bottom": {
-      "model": "blocksabound:block/compat/step_north"
+      "model": "blocksabound:block/compat/reinforced_iron_step_north"
     },
     "facing=north,type=top": {
-      "model": "blocksabound:block/compat/step_north_top"
+      "model": "blocksabound:block/compat/reinforced_iron_step_north_top"
     },
     "facing=north,type=double": {
-      "model": "blocksabound:block/compat/step_north_double"
+      "model": "blocksabound:block/compat/reinforced_iron_step_north_double"
     },
     "facing=east,type=bottom": {
-      "model": "blocksabound:block/compat/step_east"
+      "model": "blocksabound:block/compat/reinforced_iron_step_east"
     },
     "facing=east,type=top": {
-      "model": "blocksabound:block/compat/step_east_top"
+      "model": "blocksabound:block/compat/reinforced_iron_step_east_top"
     },
     "facing=east,type=double": {
-      "model": "blocksabound:block/compat/step_east_double"
+      "model": "blocksabound:block/compat/reinforced_iron_step_east_double"
     },
     "facing=south,type=bottom": {
-      "model": "blocksabound:block/compat/step_south"
+      "model": "blocksabound:block/compat/reinforced_iron_step_south"
     },
     "facing=south,type=top": {
-      "model": "blocksabound:block/compat/step_south_top"
+      "model": "blocksabound:block/compat/reinforced_iron_step_south_top"
     },
     "facing=south,type=double": {
-      "model": "blocksabound:block/compat/step_south_double"
+      "model": "blocksabound:block/compat/reinforced_iron_step_south_double"
     },
     "facing=west,type=bottom": {
-      "model": "blocksabound:block/compat/step_west"
+      "model": "blocksabound:block/compat/reinforced_iron_step_west"
     },
     "facing=west,type=top": {
-      "model": "blocksabound:block/compat/step_west_top"
+      "model": "blocksabound:block/compat/reinforced_iron_step_west_top"
     },
     "facing=west,type=double": {
-      "model": "blocksabound:block/compat/step_west_double"
+      "model": "blocksabound:block/compat/reinforced_iron_step_west_double"
     }
   }
 }

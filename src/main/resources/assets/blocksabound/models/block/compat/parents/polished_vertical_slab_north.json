@@ -3,10 +3,10 @@
 	"credit": "Made by Farcr",
 	"parent": "block/block",
 	"textures": {
-		"0": "blocksabound:block/reinforced_iron",
-		"1": "blocksabound:block/reinforced_iron_slab",
-		"2": "blocksabound:block/reinforced_iron_vertical_slab",
-		"particle": "blocksabound:block/reinforced_iron"
+		"0": "#full",
+		"1": "#horizontal",
+		"2": "#vertical",
+		"particle": "#full"
 	},
 	"elements": [
 		{

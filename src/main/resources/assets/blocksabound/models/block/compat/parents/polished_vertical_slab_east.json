@@ -3,9 +3,9 @@
 	"credit": "Made by Farcr",
 	"parent": "block/block",
 	"textures": {
-		"0": "blocksabound:block/reinforced_iron",
-		"2": "blocksabound:block/reinforced_iron_vertical_slab",
-		"particle": "blocksabound:block/reinforced_iron"
+		"0": "#full",
+		"2": "#vertical",
+		"particle": "#full"
 	},
 	"elements": [
 		{
@@ -15,8 +15,8 @@
 			"faces": {
 				"north": {"uv": [0, 0, 8, 16], "texture": "#2", "cullface": "north"},
 				"east": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "east"},
-				"south": {"uv": [8, 0, 16, 16], "texture": "#2"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "west"},
+				"south": {"uv": [8, 0, 16, 16], "texture": "#2", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
 				"up": {"uv": [8, 0, 16, 16], "texture": "#2", "cullface": "up"},
 				"down": {"uv": [8, 16, 0, 0], "texture": "#2", "cullface": "down"}
 			}
