@@ -31,6 +31,8 @@
   "block.blocksabound.vent": "Vent",
   "block.blocksabound.pipe": "Big Pipe",
   "block.blocksabound.reinforced_iron": "Reinforced Iron",
+  "block.blocksabound.reinforced_iron_stairs": "Reinforced Iron Stairs",
+  "block.blocksabound.reinforced_iron_slab": "Reinforced Iron Slab",
   "block.blocksabound.cold_fluorescent_tube": "Cold Fluorescent Tube",
   "block.blocksabound.cool_fluorescent_tube": "Cool Fluorescent Tube",
   "block.blocksabound.fluorescent_tube": "Fluorescent Tube",

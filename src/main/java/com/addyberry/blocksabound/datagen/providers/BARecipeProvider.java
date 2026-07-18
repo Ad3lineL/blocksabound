@@ -89,6 +89,9 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("NIN")
                 .pattern("NNN")
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(output);
+        stoneSlab(output, REINFORCED_IRON_SLAB, REINFORCED_IRON);
+        stoneStair(output, REINFORCED_IRON_STAIRS, REINFORCED_IRON);
+
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, PIPE, 4)
                 .define('#', REINFORCED_IRON)

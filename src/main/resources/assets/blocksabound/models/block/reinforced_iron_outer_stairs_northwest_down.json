@@ -1,0 +1,12 @@
+{
+	"parent": "blocksabound:block/parents/polished_outer_stairs_northwest_down",
+	"textures": {
+		"full": "blocksabound:block/reinforced_iron",
+		"slab": "blocksabound:block/reinforced_iron_slab",
+		"northeast": "blocksabound:block/reinforced_iron_stair_northeast",
+		"northwest": "blocksabound:block/reinforced_iron_stair_northwest",
+		"southeast": "blocksabound:block/reinforced_iron_stair_southeast",
+		"southwest": "blocksabound:block/reinforced_iron_stair_southwest",
+		"vertical_slab": "blocksabound:block/reinforced_iron_vertical_slab"
+	}
+}

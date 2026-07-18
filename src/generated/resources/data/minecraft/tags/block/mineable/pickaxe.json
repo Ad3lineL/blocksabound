@@ -31,10 +31,12 @@
     "blocksabound:warm_fluorescent_tube",
     "blocksabound:hot_fluorescent_tube",
     "blocksabound:aberrant_fluorescent_tube",
+    "blocksabound:reinforced_iron",
+    "blocksabound:reinforced_iron_stairs",
+    "blocksabound:reinforced_iron_slab",
     "blocksabound:hatch",
     "blocksabound:vent",
     "blocksabound:pipe",
-    "blocksabound:pipe_junction",
-    "blocksabound:reinforced_iron"
+    "blocksabound:pipe_junction"
   ]
 }

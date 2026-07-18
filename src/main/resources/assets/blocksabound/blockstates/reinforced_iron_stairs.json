@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "facing=east,half=bottom,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southwest"
+    },
+    "facing=east,half=bottom,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northwest"
+    },
+    "facing=east,half=bottom,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southwest"
+    },
+    "facing=east,half=bottom,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northwest"
+    },
+    "facing=east,half=bottom,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_west"
+    },
+    "facing=east,half=top,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southwest_down"
+    },
+    "facing=east,half=top,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northwest_down"
+    },
+    "facing=east,half=top,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southwest_down"
+    },
+    "facing=east,half=top,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northwest_down"
+    },
+    "facing=east,half=top,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_west_down"
+    },
+    "facing=north,half=bottom,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southeast"
+    },
+    "facing=north,half=bottom,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southwest"
+    },
+    "facing=north,half=bottom,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southeast"
+    },
+    "facing=north,half=bottom,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southwest"
+    },
+    "facing=north,half=bottom,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_south"
+    },
+    "facing=north,half=top,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southeast_down"
+    },
+    "facing=north,half=top,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southwest_down"
+    },
+    "facing=north,half=top,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southeast_down"
+    },
+    "facing=north,half=top,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southwest_down"
+    },
+    "facing=north,half=top,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_south_down"
+    },
+    "facing=south,half=bottom,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northwest"
+    },
+    "facing=south,half=bottom,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northeast"
+    },
+    "facing=south,half=bottom,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northwest"
+    },
+    "facing=south,half=bottom,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northeast"
+    },
+    "facing=south,half=bottom,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_north"
+    },
+    "facing=south,half=top,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northwest_down"
+    },
+    "facing=south,half=top,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northeast_down"
+    },
+    "facing=south,half=top,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northwest_down"
+    },
+    "facing=south,half=top,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northeast_down"
+    },
+    "facing=south,half=top,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_north_down"
+    },
+    "facing=west,half=bottom,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northeast"
+    },
+    "facing=west,half=bottom,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southeast"
+    },
+    "facing=west,half=bottom,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northeast"
+    },
+    "facing=west,half=bottom,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southeast"
+    },
+    "facing=west,half=bottom,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_east"
+    },
+    "facing=west,half=top,shape=inner_left": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_northeast_down"
+    },
+    "facing=west,half=top,shape=inner_right": {
+      "model": "blocksabound:block/reinforced_iron_inner_stairs_southeast_down"
+    },
+    "facing=west,half=top,shape=outer_left": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_northeast_down"
+    },
+    "facing=west,half=top,shape=outer_right": {
+      "model": "blocksabound:block/reinforced_iron_outer_stairs_southeast_down"
+    },
+    "facing=west,half=top,shape=straight": {
+      "model": "blocksabound:block/reinforced_iron_stairs_east_down"
+    }
+  }
+}

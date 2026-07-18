@@ -4,6 +4,7 @@
     "blocksabound:cut_pyrite_plate_stairs",
     "blocksabound:asphalt_stairs",
     "blocksabound:tarmac_stairs",
-    "blocksabound:tarred_paper_stairs"
+    "blocksabound:tarred_paper_stairs",
+    "blocksabound:reinforced_iron_stairs"
   ]
 }

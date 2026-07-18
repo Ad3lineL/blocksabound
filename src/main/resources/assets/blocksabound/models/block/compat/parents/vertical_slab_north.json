@@ -1,0 +1,40 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made by Farcr",
+	"parent": "block/block",
+	"textures": {
+		"0": "blocksabound:block/reinforced_iron",
+		"1": "blocksabound:block/reinforced_iron_slab",
+		"2": "blocksabound:block/reinforced_iron_vertical_slab",
+		"particle": "blocksabound:block/reinforced_iron"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 8],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "north"},
+				"east": {"uv": [8, 0, 16, 16], "texture": "#2", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 8, 16], "texture": "#2", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 8], "texture": "#1", "cullface": "up"},
+				"down": {"uv": [16, 8, 0, 0], "texture": "#1", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"firstperson_righthand": {
+			"rotation": [0, -45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"gui": {
+			"rotation": [30, -135, 0],
+			"translation": [-1.75, 0, 0],
+			"scale": [0.625, 0.625, 0.625]
+		}
+	}
+}
