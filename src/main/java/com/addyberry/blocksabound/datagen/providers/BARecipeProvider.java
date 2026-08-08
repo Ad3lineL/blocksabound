@@ -91,7 +91,7 @@ public class BARecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(output);
         stoneSlab(output, REINFORCED_IRON_SLAB, REINFORCED_IRON);
         stoneStair(output, REINFORCED_IRON_STAIRS, REINFORCED_IRON);
-
+        chiseledStoneAlt(output, CHISELED_REINFORCED_IRON, REINFORCED_IRON_SLAB, REINFORCED_IRON);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, PIPE, 4)
                 .define('#', REINFORCED_IRON)
@@ -204,6 +204,11 @@ public class BARecipeProvider extends RecipeProvider {
     protected static void chiseledStone(RecipeOutput recipeOutput, ItemLike chiseled, ItemLike slabMaterial, ItemLike cutMaterial, ItemLike baseMaterial) {
         chiseled(recipeOutput, chiseled, slabMaterial);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, chiseled, cutMaterial);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, chiseled, baseMaterial);
+    }
+
+    protected static void chiseledStoneAlt(RecipeOutput recipeOutput, ItemLike chiseled, ItemLike slabMaterial, ItemLike baseMaterial) {
+        chiseled(recipeOutput, chiseled, slabMaterial);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, chiseled, baseMaterial);
     }
 

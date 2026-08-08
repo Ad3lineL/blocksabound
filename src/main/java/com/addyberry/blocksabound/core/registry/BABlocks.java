@@ -116,6 +116,7 @@ public class BABlocks {
     public static final DeferredBlock<Block> REINFORCED_IRON = registerBlock("reinforced_iron", () -> new Block(getReinforcedIronProperties()));
     public static final DeferredBlock<Block> REINFORCED_IRON_STAIRS = registerBlock("reinforced_iron_stairs", () -> new StairBlock(REINFORCED_IRON.get().defaultBlockState(), getReinforcedIronProperties()));
     public static final DeferredBlock<Block> REINFORCED_IRON_SLAB = registerBlock("reinforced_iron_slab", () -> new SlabBlock(getReinforcedIronProperties()));
+    public static final DeferredBlock<Block> CHISELED_REINFORCED_IRON = registerBlock("chiseled_reinforced_iron", () -> new Block(getReinforcedIronProperties()));
 
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> VENT = registerBlock("vent", () -> new VentBlock(getReinforcedIronProperties().noOcclusion()));

@@ -94,6 +94,8 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockWithItem(REINFORCED_IRON.get(), this.models().cubeAll("reinforced_iron", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_iron")));
         this.simpleBlockItem(REINFORCED_IRON_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_iron_stairs_west")));
         this.simpleBlockItem(REINFORCED_IRON_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_iron_slab")));
+        this.simpleBlockWithItem(CHISELED_REINFORCED_IRON.get(), this.models().cubeColumn("chiseled_reinforced_iron", this.modLoc(ModelProvider.BLOCK_FOLDER + "/chiseled_reinforced_iron"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/chiseled_reinforced_iron_end")));
+
 
         this.flatBlockItem(LIGHT_BULB.get());
         this.flatBlockItem(SOUL_LIGHT_BULB.get());
@@ -106,7 +108,7 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.flatBlockItem(HOT_FLUORESCENT_TUBE.get());
         this.flatBlockItem(ABERRANT_FLUORESCENT_TUBE.get());
 
-        this.simpleBlockItem(TAR_BLOCK.get(), this.models().cubeColumn("tar_block", this.modLoc(ModelProvider.BLOCK_FOLDER + "/tar_block"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tar_block_end")));
+        this.simpleBlockItem(TAR_BLOCK.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/tar_block")));
     }
 
     //shamelessly stolen from cappin im not sory

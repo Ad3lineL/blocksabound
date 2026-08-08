@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "blocksabound:block/chiseled_reinforced_iron_end",
+    "side": "blocksabound:block/chiseled_reinforced_iron"
+  }
+}
