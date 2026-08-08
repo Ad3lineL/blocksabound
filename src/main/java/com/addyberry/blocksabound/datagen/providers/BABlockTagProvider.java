@@ -27,8 +27,8 @@ public class BABlockTagProvider extends BlockTagsProvider {
 
         IntrinsicTagAppender<Block> pickaxeMinable = this.tag(BlockTags.MINEABLE_WITH_PICKAXE).replace(false);
         IntrinsicTagAppender<Block> axeMinable = this.tag(BlockTags.MINEABLE_WITH_AXE).replace(false);
-        /*IntrinsicTagAppender<Block> shovelMinable = this.tag(BlockTags.MINEABLE_WITH_SHOVEL).replace(false);
-        IntrinsicTagAppender<Block> hoeMinable = this.tag(BlockTags.MINEABLE_WITH_HOE).replace(false);
+        IntrinsicTagAppender<Block> shovelMinable = this.tag(BlockTags.MINEABLE_WITH_SHOVEL).replace(false);
+        /*IntrinsicTagAppender<Block> hoeMinable = this.tag(BlockTags.MINEABLE_WITH_HOE).replace(false);
         IntrinsicTagAppender<Block> swordMinable = this.tag(BlockTags.SWORD_EFFICIENT).replace(false);*/
         
         for (DeferredHolder<Block, ? extends Block> block : BABlocks.BLOCKS.getEntries()) {
@@ -47,6 +47,9 @@ public class BABlockTagProvider extends BlockTagsProvider {
             }
             if (name.contains("paper")) {
                 axeMinable.add(block.get());
+            }
+            if (name.contains("tar_block")) {
+                shovelMinable.add(block.get());
             }
             if (name.contains("stair")) {
                 stairs.add(block.get());

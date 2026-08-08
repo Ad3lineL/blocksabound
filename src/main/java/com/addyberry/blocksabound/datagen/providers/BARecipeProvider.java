@@ -130,13 +130,13 @@ public class BARecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE_TORCH), has(Items.REDSTONE_TORCH)).save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, COLD_FLUORESCENT_TUBE, 4)
-                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.REDSTONE)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.AMETHYST_SHARD)
                 .pattern(" N ")
                 .pattern("GCG")
                 .pattern(" N ")
                 .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, COOL_FLUORESCENT_TUBE, 4)
-                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.GLOWSTONE_DUST)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.LAPIS_LAZULI)
                 .pattern(" N ")
                 .pattern("GCG")
                 .pattern(" N ")
@@ -148,13 +148,13 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern(" N ")
                 .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, WARM_FLUORESCENT_TUBE, 4)
-                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.LAPIS_LAZULI)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.GLOWSTONE_DUST)
                 .pattern(" N ")
                 .pattern("GCG")
                 .pattern(" N ")
                 .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HOT_FLUORESCENT_TUBE, 4)
-                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.AMETHYST_SHARD)
+                .define('N', Items.IRON_NUGGET).define('G', Items.GLASS).define('C', Items.REDSTONE)
                 .pattern(" N ")
                 .pattern("GCG")
                 .pattern(" N ")
@@ -173,6 +173,14 @@ public class BARecipeProvider extends RecipeProvider {
                 .requires(Ingredient.of(Items.COAL, Items.CHARCOAL), 2)
                 .unlockedBy(getHasName(Items.COAL), has(Items.COAL))
                 .unlockedBy(getHasName(Items.CHARCOAL), has(Items.CHARCOAL))
+                .save(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BAItems.TAR, 9)
+                .requires(TAR_BLOCK)
+                .unlockedBy(getHasName(TAR_BLOCK), has(TAR_BLOCK))
+                .save(output, "tar_from_tar_block");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, TAR_BLOCK)
+                .requires(BAItems.TAR, 9)
+                .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR))
                 .save(output);
     }
 

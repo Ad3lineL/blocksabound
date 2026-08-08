@@ -123,6 +123,9 @@ public class BABlocks {
     public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(getReinforcedIronProperties().noOcclusion()));
 
 
+        //Misc
+    public static final DeferredBlock<Block> TAR_BLOCK = registerBlock("tar_block", () -> new TarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).speedFactor(0.6F).jumpFactor(0.8F).mapColor(MapColor.COLOR_BLACK)));
+
 
     /* TODO:
      BUMPER

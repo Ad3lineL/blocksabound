@@ -37,6 +37,8 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.REINFORCED_IRON_STAIRS);
             event.accept(BABlocks.REINFORCED_IRON_SLAB);
 
+            event.accept(BABlocks.TAR_BLOCK);
+
             event.accept(BABlocks.ASPHALT);
             event.accept(BABlocks.ASPHALT_STAIRS);
             event.accept(BABlocks.ASPHALT_SLAB);

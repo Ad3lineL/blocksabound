@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    },
+    {
+      "item": "blocksabound:tar"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "blocksabound:tar_block"
+  }
+}

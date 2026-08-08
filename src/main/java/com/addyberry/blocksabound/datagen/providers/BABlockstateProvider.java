@@ -105,6 +105,8 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.flatBlockItem(WARM_FLUORESCENT_TUBE.get());
         this.flatBlockItem(HOT_FLUORESCENT_TUBE.get());
         this.flatBlockItem(ABERRANT_FLUORESCENT_TUBE.get());
+
+        this.simpleBlockItem(TAR_BLOCK.get(), this.models().cubeColumn("tar_block", this.modLoc(ModelProvider.BLOCK_FOLDER + "/tar_block"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/tar_block_end")));
     }
 
     //shamelessly stolen from cappin im not sory

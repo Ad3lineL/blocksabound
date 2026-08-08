@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "boiling=false": {
+      "model": "blocksabound:block/tar_block"
+    },
+    "boiling=true": {
+      "model": "blocksabound:block/tar_block_boiling"
+    }
+  }
+}

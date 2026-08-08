@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "blocksabound:block/tar_block_end",
+    "side": "blocksabound:block/tar_block"
+  }
+}
