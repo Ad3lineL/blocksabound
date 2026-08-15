@@ -6,6 +6,7 @@
     "blocksabound:tarmac",
     "blocksabound:tarmac_stairs",
     "blocksabound:tarmac_slab",
+    "blocksabound:tar_block",
     
     {"id": "clutternomore:blocksabound/asphalt_step", "required": false},
     {"id": "clutternomore:blocksabound/vertical_asphalt_slab", "required": false},

@@ -30,9 +30,12 @@ public class BABlockTagProvider extends BlockTagsProvider {
         IntrinsicTagAppender<Block> shovelMinable = this.tag(BlockTags.MINEABLE_WITH_SHOVEL).replace(false);
         /*IntrinsicTagAppender<Block> hoeMinable = this.tag(BlockTags.MINEABLE_WITH_HOE).replace(false);
         IntrinsicTagAppender<Block> swordMinable = this.tag(BlockTags.SWORD_EFFICIENT).replace(false);*/
-        
+
+        IntrinsicTagAppender<Block> impermeable = this.tag(BlockTags.IMPERMEABLE).replace(false);
+
         for (DeferredHolder<Block, ? extends Block> block : BABlocks.BLOCKS.getEntries()) {
             String name = block.getRegisteredName().toLowerCase();
+            //tool tags
             if (name.contains("tawny") ||
                 name.contains("pyrite") ||
                 name.contains("asphalt") ||
@@ -42,6 +45,7 @@ public class BABlockTagProvider extends BlockTagsProvider {
                 name.contains("fluorescent") ||
                 name.contains("hatch") ||
                 name.contains("vent") ||
+                name.contains("wheel") ||
                 name.contains("reinforced")) {
                 pickaxeMinable.add(block.get());
             }
@@ -51,6 +55,8 @@ public class BABlockTagProvider extends BlockTagsProvider {
             if (name.contains("tar_block")) {
                 shovelMinable.add(block.get());
             }
+
+            //block tags
             if (name.contains("stair")) {
                 stairs.add(block.get());
             }
@@ -62,6 +68,9 @@ public class BABlockTagProvider extends BlockTagsProvider {
             }
             if (name.contains("trapdoor")) {
                 trapdoors.add(block.get());
+            }
+            if (name.contains("glass")) {
+                impermeable.add(block.get());
             }
 
         }

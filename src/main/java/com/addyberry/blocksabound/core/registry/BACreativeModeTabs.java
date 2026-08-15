@@ -54,6 +54,26 @@ public class BACreativeModeTabs {
 
 
         }
+        if(event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
+            event.accept(BABlocks.REINFORCED_GLASS);
+            event.accept(BABlocks.WHITE_REINFORCED_GLASS);
+            event.accept(BABlocks.LIGHT_GRAY_REINFORCED_GLASS);
+            event.accept(BABlocks.GRAY_REINFORCED_GLASS);
+            event.accept(BABlocks.BLACK_REINFORCED_GLASS);
+            event.accept(BABlocks.BROWN_REINFORCED_GLASS);
+            event.accept(BABlocks.RED_REINFORCED_GLASS);
+            event.accept(BABlocks.ORANGE_REINFORCED_GLASS);
+            event.accept(BABlocks.YELLOW_REINFORCED_GLASS);
+            event.accept(BABlocks.LIME_REINFORCED_GLASS);
+            event.accept(BABlocks.GREEN_REINFORCED_GLASS);
+            event.accept(BABlocks.CYAN_REINFORCED_GLASS);
+            event.accept(BABlocks.LIGHT_BLUE_REINFORCED_GLASS);
+            event.accept(BABlocks.BLUE_REINFORCED_GLASS);
+            event.accept(BABlocks.PURPLE_REINFORCED_GLASS);
+            event.accept(BABlocks.MAGENTA_REINFORCED_GLASS);
+            event.accept(BABlocks.PINK_REINFORCED_GLASS);
+
+        }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), BABlocks.SOUL_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -67,6 +87,7 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.HATCH);
             event.accept(BABlocks.VENT);
             event.accept(BABlocks.PIPE);
+            event.accept(BABlocks.WHEEL);
         }
         if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.insertAfter(Items.REDSTONE_LAMP.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

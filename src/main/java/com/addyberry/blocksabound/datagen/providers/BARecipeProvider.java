@@ -174,14 +174,15 @@ public class BARecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.COAL), has(Items.COAL))
                 .unlockedBy(getHasName(Items.CHARCOAL), has(Items.CHARCOAL))
                 .save(output);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BAItems.TAR, 9)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BAItems.TAR, 4)
                 .requires(TAR_BLOCK)
                 .unlockedBy(getHasName(TAR_BLOCK), has(TAR_BLOCK))
                 .save(output, "tar_from_tar_block");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, TAR_BLOCK)
-                .requires(BAItems.TAR, 9)
-                .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR))
-                .save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TAR_BLOCK)
+                .define('#', BAItems.TAR)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
     }
 
     protected static void standardSet(RecipeOutput recipeOutput, ItemLike plate, ItemLike chiseled, ItemLike cut, ItemLike cutStair, ItemLike cutSlab, ItemLike trapdoor, ItemLike door) {

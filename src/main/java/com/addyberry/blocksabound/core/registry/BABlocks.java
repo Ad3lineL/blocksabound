@@ -124,9 +124,34 @@ public class BABlocks {
     public static final DeferredBlock<Block> PIPE_JUNCTION = registerBlockNoItem("pipe_junction", () -> new IronPipeJunctionBlock(getReinforcedIronProperties().noOcclusion()));
 
 
+        //Reinforced Glass
+    public static BlockBehaviour.Properties getReinforcedGlassProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
+                .strength(1F, 4.0F)
+                .requiresCorrectToolForDrops();
+    }
+    public static final DeferredBlock<Block> REINFORCED_GLASS = registerBlock("reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> WHITE_REINFORCED_GLASS = registerBlock("white_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> LIGHT_GRAY_REINFORCED_GLASS = registerBlock("light_gray_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> GRAY_REINFORCED_GLASS = registerBlock("gray_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> BLACK_REINFORCED_GLASS = registerBlock("black_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> BROWN_REINFORCED_GLASS = registerBlock("brown_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> RED_REINFORCED_GLASS = registerBlock("red_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> ORANGE_REINFORCED_GLASS = registerBlock("orange_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> YELLOW_REINFORCED_GLASS = registerBlock("yellow_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> LIME_REINFORCED_GLASS = registerBlock("lime_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> GREEN_REINFORCED_GLASS = registerBlock("green_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> CYAN_REINFORCED_GLASS = registerBlock("cyan_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> LIGHT_BLUE_REINFORCED_GLASS = registerBlock("light_blue_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> BLUE_REINFORCED_GLASS = registerBlock("blue_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> PURPLE_REINFORCED_GLASS = registerBlock("purple_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> MAGENTA_REINFORCED_GLASS = registerBlock("magenta_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+    public static final DeferredBlock<Block> PINK_REINFORCED_GLASS = registerBlock("pink_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
+
+
         //Misc
     public static final DeferredBlock<Block> TAR_BLOCK = registerBlock("tar_block", () -> new TarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).speedFactor(0.6F).jumpFactor(0.8F).mapColor(MapColor.COLOR_BLACK)));
-
+    public static final DeferredBlock<Block> WHEEL = registerBlock("wheel", () -> new WheelBlock(getReinforcedIronProperties().noOcclusion().jumpFactor(1.1F).sound(SoundType.WOOD).mapColor(MapColor.COLOR_BLACK)));
 
     /* TODO:
      BUMPER
