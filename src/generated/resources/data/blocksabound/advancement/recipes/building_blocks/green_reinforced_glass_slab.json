@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_green_reinforced_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "blocksabound:green_reinforced_glass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "blocksabound:green_reinforced_glass_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_green_reinforced_glass"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "blocksabound:green_reinforced_glass_slab"
+    ]
+  }
+}

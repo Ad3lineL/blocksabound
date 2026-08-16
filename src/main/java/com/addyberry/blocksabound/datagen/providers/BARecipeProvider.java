@@ -1,10 +1,12 @@
 package com.addyberry.blocksabound.datagen.providers;
 
+import com.addyberry.blocksabound.core.registry.BABlocks;
 import com.addyberry.blocksabound.core.registry.BAItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -56,8 +58,27 @@ public class BARecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(PYRITE_PLATE), has(PYRITE_PLATE)).save(output);
         stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, LARGE_PYRITE_PLATE, PYRITE_PLATE);
 
+            //Reinforced Glass
+        reinforcedGlassSet(output, REINFORCED_GLASS, REINFORCED_GLASS_SLAB, Items.GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.WHITE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.WHITE), Items.WHITE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_GRAY), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.LIGHT_GRAY), Items.LIGHT_GRAY_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.GRAY), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.GRAY), Items.GRAY_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BLACK), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.BLACK), Items.BLACK_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BROWN), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.BROWN), Items.BROWN_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.RED), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.RED), Items.RED_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.ORANGE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.ORANGE), Items.ORANGE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.YELLOW), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.YELLOW), Items.YELLOW_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIME), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.LIME), Items.LIME_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.GREEN), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.GREEN), Items.GREEN_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.CYAN), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.CYAN), Items.CYAN_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_BLUE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.LIGHT_BLUE), Items.LIGHT_BLUE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BLUE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.BLUE), Items.BLUE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.PURPLE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.PURPLE), Items.PURPLE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.MAGENTA), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.MAGENTA), Items.MAGENTA_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.PINK), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.PINK), Items.PINK_STAINED_GLASS);
 
-            //Asphalt
+
+        //Asphalt
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ASPHALT, 8)
                 .requires(BAItems.TAR).requires(Items.COBBLESTONE, 8)
                 .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
@@ -74,11 +95,7 @@ public class BARecipeProvider extends RecipeProvider {
 
 
             //Tarred Paper
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TARRED_PAPER, 4)
-                .define('#', BAItems.TAR).define('X', Items.PAPER)
-                .pattern("#X")
-                .pattern("X#")
-                .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
+        twoAndTwo(output, TARRED_PAPER, BAItems.TAR, Items.PAPER);
         slab(output, TARRED_PAPER_SLAB, TARRED_PAPER);
         stair(output, TARRED_PAPER_STAIRS, TARRED_PAPER);
 
@@ -200,6 +217,11 @@ public class BARecipeProvider extends RecipeProvider {
         trapdoor(recipeOutput, trapdoor, plate);
     }
 
+    protected static void reinforcedGlassSet (RecipeOutput recipeOutput, ItemLike reinforcedGlass, ItemLike reinforcedGlassSlab, ItemLike glassMaterial) {
+        twoAndTwo(recipeOutput, reinforcedGlass, glassMaterial, REINFORCED_IRON);
+        stoneSlab(recipeOutput, reinforcedGlassSlab, reinforcedGlass);
+    }
+
     protected static void cutStoneSlab(RecipeOutput recipeOutput, ItemLike slab, ItemLike cutMaterial, ItemLike baseMaterial) {
         stoneSlab(recipeOutput, slab, cutMaterial);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, slab, baseMaterial, 2);
@@ -250,4 +272,13 @@ public class BARecipeProvider extends RecipeProvider {
     protected static void cut(RecipeOutput recipeOutput, ItemLike cut, ItemLike material) {
         cutBuilder(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.of(material)).unlockedBy(getHasName(material), has(material)).save(recipeOutput);
     }
+    protected static void twoAndTwo(RecipeOutput recipeOutput, ItemLike twoAndTwo, ItemLike material, ItemLike material2) {
+        twoAndTwoBuilder(twoAndTwo, Ingredient.of(material), Ingredient.of(material2)).unlockedBy(getHasName(material), has(material)).save(recipeOutput);
+    }
+
+
+    protected static RecipeBuilder twoAndTwoBuilder(ItemLike twoAndTwo, Ingredient material, Ingredient material2) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, twoAndTwo, 4).define('#', material).define('X', material2).pattern("X#").pattern("#X");
+    }
+
 }

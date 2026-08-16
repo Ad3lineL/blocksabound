@@ -30,10 +30,10 @@ public class AbstractRotatedDirectionalBlock extends DirectionalBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         for(Direction direction : context.getNearestLookingDirections()) {
             BlockState blockstate;
-            if (direction.getAxis() == Direction.Axis.Y) {
-                blockstate = this.defaultBlockState().setValue(FACING, direction);
-            } else {
-                blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite());
+            switch (direction.getAxis()) {
+                case Y -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getNearestLookingDirection().getAxis() == Direction.Axis.X);
+                case X -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getHorizontalDirection().getAxis() == Direction.Axis.Z);
+                default -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getHorizontalDirection().getAxis() == Direction.Axis.X);
             }
 
             if (blockstate.canSurvive(context.getLevel(), context.getClickedPos())) {
@@ -49,7 +49,6 @@ public class AbstractRotatedDirectionalBlock extends DirectionalBlock {
         builder.add(FACING, ROTATED);
     }
 
-    @Override
     protected MapCodec<? extends DirectionalBlock> codec() {
         return null;
     }

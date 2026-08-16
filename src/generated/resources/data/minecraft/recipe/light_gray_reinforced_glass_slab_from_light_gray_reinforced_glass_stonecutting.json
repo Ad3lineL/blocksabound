@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "blocksabound:light_gray_reinforced_glass"
+  },
+  "result": {
+    "count": 2,
+    "id": "blocksabound:light_gray_reinforced_glass_slab"
+  }
+}

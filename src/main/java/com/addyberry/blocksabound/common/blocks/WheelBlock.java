@@ -1,6 +1,5 @@
 package com.addyberry.blocksabound.common.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
@@ -11,14 +10,13 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WheelBlock extends FaceAttachedHorizontalDirectionalBlock {
+public class WheelBlock extends AbstractRotatedDirectionalBlock {
     public static final VoxelShape FLOOR_NORTH_SOUTH_LEFT_POST = Block.box(2.0F, 0.0F, 6.0F, 4.0F, 7.0F, 10.0F);
     public static final VoxelShape FLOOR_NORTH_SOUTH_RIGHT_POST = Block.box(12.0F, 0.0F, 6.0F, 14.0F, 7.0F, 10.0F);
     public static final VoxelShape FLOOR_NORTH_SOUTH_LEFT_PIVOT = Block.box(2.0F, 7.0F, 5.0F, 4.0F, 13.0F, 11.0F);
@@ -87,8 +85,8 @@ public class WheelBlock extends FaceAttachedHorizontalDirectionalBlock {
     public WheelBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
-                .setValue(FACING, Direction.NORTH)
-                .setValue(FACE, AttachFace.WALL));
+                .setValue(FACING, Direction.UP)
+                .setValue(ROTATED, false));
     }
 
     protected RenderShape getRenderShape(BlockState state) {
@@ -97,34 +95,15 @@ public class WheelBlock extends FaceAttachedHorizontalDirectionalBlock {
 
     private VoxelShape getVoxelShape(BlockState state) {
         Direction direction = state.getValue(FACING);
-        switch (state.getValue(FACE)) {
-            case FLOOR:
-                if (direction != Direction.NORTH && direction != Direction.SOUTH) {
-                    return FLOOR_EAST_WEST_WHEEL;
-                }
-
-                return FLOOR_NORTH_SOUTH_WHEEL;
-            case WALL:
-                if (direction == Direction.NORTH) {
-                    return WALL_NORTH_WHEEL;
-                } else if (direction == Direction.SOUTH) {
-                    return WALL_SOUTH_WHEEL;
-                } else {
-                    if (direction == Direction.EAST) {
-                        return WALL_EAST_WHEEL;
-                    }
-
-                    return WALL_WEST_WHEEL;
-                }
-            case CEILING:
-                if (direction != Direction.NORTH && direction != Direction.SOUTH) {
-                    return CEILING_EAST_WEST_WHEEL;
-                }
-
-                return CEILING_NORTH_SOUTH_WHEEL;
-            default:
-                return FLOOR_EAST_WEST_WHEEL;
-        }
+        Boolean rotated = state.getValue(ROTATED);
+        return switch (direction) {
+            case UP -> rotated ? FLOOR_EAST_WEST_WHEEL : FLOOR_NORTH_SOUTH_WHEEL;
+            case DOWN -> rotated ? CEILING_EAST_WEST_WHEEL : CEILING_NORTH_SOUTH_WHEEL;
+            case EAST -> WALL_EAST_WHEEL;
+            case WEST -> WALL_WEST_WHEEL;
+            case NORTH -> WALL_NORTH_WHEEL;
+            default -> WALL_SOUTH_WHEEL;
+        };
     }
 
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -171,19 +150,8 @@ public class WheelBlock extends FaceAttachedHorizontalDirectionalBlock {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, FACE);
-    }
-
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
-    }
-
-
-    @Override
-    protected MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
-        return null;
     }
 
     static {

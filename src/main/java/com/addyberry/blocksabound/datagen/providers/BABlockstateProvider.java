@@ -122,7 +122,7 @@ public class BABlockstateProvider extends BlockStateProvider {
         }
 
         for (DyeColor color : DyeColor.values()) {
-            Block block = REINFORCED_GLASS_SLABS.get(color).get();
+            Block block = DYED_REINFORCED_GLASS_SLABS.get(color).get();
             String name = color.getName() + "_reinforced_glass_slab";
             ResourceLocation end = this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass");
             ResourceLocation side = this.modLoc( ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass_slab");

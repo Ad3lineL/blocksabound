@@ -45,11 +45,11 @@ public class BABlockTagProvider extends BlockTagsProvider {
                 name.contains("fluorescent") ||
                 name.contains("hatch") ||
                 name.contains("vent") ||
-                name.contains("wheel") ||
                 name.contains("reinforced")) {
                 pickaxeMinable.add(block.get());
             }
-            if (name.contains("paper")) {
+            if (name.contains("wheel") ||
+                name.contains("paper")) {
                 axeMinable.add(block.get());
             }
             if (name.contains("tar_block")) {

@@ -141,12 +141,14 @@ public class BABlocks {
         DYED_REINFORCED_GLASS.put(color, block);
         return block;
     }
-    
-    public static final Map<DyeColor, DeferredBlock<Block>> REINFORCED_GLASS_SLABS = new EnumMap<>(DyeColor.class);
+
+    public static final DeferredBlock<Block> REINFORCED_GLASS_SLAB = registerBlock("reinforced_glass_slab", () -> new SlabBlock(getReinforcedGlassProperties()));
+
+    public static final Map<DyeColor, DeferredBlock<Block>> DYED_REINFORCED_GLASS_SLABS = new EnumMap<>(DyeColor.class);
     private static DeferredBlock<Block> registerGlassSlab(DyeColor color) {
         DeferredBlock<Block> block = registerBlock(color.getName() + "_reinforced_glass_slab",
                 () -> new SlabBlock(getReinforcedGlassProperties()));
-        REINFORCED_GLASS_SLABS.put(color, block);
+        DYED_REINFORCED_GLASS_SLABS.put(color, block);
         return block;
     }
 
