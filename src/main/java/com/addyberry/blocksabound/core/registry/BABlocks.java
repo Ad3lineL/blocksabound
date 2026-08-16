@@ -3,6 +3,7 @@ package com.addyberry.blocksabound.core.registry;
 import com.addyberry.blocksabound.BlocksAbound;
 import com.addyberry.blocksabound.common.blocks.*;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -11,12 +12,13 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class BABlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BlocksAbound.MODID);
     public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(BlocksAbound.MODID);
-
 
         //Tawny Plate
     public static final BlockSetType TAWNY_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType("tawny", true, true, false, BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.METAL, SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
@@ -131,27 +133,26 @@ public class BABlocks {
                 .requiresCorrectToolForDrops();
     }
     public static final DeferredBlock<Block> REINFORCED_GLASS = registerBlock("reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> WHITE_REINFORCED_GLASS = registerBlock("white_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> LIGHT_GRAY_REINFORCED_GLASS = registerBlock("light_gray_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> GRAY_REINFORCED_GLASS = registerBlock("gray_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> BLACK_REINFORCED_GLASS = registerBlock("black_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> BROWN_REINFORCED_GLASS = registerBlock("brown_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> RED_REINFORCED_GLASS = registerBlock("red_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> ORANGE_REINFORCED_GLASS = registerBlock("orange_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> YELLOW_REINFORCED_GLASS = registerBlock("yellow_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> LIME_REINFORCED_GLASS = registerBlock("lime_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> GREEN_REINFORCED_GLASS = registerBlock("green_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> CYAN_REINFORCED_GLASS = registerBlock("cyan_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> LIGHT_BLUE_REINFORCED_GLASS = registerBlock("light_blue_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> BLUE_REINFORCED_GLASS = registerBlock("blue_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> PURPLE_REINFORCED_GLASS = registerBlock("purple_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> MAGENTA_REINFORCED_GLASS = registerBlock("magenta_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
-    public static final DeferredBlock<Block> PINK_REINFORCED_GLASS = registerBlock("pink_reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
 
+    public static final Map<DyeColor, DeferredBlock<Block>> DYED_REINFORCED_GLASS = new EnumMap<>(DyeColor.class);
+    private static DeferredBlock<Block> registerGlass(DyeColor color) {
+        DeferredBlock<Block> block = registerBlock(color.getName() + "_reinforced_glass",
+                () -> new TransparentBlock(getReinforcedGlassProperties()));
+        DYED_REINFORCED_GLASS.put(color, block);
+        return block;
+    }
+    
+    public static final Map<DyeColor, DeferredBlock<Block>> REINFORCED_GLASS_SLABS = new EnumMap<>(DyeColor.class);
+    private static DeferredBlock<Block> registerGlassSlab(DyeColor color) {
+        DeferredBlock<Block> block = registerBlock(color.getName() + "_reinforced_glass_slab",
+                () -> new SlabBlock(getReinforcedGlassProperties()));
+        REINFORCED_GLASS_SLABS.put(color, block);
+        return block;
+    }
 
         //Misc
     public static final DeferredBlock<Block> TAR_BLOCK = registerBlock("tar_block", () -> new TarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).speedFactor(0.6F).jumpFactor(0.8F).mapColor(MapColor.COLOR_BLACK)));
-    public static final DeferredBlock<Block> WHEEL = registerBlock("wheel", () -> new WheelBlock(getReinforcedIronProperties().noOcclusion().jumpFactor(1.1F).sound(SoundType.WOOD).mapColor(MapColor.COLOR_BLACK)));
+    public static final DeferredBlock<Block> WHEEL = registerBlock("wheel", () -> new WheelBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion().jumpFactor(1.1F).sound(SoundType.WOOD).mapColor(MapColor.COLOR_BLACK)));
 
     /* TODO:
      BUMPER
@@ -201,6 +202,10 @@ public class BABlocks {
     }
 
     public static void register(IEventBus eventBus) {
+        for (DyeColor color : DyeColor.values()) {
+            registerGlass(color);
+            registerGlassSlab(color);
+        }
         BLOCKS.register(eventBus);
         BLOCK_ITEMS.register(eventBus);
     }

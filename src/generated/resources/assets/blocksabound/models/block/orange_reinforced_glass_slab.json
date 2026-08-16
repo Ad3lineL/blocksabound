@@ -1,0 +1,8 @@
+{
+  "parent": "blocksabound:block/parents/polished_slab",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "end": "blocksabound:block/colored_reinforced_glass/orange_reinforced_glass",
+    "side": "blocksabound:block/colored_reinforced_glass/orange_reinforced_glass_slab"
+  }
+}

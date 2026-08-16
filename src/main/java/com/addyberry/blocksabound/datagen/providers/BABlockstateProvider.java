@@ -5,6 +5,7 @@ import com.addyberry.blocksabound.common.blocks.WheelBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -92,6 +93,7 @@ public class BABlockstateProvider extends BlockStateProvider {
 
             //Reinforced Glass
         this.simpleBlockWithItem(REINFORCED_GLASS.get(), this.models().cubeAll("reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass")).renderType("translucent"));
+        /*
         this.simpleBlockWithItem(WHITE_REINFORCED_GLASS.get(), this.models().cubeAll("white_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/white_reinforced_glass")).renderType("translucent"));
         this.simpleBlockWithItem(LIGHT_GRAY_REINFORCED_GLASS.get(), this.models().cubeAll("light_gray_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/light_gray_reinforced_glass")).renderType("translucent"));
         this.simpleBlockWithItem(GRAY_REINFORCED_GLASS.get(), this.models().cubeAll("gray_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/gray_reinforced_glass")).renderType("translucent"));
@@ -108,7 +110,33 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockWithItem(PURPLE_REINFORCED_GLASS.get(), this.models().cubeAll("purple_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/purple_reinforced_glass")).renderType("translucent"));
         this.simpleBlockWithItem(MAGENTA_REINFORCED_GLASS.get(), this.models().cubeAll("magenta_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/magenta_reinforced_glass")).renderType("translucent"));
         this.simpleBlockWithItem(PINK_REINFORCED_GLASS.get(), this.models().cubeAll("pink_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/pink_reinforced_glass")).renderType("translucent"));
+        */
 
+        for (DyeColor color : DyeColor.values()) {
+            Block block = DYED_REINFORCED_GLASS.get(color).get();
+            String name = color.getName() + "_reinforced_glass";
+
+            ModelFile full = this.models().cubeAll(name, this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + name)).renderType("translucent");
+
+            this.simpleBlockWithItem(block, full);
+        }
+
+        for (DyeColor color : DyeColor.values()) {
+            Block block = REINFORCED_GLASS_SLABS.get(color).get();
+            String name = color.getName() + "_reinforced_glass_slab";
+            ResourceLocation end = this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass");
+            ResourceLocation side = this.modLoc( ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass_slab");
+
+            ModelFile bottom = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/parents/polished_slab"))
+                    .texture("end", end).texture("side", side).renderType("translucent");
+            ModelFile top = this.models().withExistingParent(name + "_top", this.modLoc(ModelProvider.BLOCK_FOLDER + "/parents/polished_slab_top"))
+                    .texture("end", end).texture("side", side).renderType("translucent");
+            ModelFile doubleSlab = this.models().withExistingParent(name + "_double", this.modLoc(ModelProvider.BLOCK_FOLDER + "/parents/polished_slab_double"))
+                    .texture("end", end).texture("side", side).renderType("translucent");
+
+            this.slabBlock((SlabBlock) block, bottom, top, doubleSlab);
+            this.simpleBlockItem(block, bottom);
+        }
 
             //Misc
         this.simpleBlockItem(PIPE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/pipe")));

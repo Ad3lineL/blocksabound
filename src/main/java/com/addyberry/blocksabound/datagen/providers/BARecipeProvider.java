@@ -4,6 +4,7 @@ import com.addyberry.blocksabound.core.registry.BAItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -166,7 +167,6 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern(" N ")
                 .unlockedBy(getHasName(Items.GLASS), has(Items.GLASS)).save(output);
 
-
             //Misc
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BAItems.TAR, 8)
                 .requires(Ingredient.of(Items.HONEYCOMB, Items.SLIME_BALL))
@@ -183,6 +183,12 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, WHEEL)
+                .define('#', Items.DRIED_KELP_BLOCK).define('S', Items.STICK).define('P', ItemTags.PLANKS)
+                .pattern("S#S")
+                .pattern("P P")
+                .unlockedBy(getHasName(Items.DRIED_KELP_BLOCK), has(Items.DRIED_KELP_BLOCK)).save(output);
     }
 
     protected static void standardSet(RecipeOutput recipeOutput, ItemLike plate, ItemLike chiseled, ItemLike cut, ItemLike cutStair, ItemLike cutSlab, ItemLike trapdoor, ItemLike door) {

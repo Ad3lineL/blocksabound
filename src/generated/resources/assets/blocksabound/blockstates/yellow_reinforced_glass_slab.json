@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "blocksabound:block/yellow_reinforced_glass_slab"
+    },
+    "type=double": {
+      "model": "blocksabound:block/yellow_reinforced_glass_slab_double"
+    },
+    "type=top": {
+      "model": "blocksabound:block/yellow_reinforced_glass_slab_top"
+    }
+  }
+}

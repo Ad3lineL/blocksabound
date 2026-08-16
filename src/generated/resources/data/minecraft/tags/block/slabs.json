@@ -5,6 +5,22 @@
     "blocksabound:asphalt_slab",
     "blocksabound:tarmac_slab",
     "blocksabound:tarred_paper_slab",
-    "blocksabound:reinforced_iron_slab"
+    "blocksabound:reinforced_iron_slab",
+    "blocksabound:white_reinforced_glass_slab",
+    "blocksabound:orange_reinforced_glass_slab",
+    "blocksabound:magenta_reinforced_glass_slab",
+    "blocksabound:light_blue_reinforced_glass_slab",
+    "blocksabound:yellow_reinforced_glass_slab",
+    "blocksabound:lime_reinforced_glass_slab",
+    "blocksabound:pink_reinforced_glass_slab",
+    "blocksabound:gray_reinforced_glass_slab",
+    "blocksabound:light_gray_reinforced_glass_slab",
+    "blocksabound:cyan_reinforced_glass_slab",
+    "blocksabound:purple_reinforced_glass_slab",
+    "blocksabound:blue_reinforced_glass_slab",
+    "blocksabound:brown_reinforced_glass_slab",
+    "blocksabound:green_reinforced_glass_slab",
+    "blocksabound:red_reinforced_glass_slab",
+    "blocksabound:black_reinforced_glass_slab"
   ]
 }

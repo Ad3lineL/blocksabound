@@ -56,7 +56,7 @@ public class BACreativeModeTabs {
         }
         if(event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
             event.accept(BABlocks.REINFORCED_GLASS);
-            event.accept(BABlocks.WHITE_REINFORCED_GLASS);
+            /*event.accept(BABlocks.WHITE_REINFORCED_GLASS);
             event.accept(BABlocks.LIGHT_GRAY_REINFORCED_GLASS);
             event.accept(BABlocks.GRAY_REINFORCED_GLASS);
             event.accept(BABlocks.BLACK_REINFORCED_GLASS);
@@ -71,7 +71,7 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.BLUE_REINFORCED_GLASS);
             event.accept(BABlocks.PURPLE_REINFORCED_GLASS);
             event.accept(BABlocks.MAGENTA_REINFORCED_GLASS);
-            event.accept(BABlocks.PINK_REINFORCED_GLASS);
+            event.accept(BABlocks.PINK_REINFORCED_GLASS);*/
 
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {

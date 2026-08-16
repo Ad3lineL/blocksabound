@@ -158,7 +158,7 @@ public class WheelBlock extends FaceAttachedHorizontalDirectionalBlock {
             entity.setDeltaMovement(vec3.x, -vec3.y * d0, vec3.z);
         }
     }
-    
+
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return true;
     }
