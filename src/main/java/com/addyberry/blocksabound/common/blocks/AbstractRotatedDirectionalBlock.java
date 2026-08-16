@@ -31,9 +31,9 @@ public class AbstractRotatedDirectionalBlock extends DirectionalBlock {
         for(Direction direction : context.getNearestLookingDirections()) {
             BlockState blockstate;
             switch (direction.getAxis()) {
-                case Y -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getNearestLookingDirection().getAxis() == Direction.Axis.X);
-                case X -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getHorizontalDirection().getAxis() == Direction.Axis.Z);
-                default -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getHorizontalDirection().getAxis() == Direction.Axis.X);
+                case Y -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getHorizontalDirection().getAxis() == Direction.Axis.X);
+                case X -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getNearestLookingDirection().getAxis() == Direction.Axis.Z);
+                default -> blockstate = this.defaultBlockState().setValue(FACING, direction.getOpposite()).setValue(ROTATED, context.getNearestLookingDirection().getAxis() == Direction.Axis.X);
             }
 
             if (blockstate.canSurvive(context.getLevel(), context.getClickedPos())) {
