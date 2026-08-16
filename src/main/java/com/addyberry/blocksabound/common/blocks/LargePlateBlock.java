@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import org.jetbrains.annotations.Nullable;
 
 public class LargePlateBlock extends DirectionalBlock {
-    public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");;
+    public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");
 
     public LargePlateBlock(Properties properties) {
         super(properties);
