@@ -206,6 +206,12 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("S#S")
                 .pattern("P P")
                 .unlockedBy(getHasName(Items.DRIED_KELP_BLOCK), has(Items.DRIED_KELP_BLOCK)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BUMPER)
+                .define('#', Items.DRIED_KELP_BLOCK).define('X', REINFORCED_IRON)
+                .pattern("#")
+                .pattern("X")
+                .unlockedBy(getHasName(Items.DRIED_KELP_BLOCK), has(Items.DRIED_KELP_BLOCK)).save(output);
     }
 
     protected static void standardSet(RecipeOutput recipeOutput, ItemLike plate, ItemLike chiseled, ItemLike cut, ItemLike cutStair, ItemLike cutSlab, ItemLike trapdoor, ItemLike door) {

@@ -45,6 +45,7 @@ public class BABlockTagProvider extends BlockTagsProvider {
                 name.contains("fluorescent") ||
                 name.contains("hatch") ||
                 name.contains("vent") ||
+                name.contains("bumper") ||
                 name.contains("reinforced")) {
                 pickaxeMinable.add(block.get());
             }

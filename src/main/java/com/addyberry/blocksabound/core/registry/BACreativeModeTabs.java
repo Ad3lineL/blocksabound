@@ -88,6 +88,7 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.VENT);
             event.accept(BABlocks.PIPE);
             event.accept(BABlocks.WHEEL);
+            event.accept(BABlocks.BUMPER);
         }
         if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.insertAfter(Items.REDSTONE_LAMP.getDefaultInstance(), BABlocks.REDSTONE_LIGHT_BULB.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

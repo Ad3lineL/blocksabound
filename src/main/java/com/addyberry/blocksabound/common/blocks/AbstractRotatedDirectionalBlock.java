@@ -37,7 +37,8 @@ public class AbstractRotatedDirectionalBlock extends DirectionalBlock {
             }
 
             if (blockstate.canSurvive(context.getLevel(), context.getClickedPos())) {
-                return blockstate;
+                boolean flag = context.isSecondaryUseActive();
+                return flag ? blockstate.setValue(ROTATED, !blockstate.getValue(ROTATED)): blockstate;
             }
         }
 
@@ -49,6 +50,7 @@ public class AbstractRotatedDirectionalBlock extends DirectionalBlock {
         builder.add(FACING, ROTATED);
     }
 
+    @Override
     protected MapCodec<? extends DirectionalBlock> codec() {
         return null;
     }

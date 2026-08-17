@@ -1,6 +1,7 @@
 package com.addyberry.blocksabound.datagen.providers;
 
 import com.addyberry.blocksabound.BlocksAbound;
+import com.addyberry.blocksabound.common.blocks.BumperBlock;
 import com.addyberry.blocksabound.common.blocks.WheelBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -93,24 +94,6 @@ public class BABlockstateProvider extends BlockStateProvider {
 
             //Reinforced Glass
         this.simpleBlockWithItem(REINFORCED_GLASS.get(), this.models().cubeAll("reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass")).renderType("translucent"));
-        /*
-        this.simpleBlockWithItem(WHITE_REINFORCED_GLASS.get(), this.models().cubeAll("white_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/white_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(LIGHT_GRAY_REINFORCED_GLASS.get(), this.models().cubeAll("light_gray_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/light_gray_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(GRAY_REINFORCED_GLASS.get(), this.models().cubeAll("gray_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/gray_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(BLACK_REINFORCED_GLASS.get(), this.models().cubeAll("black_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/black_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(BROWN_REINFORCED_GLASS.get(), this.models().cubeAll("brown_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/brown_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(RED_REINFORCED_GLASS.get(), this.models().cubeAll("red_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/red_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(ORANGE_REINFORCED_GLASS.get(), this.models().cubeAll("orange_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/orange_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(YELLOW_REINFORCED_GLASS.get(), this.models().cubeAll("yellow_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/yellow_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(LIME_REINFORCED_GLASS.get(), this.models().cubeAll("lime_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/lime_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(GREEN_REINFORCED_GLASS.get(), this.models().cubeAll("green_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/green_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(CYAN_REINFORCED_GLASS.get(), this.models().cubeAll("cyan_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/cyan_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(LIGHT_BLUE_REINFORCED_GLASS.get(), this.models().cubeAll("light_blue_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/light_blue_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(BLUE_REINFORCED_GLASS.get(), this.models().cubeAll("blue_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/blue_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(PURPLE_REINFORCED_GLASS.get(), this.models().cubeAll("purple_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/purple_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(MAGENTA_REINFORCED_GLASS.get(), this.models().cubeAll("magenta_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/magenta_reinforced_glass")).renderType("translucent"));
-        this.simpleBlockWithItem(PINK_REINFORCED_GLASS.get(), this.models().cubeAll("pink_reinforced_glass", this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/pink_reinforced_glass")).renderType("translucent"));
-        */
 
         for (DyeColor color : DyeColor.values()) {
             Block block = DYED_REINFORCED_GLASS.get(color).get();

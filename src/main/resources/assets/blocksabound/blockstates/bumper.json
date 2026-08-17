@@ -1,53 +1,53 @@
 {
   "variants": {
     "facing=down,rotated=true": {
-      "model": "blocksabound:block/wheel",
+      "model": "blocksabound:block/bumper",
       "x": 180,
       "y": 90
     },
     "facing=down,rotated=false": {
-      "model": "blocksabound:block/wheel",
+      "model": "blocksabound:block/bumper",
       "x": 180
     },
     "facing=up,rotated=true": {
-      "model": "blocksabound:block/wheel",
+      "model": "blocksabound:block/bumper",
       "y": 90
     },
     "facing=up,rotated=false": {
-      "model": "blocksabound:block/wheel"
+      "model": "blocksabound:block/bumper"
     },
     "facing=east,rotated=false": {
-      "model": "blocksabound:block/wheel",
+      "model": "blocksabound:block/bumper",
       "x": 90,
       "y": 90
     },
      "facing=east,rotated=true": {
-      "model": "blocksabound:block/wheel_rotated",
+      "model": "blocksabound:block/bumper_rotated",
       "y": 90
     },
     "facing=north,rotated=false": {
-      "model": "blocksabound:block/wheel",
+      "model": "blocksabound:block/bumper",
       "x": 90
     },
     "facing=north,rotated=true": {
-      "model": "blocksabound:block/wheel_rotated"
+      "model": "blocksabound:block/bumper_rotated"
     },
     "facing=south,rotated=false": {
-      "model": "blocksabound:block/wheel",
+      "model": "blocksabound:block/bumper",
       "x": 90,
       "y": 180
     },
     "facing=south,rotated=true": {
-      "model": "blocksabound:block/wheel_rotated",
+      "model": "blocksabound:block/bumper_rotated",
       "y": 180
     },
     "facing=west,rotated=false": {
-      "model": "blocksabound:block/wheel",
+      "model": "blocksabound:block/bumper",
       "x": 90,
       "y": 270
     },
     "facing=west,rotated=true": {
-      "model": "blocksabound:block/wheel_rotated",
+      "model": "blocksabound:block/bumper_rotated",
       "y": 270
     }
   }
