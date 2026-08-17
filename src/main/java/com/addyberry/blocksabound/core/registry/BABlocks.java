@@ -111,7 +111,7 @@ public class BABlocks {
     public static BlockBehaviour.Properties getReinforcedIronProperties() {
         return BlockBehaviour.Properties.of()
                 .mapColor(MapColor.COLOR_GRAY)
-                .strength(1F, 4.0F)
+                .strength(1F, 6.0F)
                 .sound(SoundType.METAL)
                 .requiresCorrectToolForDrops();
     }
@@ -119,6 +119,7 @@ public class BABlocks {
     public static final DeferredBlock<Block> REINFORCED_IRON_STAIRS = registerBlock("reinforced_iron_stairs", () -> new StairBlock(REINFORCED_IRON.get().defaultBlockState(), getReinforcedIronProperties()));
     public static final DeferredBlock<Block> REINFORCED_IRON_SLAB = registerBlock("reinforced_iron_slab", () -> new SlabBlock(getReinforcedIronProperties()));
     public static final DeferredBlock<Block> CHISELED_REINFORCED_IRON = registerBlock("chiseled_reinforced_iron", () -> new Block(getReinforcedIronProperties()));
+    public static final DeferredBlock<Block> REINFORCED_IRON_WALL = registerBlock("reinforced_iron_wall", () -> new WallBlock(getReinforcedIronProperties()));
 
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> VENT = registerBlock("vent", () -> new VentBlock(getReinforcedIronProperties().noOcclusion()));
@@ -129,7 +130,7 @@ public class BABlocks {
         //Reinforced Glass
     public static BlockBehaviour.Properties getReinforcedGlassProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                .strength(1F, 4.0F)
+                .strength(1F, 6.0F)
                 .requiresCorrectToolForDrops();
     }
     public static final DeferredBlock<Block> REINFORCED_GLASS = registerBlock("reinforced_glass", () -> new TransparentBlock(getReinforcedGlassProperties()));
@@ -144,11 +145,11 @@ public class BABlocks {
 
     public static final DeferredBlock<Block> REINFORCED_GLASS_SLAB = registerBlock("reinforced_glass_slab", () -> new SlabBlock(getReinforcedGlassProperties()));
 
-    public static final Map<DyeColor, DeferredBlock<Block>> DYED_REINFORCED_GLASS_SLABS = new EnumMap<>(DyeColor.class);
+    public static final Map<DyeColor, DeferredBlock<Block>> DYED_REINFORCED_GLASS_SLAB = new EnumMap<>(DyeColor.class);
     private static DeferredBlock<Block> registerGlassSlab(DyeColor color) {
         DeferredBlock<Block> block = registerBlock(color.getName() + "_reinforced_glass_slab",
                 () -> new SlabBlock(getReinforcedGlassProperties()));
-        DYED_REINFORCED_GLASS_SLABS.put(color, block);
+        DYED_REINFORCED_GLASS_SLAB.put(color, block);
         return block;
     }
 

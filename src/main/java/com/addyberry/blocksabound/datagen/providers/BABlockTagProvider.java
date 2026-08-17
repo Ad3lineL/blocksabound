@@ -24,6 +24,7 @@ public class BABlockTagProvider extends BlockTagsProvider {
         IntrinsicTagAppender<Block> slabs = this.tag(BlockTags.SLABS).replace(false);
         IntrinsicTagAppender<Block> doors = this.tag(BlockTags.DOORS).replace(false);
         IntrinsicTagAppender<Block> trapdoors = this.tag(BlockTags.TRAPDOORS).replace(false);
+        IntrinsicTagAppender<Block> walls = this.tag(BlockTags.WALLS).replace(false);
 
         IntrinsicTagAppender<Block> pickaxeMinable = this.tag(BlockTags.MINEABLE_WITH_PICKAXE).replace(false);
         IntrinsicTagAppender<Block> axeMinable = this.tag(BlockTags.MINEABLE_WITH_AXE).replace(false);
@@ -69,6 +70,9 @@ public class BABlockTagProvider extends BlockTagsProvider {
             }
             if (name.contains("trapdoor")) {
                 trapdoors.add(block.get());
+            }
+            if (name.contains("wall")) {
+                walls.add(block.get());
             }
             if (name.contains("glass")) {
                 impermeable.add(block.get());

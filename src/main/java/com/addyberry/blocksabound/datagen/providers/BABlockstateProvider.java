@@ -103,9 +103,21 @@ public class BABlockstateProvider extends BlockStateProvider {
 
             this.simpleBlockWithItem(block, full);
         }
+        this.slabBlock((SlabBlock) REINFORCED_GLASS_SLAB.get(),
+                this.models().withExistingParent("reinforced_glass_slab", this.modLoc( ModelProvider.BLOCK_FOLDER + "/parents/polished_slab"))
+                        .texture("end", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass")).texture("side", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass_slab")).renderType("translucent"),
+                this.models().withExistingParent("reinforced_glass_slab_top", this.modLoc(ModelProvider.BLOCK_FOLDER + "/parents/polished_slab_top"))
+                        .texture("end", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass")).texture("side", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass_slab")).renderType("translucent"),
+                this.models().withExistingParent("reinforced_glass_slab_double", this.modLoc(ModelProvider.BLOCK_FOLDER + "/parents/polished_slab_double"))
+                        .texture("end", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass")).texture("side", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass_slab")).renderType("translucent")
+        );
+        this.simpleBlockItem(REINFORCED_GLASS_SLAB.get(), this.models().withExistingParent("reinforced_glass_slab", this.modLoc( ModelProvider.BLOCK_FOLDER + "/parents/polished_slab")));
+
+
+
 
         for (DyeColor color : DyeColor.values()) {
-            Block block = DYED_REINFORCED_GLASS_SLABS.get(color).get();
+            Block block = DYED_REINFORCED_GLASS_SLAB.get(color).get();
             String name = color.getName() + "_reinforced_glass_slab";
             ResourceLocation end = this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass");
             ResourceLocation side = this.modLoc( ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass_slab");
@@ -127,6 +139,7 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.simpleBlockItem(REINFORCED_IRON_STAIRS.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_iron_stairs_west")));
         this.simpleBlockItem(REINFORCED_IRON_SLAB.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_iron_slab")));
         this.simpleBlockWithItem(CHISELED_REINFORCED_IRON.get(), this.models().cubeColumn("chiseled_reinforced_iron", this.modLoc(ModelProvider.BLOCK_FOLDER + "/chiseled_reinforced_iron"), this.modLoc(ModelProvider.BLOCK_FOLDER + "/chiseled_reinforced_iron_end")));
+        this.simpleBlockItem(REINFORCED_IRON_WALL.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_iron_wall_inventory")));
 
         this.flatBlockItem(LIGHT_BULB.get());
         this.flatBlockItem(SOUL_LIGHT_BULB.get());

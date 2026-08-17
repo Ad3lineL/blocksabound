@@ -3,6 +3,7 @@ package com.addyberry.blocksabound.core.registry;
 import com.addyberry.blocksabound.BlocksAbound;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -56,22 +57,39 @@ public class BACreativeModeTabs {
         }
         if(event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
             event.accept(BABlocks.REINFORCED_GLASS);
-            /*event.accept(BABlocks.WHITE_REINFORCED_GLASS);
-            event.accept(BABlocks.LIGHT_GRAY_REINFORCED_GLASS);
-            event.accept(BABlocks.GRAY_REINFORCED_GLASS);
-            event.accept(BABlocks.BLACK_REINFORCED_GLASS);
-            event.accept(BABlocks.BROWN_REINFORCED_GLASS);
-            event.accept(BABlocks.RED_REINFORCED_GLASS);
-            event.accept(BABlocks.ORANGE_REINFORCED_GLASS);
-            event.accept(BABlocks.YELLOW_REINFORCED_GLASS);
-            event.accept(BABlocks.LIME_REINFORCED_GLASS);
-            event.accept(BABlocks.GREEN_REINFORCED_GLASS);
-            event.accept(BABlocks.CYAN_REINFORCED_GLASS);
-            event.accept(BABlocks.LIGHT_BLUE_REINFORCED_GLASS);
-            event.accept(BABlocks.BLUE_REINFORCED_GLASS);
-            event.accept(BABlocks.PURPLE_REINFORCED_GLASS);
-            event.accept(BABlocks.MAGENTA_REINFORCED_GLASS);
-            event.accept(BABlocks.PINK_REINFORCED_GLASS);*/
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.WHITE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_GRAY));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.GRAY));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.BLACK));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.BROWN));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.RED));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.ORANGE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.YELLOW));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.LIME));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.GREEN));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.CYAN));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_BLUE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.BLUE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.PURPLE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.MAGENTA));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS.get(DyeColor.PINK));
+            event.accept(BABlocks.REINFORCED_GLASS_SLAB);
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.WHITE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.LIGHT_GRAY));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.GRAY));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.BLACK));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.BROWN));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.RED));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.ORANGE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.YELLOW));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.LIME));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.GREEN));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.CYAN));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.LIGHT_BLUE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.BLUE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.PURPLE));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.MAGENTA));
+            event.accept(BABlocks.DYED_REINFORCED_GLASS_SLAB.get(DyeColor.PINK));
 
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {

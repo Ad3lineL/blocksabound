@@ -1,0 +1,7 @@
+{
+	"parent": "blocksabound:block/parents/polished_wall_side",
+	"textures": {
+		"wall": "blocksabound:block/reinforced_iron_wall",
+		"wall_top": "blocksabound:block/reinforced_iron_wall_top"
+	}
+}

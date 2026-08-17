@@ -60,22 +60,22 @@ public class BARecipeProvider extends RecipeProvider {
 
             //Reinforced Glass
         reinforcedGlassSet(output, REINFORCED_GLASS, REINFORCED_GLASS_SLAB, Items.GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.WHITE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.WHITE), Items.WHITE_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_GRAY), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.LIGHT_GRAY), Items.LIGHT_GRAY_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.GRAY), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.GRAY), Items.GRAY_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BLACK), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.BLACK), Items.BLACK_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BROWN), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.BROWN), Items.BROWN_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.RED), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.RED), Items.RED_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.ORANGE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.ORANGE), Items.ORANGE_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.YELLOW), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.YELLOW), Items.YELLOW_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIME), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.LIME), Items.LIME_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.GREEN), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.GREEN), Items.GREEN_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.CYAN), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.CYAN), Items.CYAN_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_BLUE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.LIGHT_BLUE), Items.LIGHT_BLUE_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BLUE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.BLUE), Items.BLUE_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.PURPLE), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.PURPLE), Items.PURPLE_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.MAGENTA), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.MAGENTA), Items.MAGENTA_STAINED_GLASS);
-        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.PINK), DYED_REINFORCED_GLASS_SLABS.get(DyeColor.PINK), Items.PINK_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.WHITE), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.WHITE), Items.WHITE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_GRAY), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.LIGHT_GRAY), Items.LIGHT_GRAY_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.GRAY), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.GRAY), Items.GRAY_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BLACK), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.BLACK), Items.BLACK_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BROWN), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.BROWN), Items.BROWN_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.RED), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.RED), Items.RED_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.ORANGE), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.ORANGE), Items.ORANGE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.YELLOW), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.YELLOW), Items.YELLOW_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIME), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.LIME), Items.LIME_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.GREEN), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.GREEN), Items.GREEN_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.CYAN), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.CYAN), Items.CYAN_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.LIGHT_BLUE), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.LIGHT_BLUE), Items.LIGHT_BLUE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.BLUE), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.BLUE), Items.BLUE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.PURPLE), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.PURPLE), Items.PURPLE_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.MAGENTA), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.MAGENTA), Items.MAGENTA_STAINED_GLASS);
+        reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.PINK), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.PINK), Items.PINK_STAINED_GLASS);
 
 
         //Asphalt
