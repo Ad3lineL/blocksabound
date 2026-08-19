@@ -1,6 +1,6 @@
 package com.addyberry.blocksabound.mixin;
 
-import com.addyberry.blocksabound.common.blocks.LargePlateBlock;
+import com.addyberry.blocksabound.common.block.LargePlateBlock;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;

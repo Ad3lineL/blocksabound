@@ -1,6 +1,6 @@
-package com.addyberry.blocksabound.common.items;
+package com.addyberry.blocksabound.common.item;
 
-import com.addyberry.blocksabound.common.blocks.LargePlateBlock;
+import com.addyberry.blocksabound.common.block.LargePlateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.BlockItem;

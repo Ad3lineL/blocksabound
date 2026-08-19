@@ -1,4 +1,4 @@
-package com.addyberry.blocksabound.common.blocks;
+package com.addyberry.blocksabound.common.block;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
 import net.minecraft.core.BlockPos;
@@ -13,11 +13,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
 public class TarBlock extends Block {
     public static final BooleanProperty BOILING = BooleanProperty.create("boiling");

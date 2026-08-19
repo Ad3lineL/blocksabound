@@ -1,7 +1,7 @@
 package com.addyberry.blocksabound.mixin;
 
-import com.addyberry.blocksabound.common.blocks.IronPipeBlock;
-import com.addyberry.blocksabound.common.blocks.IronPipeJunctionBlock;
+import com.addyberry.blocksabound.common.block.IronPipeBlock;
+import com.addyberry.blocksabound.common.block.IronPipeJunctionBlock;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;

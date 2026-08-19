@@ -1,4 +1,4 @@
-package com.addyberry.blocksabound.common.blocks;
+package com.addyberry.blocksabound.common.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

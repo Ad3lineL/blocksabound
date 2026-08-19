@@ -1,4 +1,4 @@
-package com.addyberry.blocksabound.common.blocks;
+package com.addyberry.blocksabound.common.block;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
 import com.google.common.collect.ImmutableMap;

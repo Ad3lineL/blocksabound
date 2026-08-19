@@ -1,4 +1,4 @@
-package com.addyberry.blocksabound.common.blocks;
+package com.addyberry.blocksabound.common.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

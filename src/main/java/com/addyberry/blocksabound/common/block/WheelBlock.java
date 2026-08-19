@@ -1,4 +1,4 @@
-package com.addyberry.blocksabound.common.blocks;
+package com.addyberry.blocksabound.common.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -143,6 +143,16 @@ public class WheelBlock extends AbstractRotatedDirectionalBlock {
 
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return this.getVoxelShape(state);
+    }
+
+    @Override
+    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        if (!entity.isSteppingCarefully()) {
+            if (state.getValue(FACING) == Direction.UP) {
+                Vec3 towardsCenter = entity.position().vectorTo(Vec3.atCenterOf(pos)).multiply(state.getValue(ROTATED) ? 0.3 : 0, 0, !state.getValue(ROTATED) ? 0.3 : 0);
+                entity.addDeltaMovement(towardsCenter.multiply(-1, 0, -1));
+            }
+        }
     }
 
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {

@@ -37,6 +37,7 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.REINFORCED_IRON);
             event.accept(BABlocks.REINFORCED_IRON_STAIRS);
             event.accept(BABlocks.REINFORCED_IRON_SLAB);
+            event.accept(BABlocks.REINFORCED_IRON_WALL);
             event.accept(BABlocks.CHISELED_REINFORCED_IRON);
 
             event.accept(BABlocks.TAR_BLOCK);

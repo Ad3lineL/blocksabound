@@ -1,7 +1,7 @@
 package com.addyberry.blocksabound.core.registry;
 
 import com.addyberry.blocksabound.BlocksAbound;
-import com.addyberry.blocksabound.common.items.LargePlateBlockItem;
+import com.addyberry.blocksabound.common.item.LargePlateBlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;

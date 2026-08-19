@@ -3,6 +3,6 @@
 	"textures": {
 		"wall": "blocksabound:block/reinforced_iron_wall",
 		"wall_tall": "blocksabound:block/reinforced_iron_wall_tall",
-		"wall_top": "blocksabound:block/reinforced_iron_wall_top"
+		"wall_post_top": "blocksabound:block/reinforced_iron_wall_post_top"
 	}
 }

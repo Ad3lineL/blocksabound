@@ -1,8 +1,6 @@
 package com.addyberry.blocksabound.datagen.providers;
 
 import com.addyberry.blocksabound.BlocksAbound;
-import com.addyberry.blocksabound.common.blocks.BumperBlock;
-import com.addyberry.blocksabound.common.blocks.WheelBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -10,7 +8,6 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.TrapDoorBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
@@ -112,8 +109,6 @@ public class BABlockstateProvider extends BlockStateProvider {
                         .texture("end", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass")).texture("side", this.modLoc(ModelProvider.BLOCK_FOLDER + "/reinforced_glass_slab")).renderType("translucent")
         );
         this.simpleBlockItem(REINFORCED_GLASS_SLAB.get(), this.models().withExistingParent("reinforced_glass_slab", this.modLoc( ModelProvider.BLOCK_FOLDER + "/parents/polished_slab")));
-
-
 
 
         for (DyeColor color : DyeColor.values()) {

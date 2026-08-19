@@ -1,7 +1,7 @@
 package com.addyberry.blocksabound.mixin;
 
-import com.addyberry.blocksabound.common.blocks.IronPipeBlock;
-import com.addyberry.blocksabound.common.blocks.IronPipeJunctionBlock;
+import com.addyberry.blocksabound.common.block.IronPipeBlock;
+import com.addyberry.blocksabound.common.block.IronPipeJunctionBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;

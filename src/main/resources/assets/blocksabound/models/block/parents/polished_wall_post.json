@@ -1,7 +1,7 @@
 {
 	"textures": {
 		"1": "#wall_tall",
-		"2": "#wall_top",
+		"2": "#wall_post_top",
 		"particle": "#wall"
 	},
 	"elements": [
