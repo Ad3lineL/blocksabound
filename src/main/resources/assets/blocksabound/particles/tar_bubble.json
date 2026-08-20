@@ -1,6 +1,8 @@
 {
   "textures": [
     "blocksabound:tar_bubble_0",
-    "blocksabound:tar_bubble_1"
+    "blocksabound:tar_bubble_1",
+    "blocksabound:tar_bubble_2",
+    "blocksabound:tar_bubble_3"
   ]
 }

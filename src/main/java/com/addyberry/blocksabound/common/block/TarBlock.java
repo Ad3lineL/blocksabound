@@ -1,8 +1,11 @@
 package com.addyberry.blocksabound.common.block;
 
 import com.addyberry.blocksabound.core.registry.BABlocks;
+import com.addyberry.blocksabound.core.registry.BAParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -16,12 +19,14 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.checkerframework.common.returnsreceiver.qual.This;
 
 public class TarBlock extends Block {
     public static final BooleanProperty BOILING = BooleanProperty.create("boiling");
     protected static final VoxelShape OUTLINE_SHAPE;
     protected static final VoxelShape COLLISION_SHAPE;
     protected static final VoxelShape BOILING_SHAPE;
+    protected final RandomSource random = RandomSource.create();
 
     public TarBlock(Properties properties) {
         super(properties);
@@ -75,6 +80,19 @@ public class TarBlock extends Block {
         }
 
         return state;
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        double d0 = (double)pos.getX() + 0.05 + 0.9*random.nextDouble();
+        double d1 = (double)pos.getY() + 1.05;
+        double d2 = (double)pos.getZ() + 0.05 + 0.9*random.nextDouble();
+        BlockState aboveState = level.getBlockState(pos.relative(Direction.UP));
+        if (state.getValue(BOILING) && !state.isCollisionShapeFullBlock(level, pos.relative(Direction.UP)) && !aboveState.is(this)) {
+            if (this.random.nextInt(3) == 0) {
+                level.addParticle(BAParticles.TAR_BUBBLE.get(), d0, d1, d2, 0.0, 0.0, 0.0);
+            }
+        }
     }
 
     @Override

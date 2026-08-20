@@ -1,0 +1,8 @@
+{
+  "particle.tar_bubble.pop": {
+    "sounds": [
+      "liquid/lavapop"
+    ],
+    "subtitle": "blocksabound.subtitle.particle.tar_bubble.pop"
+  }
+}

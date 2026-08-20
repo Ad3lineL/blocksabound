@@ -3,6 +3,8 @@ package com.addyberry.blocksabound;
 import com.addyberry.blocksabound.core.registry.BABlocks;
 import com.addyberry.blocksabound.core.registry.BAItems;
 import com.addyberry.blocksabound.core.registry.BAParticles;
+import com.addyberry.blocksabound.core.registry.BASounds;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -37,12 +39,15 @@ public class BlocksAbound {
         BABlocks.register(modEventBus);
         BAItems.register(modEventBus);
         BAParticles.register(modEventBus);
+        BASounds.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
 
     }
-
+    public static ResourceLocation location(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
@@ -50,12 +55,5 @@ public class BlocksAbound {
 
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @EventBusSubscriber(modid = BlocksAbound.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    static class ClientModEvents {
-        @SubscribeEvent
-        static void onClientSetup(FMLClientSetupEvent event) {
 
-        }
-    }
 }

@@ -80,6 +80,8 @@
   "block.blocksabound.pink_reinforced_glass_slab": "Pink Reinforced Glass Slab",
 
   "item.blocksabound.tar": "Tar",
+  
+  "blocksabound.subtitle.particle.tar_bubble.pop": "Tar Boils",
 
   "blocksabound.configuration.title": "Blocks Abound Configs",
   "blocksabound.configuration.section.blocksabound.common.toml": "Blocks Abound Configs",
