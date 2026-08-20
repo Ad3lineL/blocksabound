@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "blocksabound:copper_light_bulb"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "blocksabound:blocks/copper_light_bulb"
+}

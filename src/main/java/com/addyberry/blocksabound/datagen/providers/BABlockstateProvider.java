@@ -139,6 +139,7 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.flatBlockItem(LIGHT_BULB.get());
         this.flatBlockItem(SOUL_LIGHT_BULB.get());
         this.flatBlockItem(REDSTONE_LIGHT_BULB.get());
+        this.flatBlockItem(COPPER_LIGHT_BULB.get());
 
         this.flatBlockItem(COLD_FLUORESCENT_TUBE.get());
         this.flatBlockItem(COOL_FLUORESCENT_TUBE.get());

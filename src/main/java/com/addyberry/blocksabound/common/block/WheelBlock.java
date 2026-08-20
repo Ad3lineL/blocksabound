@@ -148,9 +148,32 @@ public class WheelBlock extends AbstractRotatedDirectionalBlock {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if (!entity.isSteppingCarefully()) {
-            if (state.getValue(FACING) == Direction.UP) {
-                Vec3 towardsCenter = entity.position().vectorTo(Vec3.atCenterOf(pos)).multiply(state.getValue(ROTATED) ? 0.3 : 0, 0, !state.getValue(ROTATED) ? 0.3 : 0);
-                entity.addDeltaMovement(towardsCenter.multiply(-1, 0, -1));
+            switch (state.getValue(FACING)) {
+                case UP -> {
+                    Vec3 towardsCenter = entity.position().vectorTo(Vec3.atCenterOf(pos)).multiply(state.getValue(ROTATED) ? 0.3 : 0, 0, !state.getValue(ROTATED) ? 0.3 : 0);
+                    entity.addDeltaMovement(towardsCenter.reverse());
+                }
+                case EAST -> {
+                    if (!state.getValue(ROTATED)) {
+                        entity.addDeltaMovement(new Vec3(0.1, 0, 0));
+                    }
+                }
+                case WEST -> {
+                    if (!state.getValue(ROTATED)) {
+                        entity.addDeltaMovement(new Vec3(-0.1, 0, 0));
+                    }
+                }
+                case NORTH -> {
+                    if (!state.getValue(ROTATED)) {
+                        entity.addDeltaMovement(new Vec3(0, 0, -0.1));
+                    }
+                }
+                case SOUTH -> {
+                    if (!state.getValue(ROTATED)) {
+                        entity.addDeltaMovement(new Vec3(0, 0, 0.1));
+                    }
+                }
+                default -> {}
             }
         }
     }
