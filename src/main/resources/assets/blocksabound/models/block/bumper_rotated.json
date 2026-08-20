@@ -3,21 +3,21 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"1": "blocksabound:block/bumper_back",
+		"1": "blocksabound:block/reinforced_iron_vertical_slab",
 		"2": "blocksabound:block/bumper_side",
-		"3": "blocksabound:block/bumper_front",
-		"particle": "blocksabound:block/bumper_back"
+		"3": "blocksabound:block/bumper",
+		"particle": "blocksabound:block/bumper"
 	},
 	"elements": [
 		{
-			"from": [4, 4, 8],
-			"to": [12, 12, 16],
+			"from": [4, 0, 8],
+			"to": [12, 16, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 4, 8]},
 			"faces": {
-				"north": {"uv": [4, 4, 12, 12], "rotation": 90, "texture": "#3"},
-				"east": {"uv": [4, 4, 12, 12], "rotation": 90, "texture": "#2"},
-				"south": {"uv": [4, 4, 12, 12], "texture": "#1"},
-				"west": {"uv": [4, 4, 12, 12], "rotation": 270, "texture": "#2"},
+				"north": {"uv": [0, 0, 16, 8], "rotation": 90, "texture": "#3"},
+				"east": {"uv": [0, 8, 16, 16], "rotation": 90, "texture": "#3"},
+				"south": {"uv": [0, 0, 8, 16], "texture": "#1"},
+				"west": {"uv": [16, 8, 0, 16], "rotation": 270, "texture": "#3"},
 				"up": {"uv": [4, 4, 12, 12], "texture": "#2"},
 				"down": {"uv": [4, 4, 12, 12], "rotation": 180, "texture": "#2"}
 			}

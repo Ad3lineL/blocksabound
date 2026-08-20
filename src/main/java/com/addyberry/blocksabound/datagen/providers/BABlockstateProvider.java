@@ -174,6 +174,7 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.flatBlockItem(ABERRANT_FLUORESCENT_TUBE.get());
 
         this.simpleBlockItem(WHEEL.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/wheel")));
+        this.simpleBlockItem(BUMPER.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/bumper")));
     }
 
     //shamelessly stolen from cappin im not sory

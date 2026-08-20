@@ -26,7 +26,7 @@ public class TarBubbleParticle extends TextureSheetParticle {
             this.move(0, -0.002, 0);
         }
         if (this.age++ >= this.lifetime) {
-            if (this.random.nextInt(12) == 0)
+            if (this.random.nextInt(6) == 0)
                 this.level.playLocalSound(this.x, this.y, this.z, BASounds.TAR_BUBBLE_POP.get(), SoundSource.AMBIENT, 0.1F + (float) Math.random()/4F, this.random.nextFloat()+0.4F, true);
             this.remove();
         }

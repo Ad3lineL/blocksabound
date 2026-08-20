@@ -10,11 +10,11 @@
     }
   },
   "pattern": [
-    "#",
-    "X"
+    "##",
+    "XX"
   ],
   "result": {
-    "count": 1,
+    "count": 4,
     "id": "blocksabound:bumper"
   }
 }

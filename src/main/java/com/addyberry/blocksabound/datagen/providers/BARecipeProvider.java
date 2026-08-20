@@ -207,10 +207,10 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("P P")
                 .unlockedBy(getHasName(Items.DRIED_KELP_BLOCK), has(Items.DRIED_KELP_BLOCK)).save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BUMPER)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BUMPER, 4)
                 .define('#', Items.DRIED_KELP_BLOCK).define('X', REINFORCED_IRON)
-                .pattern("#")
-                .pattern("X")
+                .pattern("##")
+                .pattern("XX")
                 .unlockedBy(getHasName(Items.DRIED_KELP_BLOCK), has(Items.DRIED_KELP_BLOCK)).save(output);
     }
 

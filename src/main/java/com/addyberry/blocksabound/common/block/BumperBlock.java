@@ -18,12 +18,18 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BumperBlock extends AbstractRotatedDirectionalBlock {
-    public static final VoxelShape UP = Block.box(4.0F, 0.0F, 4.0F, 12.0F, 8.0F, 12.0F);
-    public static final VoxelShape DOWN = Block.box(4.0F, 8.0F, 4.0F, 12.0F, 16.0F, 12.0F);
-    public static final VoxelShape EAST = Block.box(0.0F, 4.0F, 4.0F, 8.0F, 12.0F, 12.0F);
-    public static final VoxelShape WEST = Block.box(8.0F, 4.0F, 4.0F, 16.0F, 12.0F, 12.0F);
-    public static final VoxelShape NORTH = Block.box(4.0F, 4.0F, 8.0F, 12.0F, 12.0F, 16.0F);
-    public static final VoxelShape SOUTH = Block.box(4.0F, 4.0F, 0.0F, 12.0F, 12.0F, 8.0F);
+    public static final VoxelShape UP_X = Block.box(0.0F, 0.0F, 4.0F, 16.0F, 8.0F, 12.0F);
+    public static final VoxelShape UP_Z = Block.box(4.0F, 0.0F, 0.0F, 12.0F, 8.0F, 16.0F);
+    public static final VoxelShape DOWN_X = Block.box(0.0F, 8.0F, 4.0F, 16.0F, 16.0F, 12.0F);
+    public static final VoxelShape DOWN_Z = Block.box(4.0F, 8.0F, 0.0F, 12.0F, 16.0F, 16.0F);
+    public static final VoxelShape EAST = Block.box(0.0F, 4.0F, 0.0F, 8.0F, 12.0F, 16.0F);
+    public static final VoxelShape EAST_UP = Block.box(0.0F, 0.0F, 4.0F, 8.0F, 16.0F, 12.0F);
+    public static final VoxelShape WEST = Block.box(8.0F, 4.0F, 0.0F, 16.0F, 12.0F, 16.0F);
+    public static final VoxelShape WEST_UP = Block.box(8.0F, 0.0F, 4.0F, 16.0F, 16.0F, 12.0F);
+    public static final VoxelShape NORTH = Block.box(0.0F, 4.0F, 8.0F, 16.0F, 12.0F, 16.0F);
+    public static final VoxelShape NORTH_UP = Block.box(4.0F, 0.0F, 8.0F, 12.0F, 16.0F, 16.0F);
+    public static final VoxelShape SOUTH = Block.box(0.0F, 4.0F, 0.0F, 16.0F, 12.0F, 8.0F);
+    public static final VoxelShape SOUTH_UP = Block.box(4.0F, 0.0F, 0.0F, 12.0F, 16.0F, 8.0F);
 
     public BumperBlock(Properties properties) {
         super(properties);
@@ -38,13 +44,14 @@ public class BumperBlock extends AbstractRotatedDirectionalBlock {
 
     private VoxelShape getVoxelShape(BlockState state) {
         Direction direction = state.getValue(FACING);
+        Boolean rotated = state.getValue(ROTATED);
         return switch (direction) {
-            case UP -> UP;
-            case DOWN -> DOWN;
-            case EAST -> EAST;
-            case WEST -> WEST;
-            case NORTH -> NORTH;
-            default -> SOUTH;
+            case UP -> rotated ? UP_Z : UP_X;
+            case DOWN -> rotated ? DOWN_Z : DOWN_X;
+            case EAST -> rotated ? EAST_UP : EAST;
+            case WEST -> rotated ? WEST_UP : WEST;
+            case NORTH -> rotated ? NORTH_UP : NORTH;
+            default -> rotated ? SOUTH_UP : SOUTH;
         };
     }
 
