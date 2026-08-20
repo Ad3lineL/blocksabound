@@ -12,7 +12,7 @@ public class TarBubbleParticle extends TextureSheetParticle {
     protected TarBubbleParticle(ClientLevel level, SpriteSet spriteSet, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
         this.pickSprite(spriteSet);
-        this.lifetime = (int) (20 * (Math.random() + 1.5));
+        this.lifetime = (int) (40 * (Math.random() + 1.5));
         this.friction = 0.8F;
         this.gravity = 0.0005F;
         this.quadSize = 0.2F;

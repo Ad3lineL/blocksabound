@@ -89,7 +89,7 @@ public class TarBlock extends Block {
         double d2 = (double)pos.getZ() + 0.05 + 0.9*random.nextDouble();
         BlockState aboveState = level.getBlockState(pos.relative(Direction.UP));
         if (state.getValue(BOILING) && !state.isCollisionShapeFullBlock(level, pos.relative(Direction.UP)) && !aboveState.is(this)) {
-            if (this.random.nextInt(3) == 0) {
+            if (this.random.nextInt(6) == 0) {
                 level.addParticle(BAParticles.TAR_BUBBLE.get(), d0, d1, d2, 0.0, 0.0, 0.0);
             }
         }

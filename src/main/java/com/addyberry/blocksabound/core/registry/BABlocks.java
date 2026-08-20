@@ -194,8 +194,6 @@ public class BABlocks {
     */
 
 
-
-
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, final Supplier<T> supplier) {
         DeferredBlock<T> block = BLOCKS.register(name, supplier);
         BABlocks.BLOCK_ITEMS.registerSimpleBlockItem(name, block);

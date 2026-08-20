@@ -8,7 +8,9 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -127,6 +129,31 @@ public class BABlockstateProvider extends BlockStateProvider {
             this.slabBlock((SlabBlock) block, bottom, top, doubleSlab);
             this.simpleBlockItem(block, bottom);
         }
+
+        /*
+        for (DyeColor color : DyeColor.values()) {
+            Block block = DYED_VERTICAL_REINFORCED_GLASS_SLAB.get(color).get();
+            String name = "vertical_" + color.getName() + "_reinforced_glass_slab";
+            ResourceLocation full = this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass");
+            ResourceLocation horizontal = this.modLoc( ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass_slab");
+            ResourceLocation vertical = this.modLoc( ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/vertical_" + color.getName() + "_reinforced_glass_slab");
+
+            ModelFile east = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_east"))
+                    .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
+            ModelFile north = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_north"))
+                    .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
+            ModelFile west = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_west"))
+                    .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
+            ModelFile south = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_south"))
+                    .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
+            ModelFile doubleX = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_double_x"))
+                    .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
+            ModelFile doubleZ = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_double_z"))
+                    .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
+
+            this.simpleBlock(block, east);
+        }
+        */
 
             //Misc
         this.simpleBlockItem(PIPE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/pipe")));
