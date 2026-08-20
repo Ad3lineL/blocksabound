@@ -1,0 +1,9 @@
+{
+  "parent": "blocksabound:block/compat/parents/polished_vertical_slab_south",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "full": "blocksabound:block/colored_reinforced_glass/green_reinforced_glass",
+    "horizontal": "blocksabound:block/colored_reinforced_glass/green_reinforced_glass_slab",
+    "vertical": "blocksabound:block/colored_reinforced_glass/vertical_green_reinforced_glass_slab"
+  }
+}

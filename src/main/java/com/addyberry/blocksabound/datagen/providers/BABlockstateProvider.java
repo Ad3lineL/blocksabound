@@ -130,30 +130,28 @@ public class BABlockstateProvider extends BlockStateProvider {
             this.simpleBlockItem(block, bottom);
         }
 
-        /*
+
         for (DyeColor color : DyeColor.values()) {
-            Block block = DYED_VERTICAL_REINFORCED_GLASS_SLAB.get(color).get();
-            String name = "vertical_" + color.getName() + "_reinforced_glass_slab";
+            String name = ModelProvider.BLOCK_FOLDER + "/compat/vertical_" + color.getName() + "_reinforced_glass_slab";
             ResourceLocation full = this.modLoc(ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass");
             ResourceLocation horizontal = this.modLoc( ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/" + color.getName() + "_reinforced_glass_slab");
             ResourceLocation vertical = this.modLoc( ModelProvider.BLOCK_FOLDER + "/colored_reinforced_glass/vertical_" + color.getName() + "_reinforced_glass_slab");
 
-            ModelFile east = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_east"))
+            ModelFile east = this.models().withExistingParent(name + "_east", this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_east"))
                     .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
-            ModelFile north = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_north"))
+            ModelFile north = this.models().withExistingParent(name + "_north", this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_north"))
                     .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
-            ModelFile west = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_west"))
+            ModelFile west = this.models().withExistingParent(name + "_west", this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_west"))
                     .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
-            ModelFile south = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_south"))
+            ModelFile south = this.models().withExistingParent(name + "_south", this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_south"))
                     .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
-            ModelFile doubleX = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_double_x"))
+            ModelFile doubleX = this.models().withExistingParent(name + "_double_x", this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_double_x"))
                     .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
-            ModelFile doubleZ = this.models().withExistingParent(name, this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_double_z"))
+            ModelFile doubleZ = this.models().withExistingParent(name + "_double_z", this.modLoc( ModelProvider.BLOCK_FOLDER + "/compat/parents/polished_vertical_slab_double_z"))
                     .texture("full", full).texture("horizontal", horizontal).texture("vertical", vertical).renderType("translucent");
 
-            this.simpleBlock(block, east);
         }
-        */
+
 
             //Misc
         this.simpleBlockItem(PIPE.get(), this.models().getExistingFile(this.modLoc(ModelProvider.BLOCK_FOLDER + "/pipe")));

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=north,double=false": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_north"
+    },
+    "facing=north,double=true": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_double_z"
+    },
+    "facing=east,double=false": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_east"
+    },
+    "facing=east,double=true": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_double_x"
+    },
+    "facing=south,double=false": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_south"
+    },
+    "facing=south,double=true": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_double_z"
+    },
+    "facing=west,double=false": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_west"
+    },
+    "facing=west,double=true": {
+      "model": "blocksabound:block/compat/vertical_gray_reinforced_glass_slab_double_x"
+    }
+  }
+}
