@@ -42,9 +42,7 @@ public class BlocksAbound {
         BASounds.register(modEventBus);
     }
 
-    private void commonSetup(FMLCommonSetupEvent event) {
-
-    }
+    private void commonSetup(FMLCommonSetupEvent event) {}
     public static ResourceLocation location(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
