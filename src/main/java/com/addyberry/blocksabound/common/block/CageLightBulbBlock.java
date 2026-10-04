@@ -26,7 +26,7 @@ public class CageLightBulbBlock extends LightBulbBlock {
     protected static final VoxelShape SOUTH_WALL_SHAPE = Shapes.or(Block.box(4.0, 4.0, 2.0, 12.0, 12.0, 10.0), Block.box(6.0, 6.0, 0.0, 10.0, 10.0, 2.0));
     
     public CageLightBulbBlock(Properties properties) {
-        super(properties);
+        super(properties, null);
     }
 
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
