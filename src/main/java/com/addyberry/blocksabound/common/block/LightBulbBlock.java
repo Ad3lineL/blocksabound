@@ -5,9 +5,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -20,6 +23,7 @@ import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
@@ -31,12 +35,12 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final EnumProperty<AttachFace> FACE = BlockStateProperties.ATTACH_FACE;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    protected static final VoxelShape FLOOR_SHAPE = Block.box(5.0, 0.0, 5.0, 11.0, 9.0, 11.0);
-    protected static final VoxelShape CEILING_SHAPE = Block.box(5.0, 7.0, 5.0, 11.0, 16.0, 11.0);
-    protected static final VoxelShape NORTH_WALL_SHAPE = Block.box(5.0, 5.0, 7.0, 11.0, 11.0, 16.0);
-    protected static final VoxelShape WEST_WALL_SHAPE = Block.box(7.0, 5.0, 5.0, 16.0, 11.0, 11.0);
-    protected static final VoxelShape EAST_WALL_SHAPE = Block.box(0.0, 5.0, 5.0, 9.0, 11.0, 11.0);
-    protected static final VoxelShape SOUTH_WALL_SHAPE = Block.box(5.0, 5.0, 0.0, 11.0, 11.0, 9.0);
+    protected static final VoxelShape FLOOR_SHAPE = Shapes.or(Block.box(5.0, 2.0, 5.0, 11.0, 9.0, 11.0), Block.box(6.0, 0.0, 6.0, 10.0, 2.0, 10.0));
+    protected static final VoxelShape CEILING_SHAPE = Shapes.or(Block.box(5.0, 7.0, 5.0, 11.0, 14.0, 11.0), Block.box(6.0, 14.0, 6.0, 10.0, 16.0, 10.0));
+    protected static final VoxelShape NORTH_WALL_SHAPE = Shapes.or(Block.box(5.0, 5.0, 7.0, 11.0, 11.0, 14.0), Block.box(6.0, 6.0, 14.0, 10.0, 10.0, 16.0));
+    protected static final VoxelShape WEST_WALL_SHAPE = Shapes.or(Block.box(7.0, 5.0, 5.0, 14.0, 11.0, 11.0), Block.box(14.0, 6.0, 6.0, 16.0, 10.0, 10.0));
+    protected static final VoxelShape EAST_WALL_SHAPE = Shapes.or(Block.box(2.0, 5.0, 5.0, 9.0, 11.0, 11.0), Block.box(0.0, 6.0, 6.0, 2.0, 10.0, 10.0));
+    protected static final VoxelShape SOUTH_WALL_SHAPE = Shapes.or(Block.box(5.0, 5.0, 2.0, 11.0, 11.0, 9.0), Block.box(6.0, 6.0, 0.0, 10.0, 10.0, 2.0));
 
 
     public LightBulbBlock(Properties properties) {
@@ -84,11 +88,24 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
         return null;
     }
 
+    protected ItemInteractionResult useItemOn(
+            ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult
+    ) {
+        if (stack.is(Blocks.IRON_BARS.asItem())) {
+            level.setBlock(pos, state, 3);
+            stack.consume(1, player);
+            level.playSound(null, pos, SoundEvents.COPPER_BULB_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            return ItemInteractionResult.SUCCESS;
+        } else {
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+    }
+
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         } else {
-            this.invert(state, level, pos, (Player)null);
+            this.invert(state, level, pos, null);
             return InteractionResult.CONSUME;
         }
     }

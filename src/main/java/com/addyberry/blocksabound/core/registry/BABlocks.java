@@ -93,13 +93,18 @@ public class BABlocks {
 
 
         //Light Bulb
-    public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 15 : 0))); //15
+    public static final DeferredBlock<Block> LIGHT_BULB = registerBlock("light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 15 : 0)));
     public static final DeferredBlock<Block> SOUL_LIGHT_BULB = registerBlock("soul_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 12 : 0)));
     public static final DeferredBlock<Block> REDSTONE_LIGHT_BULB = registerBlock("redstone_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 9 : 0)));
     public static final DeferredBlock<Block> COPPER_LIGHT_BULB = registerBlock("copper_light_bulb", () -> new LightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
 
+    public static final DeferredBlock<Block> CAGE_LIGHT_BULB = registerBlockNoItem("cage_light_bulb", () -> new CageLightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(CageLightBulbBlock.LIT) ? 14 : 0)));
+    public static final DeferredBlock<Block> SOUL_CAGE_LIGHT_BULB = registerBlockNoItem("soul_cage_light_bulb", () -> new CageLightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(CageLightBulbBlock.LIT) ? 11 : 0)));
+    public static final DeferredBlock<Block> REDSTONE_CAGE_LIGHT_BULB = registerBlockNoItem("redstone_cage_light_bulb", () -> new CageLightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(CageLightBulbBlock.LIT) ? 8 : 0)));
+    public static final DeferredBlock<Block> COPPER_CAGE_LIGHT_BULB = registerBlockNoItem("copper_cage_light_bulb", () -> new CageLightBulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).lightLevel(state -> state.getValue(CageLightBulbBlock.LIT) ? 12 : 0)));
 
-        //Fluorescent Tube
+
+    //Fluorescent Tube
     public static final DeferredBlock<Block> FLUORESCENT_TUBE = registerBlock("fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
     public static final DeferredBlock<Block> COLD_FLUORESCENT_TUBE = registerBlock("cold_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
     public static final DeferredBlock<Block> COOL_FLUORESCENT_TUBE = registerBlock("cool_fluorescent_tube", () -> new FluorescentTubeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).noOcclusion().lightLevel(state -> state.getValue(LightBulbBlock.LIT) ? 13 : 0)));
