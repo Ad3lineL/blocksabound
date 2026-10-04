@@ -1,5 +1,6 @@
 package com.addyberry.blocksabound.common.block;
 
+import com.addyberry.blocksabound.core.registry.BABlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -9,10 +10,13 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -54,5 +58,10 @@ public class CageLightBulbBlock extends LightBulbBlock {
 
     @Override
     protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {}
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        return Blocks.IRON_BARS.asItem().getDefaultInstance();
+    }
 
 }
