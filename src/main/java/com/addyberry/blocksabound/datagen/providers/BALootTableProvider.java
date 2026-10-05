@@ -1,6 +1,5 @@
 package com.addyberry.blocksabound.datagen.providers;
 
-import com.addyberry.blocksabound.common.block.CageLightBulbBlock;
 import com.addyberry.blocksabound.common.block.IronPipeJunctionBlock;
 import com.addyberry.blocksabound.common.block.ReinforcedGlassBlock;
 import com.addyberry.blocksabound.common.block.ReinforcedGlassSlabBlock;
@@ -18,13 +17,13 @@ import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 
 import java.util.Set;
+
+import static com.addyberry.blocksabound.core.registry.BABlocks.*;
 
 public class BALootTableProvider extends BlockLootSubProvider {
     public BALootTableProvider(HolderLookup.Provider registries) {
@@ -43,7 +42,14 @@ public class BALootTableProvider extends BlockLootSubProvider {
                 dropWhenSilkTouch(block);
             } else if (block instanceof ReinforcedGlassSlabBlock) {
                 add(block, createSilkTouchOnlySlabItemTable(block));
-            } else if (block instanceof CageLightBulbBlock) {
+            } else if (block == CAGE_LIGHT_BULB.get()) {
+                add(block, createCagedBulbItemTable(LIGHT_BULB.get()));
+            } else if (block == SOUL_CAGE_LIGHT_BULB.get()) {
+                add(block, createCagedBulbItemTable(SOUL_LIGHT_BULB.get()));
+            } else if (block == REDSTONE_CAGE_LIGHT_BULB.get()) {
+                add(block, createCagedBulbItemTable(REDSTONE_LIGHT_BULB.get()));
+            } else if (block == COPPER_CAGE_LIGHT_BULB.get()) {
+                add(block, createCagedBulbItemTable(COPPER_LIGHT_BULB.get()));
             } else if (block instanceof DoorBlock) {
                 add(block, createDoorTable(block));
             } else if (block instanceof IronPipeJunctionBlock) {

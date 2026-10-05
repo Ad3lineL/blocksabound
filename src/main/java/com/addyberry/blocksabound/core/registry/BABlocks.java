@@ -114,6 +114,7 @@ public class BABlocks {
 
 
         //Mechanical Iron
+    public static final BlockSetType REINFORCED_IRON_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType("reinforced_iron", true, true, false, BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.METAL, SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_DOOR_OPEN, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN, SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
     public static BlockBehaviour.Properties getReinforcedIronProperties() {
         return BlockBehaviour.Properties.of()
                 .mapColor(MapColor.COLOR_GRAY)
@@ -126,6 +127,8 @@ public class BABlocks {
     public static final DeferredBlock<Block> REINFORCED_IRON_SLAB = registerBlock("reinforced_iron_slab", () -> new SlabBlock(getReinforcedIronProperties()));
     public static final DeferredBlock<Block> CHISELED_REINFORCED_IRON = registerBlock("chiseled_reinforced_iron", () -> new Block(getReinforcedIronProperties()));
     public static final DeferredBlock<Block> REINFORCED_IRON_WALL = registerBlock("reinforced_iron_wall", () -> new WallBlock(getReinforcedIronProperties()));
+    public static final DeferredBlock<Block> REINFORCED_IRON_DOOR = registerBlock("reinforced_iron_door", () -> new DoorBlock(REINFORCED_IRON_BLOCK_SET_TYPE, getReinforcedIronProperties().noOcclusion()));
+    public static final DeferredBlock<Block> REINFORCED_IRON_TRAPDOOR = registerBlock("reinforced_iron_trapdoor", () -> new TrapDoorBlock(REINFORCED_IRON_BLOCK_SET_TYPE, getReinforcedIronProperties().noOcclusion()));
 
     public static final DeferredBlock<Block> HATCH = registerBlock("hatch", () -> new HatchBlock(getReinforcedIronProperties().noOcclusion()));
     public static final DeferredBlock<Block> VENT = registerBlock("vent", () -> new VentBlock(getReinforcedIronProperties().noOcclusion()));

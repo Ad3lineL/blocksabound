@@ -39,6 +39,8 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.REINFORCED_IRON_SLAB);
             event.accept(BABlocks.REINFORCED_IRON_WALL);
             event.accept(BABlocks.CHISELED_REINFORCED_IRON);
+            event.accept(BABlocks.REINFORCED_IRON_DOOR);
+            event.accept(BABlocks.REINFORCED_IRON_TRAPDOOR);
 
             event.accept(BABlocks.TAR_BLOCK);
 
@@ -53,7 +55,6 @@ public class BACreativeModeTabs {
             event.accept(BABlocks.TARRED_PAPER);
             event.accept(BABlocks.TARRED_PAPER_STAIRS);
             event.accept(BABlocks.TARRED_PAPER_SLAB);
-
 
         }
         if(event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {

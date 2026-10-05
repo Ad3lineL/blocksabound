@@ -26,11 +26,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "blocksabound:light_bulb"
+          "name": "blocksabound:redstone_light_bulb"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "blocksabound:blocks/cage_light_bulb"
+  "random_sequence": "blocksabound:blocks/redstone_cage_light_bulb"
 }

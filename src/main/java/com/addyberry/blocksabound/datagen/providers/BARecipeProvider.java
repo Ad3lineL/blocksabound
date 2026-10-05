@@ -78,7 +78,7 @@ public class BARecipeProvider extends RecipeProvider {
         reinforcedGlassSet(output, DYED_REINFORCED_GLASS.get(DyeColor.PINK), DYED_REINFORCED_GLASS_SLAB.get(DyeColor.PINK), Items.PINK_STAINED_GLASS);
 
 
-        //Asphalt
+            //Asphalt
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ASPHALT, 8)
                 .requires(BAItems.TAR).requires(Items.COBBLESTONE, 8)
                 .unlockedBy(getHasName(BAItems.TAR), has(BAItems.TAR)).save(output);
@@ -100,7 +100,7 @@ public class BARecipeProvider extends RecipeProvider {
         stair(output, TARRED_PAPER_STAIRS, TARRED_PAPER);
 
 
-        //Reinforced Iron
+            //Reinforced Iron
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, REINFORCED_IRON, 4)
                 .define('I', Items.IRON_INGOT).define('N', Items.IRON_NUGGET)
                 .pattern("NNN")
@@ -110,6 +110,14 @@ public class BARecipeProvider extends RecipeProvider {
         stoneSlab(output, REINFORCED_IRON_SLAB, REINFORCED_IRON);
         stoneStair(output, REINFORCED_IRON_STAIRS, REINFORCED_IRON);
         chiseledStoneAlt(output, CHISELED_REINFORCED_IRON, REINFORCED_IRON_SLAB, REINFORCED_IRON);
+        door(output, REINFORCED_IRON_DOOR, REINFORCED_IRON);
+        stoneWall(output, REINFORCED_IRON_WALL, REINFORCED_IRON);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, REINFORCED_IRON_TRAPDOOR, 1)
+                .define('#', REINFORCED_IRON)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy(getHasName(REINFORCED_IRON), has(REINFORCED_IRON)).save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, PIPE, 4)
                 .define('#', REINFORCED_IRON)
@@ -123,8 +131,8 @@ public class BARecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .unlockedBy(getHasName(REINFORCED_IRON), has(REINFORCED_IRON)).save(output);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, HATCH)
-                .requires(REINFORCED_IRON).requires(Items.IRON_TRAPDOOR)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, HATCH, 2)
+                .requires(REINFORCED_IRON_TRAPDOOR, 2)
                 .unlockedBy(getHasName(REINFORCED_IRON), has(REINFORCED_IRON)).save(output);
 
 
@@ -259,6 +267,10 @@ public class BARecipeProvider extends RecipeProvider {
         cut(recipeOutput, cut, material);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, cut, material);
     }
+    protected static void stoneWall(RecipeOutput recipeOutput, ItemLike wall, ItemLike material) {
+        wall(recipeOutput, RecipeCategory.BUILDING_BLOCKS, wall, material);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, wall, material);
+    }
 
     protected static void slab(RecipeOutput recipeOutput, ItemLike slab, ItemLike material) {
         slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, slab, material);
@@ -274,6 +286,9 @@ public class BARecipeProvider extends RecipeProvider {
     }
     protected static void chiseled(RecipeOutput recipeOutput, ItemLike chiseled, ItemLike material) {
         chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, chiseled, Ingredient.of(material)).unlockedBy(getHasName(material), has(material)).save(recipeOutput);
+    }
+    protected static void wall(RecipeOutput recipeOutput, ItemLike wall, ItemLike material) {
+        wall(recipeOutput, RecipeCategory.BUILDING_BLOCKS, wall, material);
     }
     protected static void cut(RecipeOutput recipeOutput, ItemLike cut, ItemLike material) {
         cutBuilder(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.of(material)).unlockedBy(getHasName(material), has(material)).save(recipeOutput);

@@ -3,14 +3,14 @@
   "category": "building",
   "ingredients": [
     {
-      "item": "blocksabound:reinforced_iron"
+      "item": "blocksabound:reinforced_iron_trapdoor"
     },
     {
-      "item": "minecraft:iron_trapdoor"
+      "item": "blocksabound:reinforced_iron_trapdoor"
     }
   ],
   "result": {
-    "count": 1,
+    "count": 2,
     "id": "blocksabound:hatch"
   }
 }
