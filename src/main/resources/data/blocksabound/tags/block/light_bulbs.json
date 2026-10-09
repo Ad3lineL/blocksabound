@@ -2,6 +2,15 @@
   "values": [
     "blocksabound:light_bulb",
     "blocksabound:soul_light_bulb",
-    "blocksabound:redstone_light_bulb"
+    "blocksabound:redstone_light_bulb",
+    "blocksabound:copper_light_bulb",
+    "blocksabound:cage_light_bulb",
+    "blocksabound:cage_soul_light_bulb",
+    "blocksabound:cage_redstone_light_bulb",
+    "blocksabound:cage_copper_light_bulb",
+    "blocksabound:shaded_light_bulb",
+    "blocksabound:shaded_soul_light_bulb",
+    "blocksabound:shaded_redstone_light_bulb",
+    "blocksabound:shaded_copper_light_bulb"
   ]
 }

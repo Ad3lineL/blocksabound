@@ -10,13 +10,10 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -30,7 +27,7 @@ public class CageLightBulbBlock extends LightBulbBlock {
     protected static final VoxelShape SOUTH_WALL_SHAPE = Shapes.or(Block.box(4.0, 4.0, 2.0, 12.0, 12.0, 10.0), Block.box(6.0, 6.0, 0.0, 10.0, 10.0, 2.0));
     
     public CageLightBulbBlock(Properties properties) {
-        super(properties, null);
+        super(properties);
     }
 
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -48,20 +45,7 @@ public class CageLightBulbBlock extends LightBulbBlock {
         }
         return NORTH_WALL_SHAPE;
     };
-    
-    @Override
-    protected ItemInteractionResult useItemOn(
-            ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult
-    ) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
 
     @Override
     protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {}
-
-    @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
-        return Blocks.IRON_BARS.asItem().getDefaultInstance();
-    }
-
 }

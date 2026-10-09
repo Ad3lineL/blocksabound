@@ -36,7 +36,6 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final EnumProperty<AttachFace> FACE = BlockStateProperties.ATTACH_FACE;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    protected final Block cagedBlock;
 
     protected static final VoxelShape FLOOR_SHAPE = Shapes.or(Block.box(5.0, 2.0, 5.0, 11.0, 9.0, 11.0), Block.box(6.0, 0.0, 6.0, 10.0, 2.0, 10.0));
     protected static final VoxelShape CEILING_SHAPE = Shapes.or(Block.box(5.0, 7.0, 5.0, 11.0, 14.0, 11.0), Block.box(6.0, 14.0, 6.0, 10.0, 16.0, 10.0));
@@ -46,9 +45,8 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
     protected static final VoxelShape SOUTH_WALL_SHAPE = Shapes.or(Block.box(5.0, 5.0, 2.0, 11.0, 11.0, 9.0), Block.box(6.0, 6.0, 0.0, 10.0, 10.0, 2.0));
 
 
-    public LightBulbBlock(Properties properties, Block cagedBlock) {
+    public LightBulbBlock(Properties properties) {
         super(properties);
-        this.cagedBlock = cagedBlock;
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(LIT, false)
                 .setValue(INVERTED, false)
@@ -90,26 +88,6 @@ public class LightBulbBlock extends FaceAttachedHorizontalDirectionalBlock {
         }
 
         return null;
-    }
-
-    protected ItemInteractionResult useItemOn(
-            ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult
-    ) {
-        if (stack.is(Blocks.IRON_BARS.asItem())) {
-            level.setBlock(pos,
-                    cagedBlock.defaultBlockState()
-                        .setValue(LIT, state.getValue(LIT))
-                        .setValue(INVERTED, state.getValue(INVERTED))
-                        .setValue(POWERED, state.getValue(POWERED))
-                        .setValue(FACE, state.getValue(FACE))
-                        .setValue(FACING, state.getValue(FACING)),
-                    3);
-            stack.consume(1, player);
-            level.playSound(null, pos, SoundEvents.COPPER_BULB_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            return ItemInteractionResult.SUCCESS;
-        } else {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
     }
 
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {

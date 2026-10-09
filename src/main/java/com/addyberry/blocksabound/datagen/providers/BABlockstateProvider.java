@@ -168,6 +168,16 @@ public class BABlockstateProvider extends BlockStateProvider {
         this.flatBlockItem(REDSTONE_LIGHT_BULB.get());
         this.flatBlockItem(COPPER_LIGHT_BULB.get());
 
+        this.flatBlockItem(CAGE_LIGHT_BULB.get());
+        this.flatBlockItem(SOUL_CAGE_LIGHT_BULB.get());
+        this.flatBlockItem(REDSTONE_CAGE_LIGHT_BULB.get());
+        this.flatBlockItem(COPPER_CAGE_LIGHT_BULB.get());
+
+        this.flatBlockItem(SHADED_LIGHT_BULB.get());
+        this.flatBlockItem(SHADED_SOUL_LIGHT_BULB.get());
+        this.flatBlockItem(SHADED_REDSTONE_LIGHT_BULB.get());
+        this.flatBlockItem(SHADED_COPPER_LIGHT_BULB.get());
+
         this.flatBlockItem(COLD_FLUORESCENT_TUBE.get());
         this.flatBlockItem(COOL_FLUORESCENT_TUBE.get());
         this.flatBlockItem(FLUORESCENT_TUBE.get());

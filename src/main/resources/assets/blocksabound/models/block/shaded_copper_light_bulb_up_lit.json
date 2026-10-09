@@ -1,0 +1,136 @@
+{
+	"credit": "Made by Monka, ty create tube",
+	"loader": "neoforge:composite",
+	"parent": "block/block",
+	"textures": {
+		"0": "blocksabound:block/copper_light_bulb_lit",
+		"1": "blocksabound:block/copper_light_bulb_filament",
+		"2": "blocksabound:block/copper_light_bulb_shaded_up",
+		"3": "blocksabound:block/copper_light_bulb_cage",
+		"particle": "blocksabound:block/copper_light_bulb_lit"
+	},
+	"children": {
+		"connectors": {
+			"render_type": "minecraft:solid",
+			"textures": {
+				"0": "blocksabound:block/copper_light_bulb_lit",
+				"2": "blocksabound:block/copper_light_bulb_shaded_up",
+				"3": "blocksabound:block/copper_light_bulb_cage"
+			},
+			"elements": [
+				{
+					"name": "connector1",
+					"from": [6, 0, 6],
+					"to": [10, 2, 10],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 6]},
+					"faces": {
+						"north": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"east": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"south": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"west": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"down": {"uv": [6, 2, 10, 6], "texture": "#0"}
+					}
+				},
+				{
+					"name": "connector2",
+					"from": [5, 2, 5],
+					"to": [11, 3, 11],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 1, 6]},
+					"faces": {
+						"north": {"uv": [0, 6, 6, 7], "texture": "#0"},
+						"east": {"uv": [0, 6, 6, 7], "texture": "#0"},
+						"south": {"uv": [0, 6, 6, 7], "texture": "#0"},
+						"west": {"uv": [0, 6, 6, 7], "texture": "#0"},
+						"up": {"uv": [0, 10, 6, 16], "texture": "#0"},
+						"down": {"uv": [10, 10, 16, 16], "texture": "#0"}
+					}
+				},
+				{
+					"name": "connector3",
+					"from": [5, 9, 5],
+					"to": [11, 10, 11],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 1, 6]},
+					"faces": {
+						"north": {"uv": [0, 0, 6, 1], "texture": "#2"},
+						"east": {"uv": [0, 0, 6, 1], "texture": "#2"},
+						"south": {"uv": [0, 0, 6, 1], "texture": "#2"},
+						"west": {"uv": [0, 0, 6, 1], "texture": "#2"},
+						"up": {"uv": [10, 10, 16, 16], "texture": "#0"},
+						"down": {"uv": [9, 9, 15, 15], "texture": "#3"}
+					}
+				},
+				{
+					"name": "connector4",
+					"from": [6, 10, 6],
+					"to": [10, 12, 10],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 6]},
+					"faces": {
+						"north": {"uv": [6, 2, 10, 0], "texture": "#0"},
+						"east": {"uv": [6, 2, 10, 0], "texture": "#0"},
+						"south": {"uv": [6, 2, 10, 0], "texture": "#0"},
+						"west": {"uv": [6, 2, 10, 0], "texture": "#0"},
+						"up": {"uv": [6, 2, 10, 6], "texture": "#0"}
+					}
+				}
+			]
+		},
+		"filament": {
+			"render_type": "minecraft:cutout",
+			"textures": {
+				"0": "blocksabound:block/copper_light_bulb_lit",
+				"1": "blocksabound:block/copper_light_bulb_filament",
+				"2": "blocksabound:block/copper_light_bulb_shaded_up"
+			},
+			"elements": [
+				{
+					"name": "filament",
+					"from": [6, 3, 8],
+					"to": [10, 7, 8],
+					"rotation": {"angle": 0, "axis": "y", "origin": [5, 3, 6]},
+					"faces": {
+						"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+						"south": {"uv": [0, 0, 16, 16], "texture": "#1"}
+					}
+				},
+				{
+					"name": "prongs",
+					"from": [5, 9, 5],
+					"to": [11, 3, 11],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 3, 6]},
+					"faces": {
+						"north": {"uv": [0, 9, 6, 15], "texture": "#2"},
+						"east": {"uv": [0, 9, 6, 15], "texture": "#2"},
+						"south": {"uv": [0, 9, 6, 15], "texture": "#2"},
+						"west": {"uv": [0, 9, 6, 15], "texture": "#2"}
+					}
+				}
+			]
+		},
+		"bulb": {
+			"render_type": "minecraft:translucent",
+			"textures": {
+				"2": "blocksabound:block/copper_light_bulb_shaded_up"
+			},
+			"elements": [
+				{
+					"name": "bulb",
+					"from": [5, 3, 5],
+					"to": [11, 9, 11],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 2, 6]},
+					"faces": {
+						"north": {"uv": [0, 1, 6, 7], "texture": "#2"},
+						"east": {"uv": [0, 1, 6, 7], "texture": "#2"},
+						"south": {"uv": [0, 1, 6, 7], "texture": "#2"},
+						"west": {"uv": [0, 1, 6, 7], "texture": "#2"}
+					}
+				}
+			]
+		}
+	},
+	"display": {
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

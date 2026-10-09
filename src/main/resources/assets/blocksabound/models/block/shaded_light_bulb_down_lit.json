@@ -1,0 +1,121 @@
+{
+	"credit": "Made by Monka, ty create tube",
+	"loader": "neoforge:composite",
+	"parent": "block/block",
+	"textures": {
+		"0": "blocksabound:block/light_bulb_lit",
+		"1": "blocksabound:block/light_bulb_filament",
+		"2": "blocksabound:block/light_bulb_shaded_down",
+		"3": "blocksabound:block/bulb_shaded_down_outside",
+		"particle": "blocksabound:block/light_bulb_lit"
+	},
+	"children": {
+		"connectors": {
+			"render_type": "minecraft:solid",
+			"textures": {
+				"0": "blocksabound:block/light_bulb_lit",
+				"2": "blocksabound:block/light_bulb_shaded_down",
+				"3": "blocksabound:block/bulb_shaded_down_outside"
+			},
+			"elements": [
+				{
+					"name": "connector1",
+					"from": [6, 0, 6],
+					"to": [10, 2, 10],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 6]},
+					"faces": {
+						"north": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"east": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"south": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"west": {"uv": [6, 0, 10, 2], "texture": "#0"},
+						"down": {"uv": [6, 2, 10, 6], "texture": "#0"}
+					}
+				},
+				{
+					"name": "connector2",
+					"from": [2, 2, 2],
+					"to": [14, 5, 14],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 1, 6]},
+					"faces": {
+						"north": {"uv": [0, 15, 12, 12], "texture": "#3"},
+						"east": {"uv": [0, 15, 12, 12], "texture": "#3"},
+						"south": {"uv": [0, 15, 12, 12], "texture": "#3"},
+						"west": {"uv": [0, 15, 12, 12], "texture": "#3"},
+						"down": {"uv": [0, 0, 12, 12], "texture": "#3"}
+					}
+				},
+				{
+					"name": "connector3",
+					"from": [2, 5, 2],
+					"to": [14, 3, 14],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 1, 6]},
+					"faces": {
+						"north": {"uv": [0, 12, 12, 14], "texture": "#2"},
+						"east": {"uv": [0, 12, 12, 14], "texture": "#2"},
+						"south": {"uv": [0, 12, 12, 14], "texture": "#2"},
+						"west": {"uv": [0, 12, 12, 14], "texture": "#2"},
+						"up": {"uv": [0, 0, 12, 12], "texture": "#2"}
+					}
+				}
+			]
+		},
+		"filament": {
+			"render_type": "minecraft:cutout",
+			"textures": {
+				"0": "blocksabound:block/light_bulb_lit",
+				"1": "blocksabound:block/light_bulb_filament"
+			},
+			"elements": [
+				{
+					"name": "filament",
+					"from": [6, 3, 8],
+					"to": [10, 7, 8],
+					"rotation": {"angle": 0, "axis": "y", "origin": [5, 3, 6]},
+					"faces": {
+						"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+						"south": {"uv": [0, 0, 16, 16], "texture": "#1"}
+					}
+				},
+				{
+					"name": "prongs",
+					"from": [5, 4, 5],
+					"to": [11, 3, 11],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 3, 6]},
+					"faces": {
+						"north": {"uv": [0, 7, 6, 8], "texture": "#0"},
+						"east": {"uv": [0, 7, 6, 8], "texture": "#0"},
+						"south": {"uv": [0, 7, 6, 8], "texture": "#0"},
+						"west": {"uv": [0, 7, 6, 8], "texture": "#0"}
+					}
+				}
+			]
+		},
+		"bulb": {
+			"render_type": "minecraft:translucent",
+			"textures": {
+				"0": "blocksabound:block/light_bulb_lit"
+			},
+			"elements": [
+				{
+					"name": "bulb",
+					"from": [5, 3, 5],
+					"to": [11, 9, 11],
+					"rotation": {"angle": 0, "axis": "y", "origin": [6, 2, 6]},
+					"faces": {
+						"north": {"uv": [0, 0, 6, 6], "texture": "#0"},
+						"east": {"uv": [0, 0, 6, 6], "texture": "#0"},
+						"south": {"uv": [0, 0, 6, 6], "texture": "#0"},
+						"west": {"uv": [0, 0, 6, 6], "texture": "#0"},
+						"up": {"uv": [10, 0, 16, 6], "texture": "#0"}
+					}
+				}
+			]
+		}
+	},
+	"display": {
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}
